@@ -1,4 +1,4 @@
-name: flutter_releaser_core
+name: flutter_releaser
 description: "A comprehensive desktop application updater and release tool that simplifies packaging, releasing, and updating Flutter desktop applications across Windows, Linux, and macOS platforms."
 version: 0.0.1
 resolution: workspace

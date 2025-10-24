@@ -1,5 +1,5 @@
 import "package:flutter/services.dart";
-import "package:flutter_releaser_core/flutter_releaser_method_channel.dart";
+import "package:flutter_releaser/flutter_releaser_method_channel.dart";
 import "package:flutter_test/flutter_test.dart";
 
 void main() {

@@ -1,6 +1,6 @@
-import "package:flutter_releaser_core/flutter_releaser.dart";
-import "package:flutter_releaser_core/flutter_releaser_method_channel.dart";
-import "package:flutter_releaser_core/flutter_releaser_platform_interface.dart";
+import "package:flutter_releaser/flutter_releaser.dart";
+import "package:flutter_releaser/flutter_releaser_method_channel.dart";
+import "package:flutter_releaser/flutter_releaser_platform_interface.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:plugin_platform_interface/plugin_platform_interface.dart";
 

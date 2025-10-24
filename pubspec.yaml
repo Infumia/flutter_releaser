@@ -1,4 +1,4 @@
-name: flutter_releaser
+name: flutter_releaser_workspace
 description: "A comprehensive desktop application updater and release tool that simplifies packaging, releasing, and updating Flutter desktop applications across Windows, Linux, and macOS platforms."
 version: 0.0.1
 homepage: https://github.com/Infumia/flutter_releaser/
@@ -6,7 +6,7 @@ repository: https://github.com/Infumia/flutter_releaser/
 publish_to: none
 
 workspace:
-  - packages/flutter_releaser_core
+  - packages/flutter_releaser
 
 environment:
   sdk: ^3.9.0
