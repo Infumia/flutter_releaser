@@ -5,30 +5,15 @@ homepage: https://github.com/Infumia/flutter_releaser/
 repository: https://github.com/Infumia/flutter_releaser/
 publish_to: none
 
+workspace:
+  - packages/flutter_releaser_core
+
 environment:
   sdk: ^3.9.0
-  flutter: '>=3.3.0'
-
-dependencies:
-  flutter:
-    sdk: flutter
-  plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   flint: ^2.14.0
   melos: ^7.3.0
-
-flutter:
-  plugin:
-    platforms:
-      linux:
-        pluginClass: FlutterReleaserPlugin
-      macos:
-        pluginClass: FlutterReleaserPlugin
-      windows:
-        pluginClass: FlutterReleaserPluginCApi
 
 melos:
   scripts:

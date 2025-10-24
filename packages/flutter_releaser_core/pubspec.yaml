@@ -1,0 +1,29 @@
+name: flutter_releaser_core
+description: "A comprehensive desktop application updater and release tool that simplifies packaging, releasing, and updating Flutter desktop applications across Windows, Linux, and macOS platforms."
+version: 0.0.1
+resolution: workspace
+homepage: https://github.com/Infumia/flutter_releaser/
+repository: https://github.com/Infumia/flutter_releaser/
+
+environment:
+  sdk: ^3.9.0
+  flutter: '>=3.3.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      linux:
+        pluginClass: FlutterReleaserPlugin
+      macos:
+        pluginClass: FlutterReleaserPlugin
+      windows:
+        pluginClass: FlutterReleaserPluginCApi
