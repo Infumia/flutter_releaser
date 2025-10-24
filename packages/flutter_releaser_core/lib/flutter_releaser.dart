@@ -1,4 +1,4 @@
-import "package:flutter_releaser/flutter_releaser_platform_interface.dart";
+import "package:flutter_releaser_core/flutter_releaser_platform_interface.dart";
 
 class FlutterReleaser {
   const FlutterReleaser();
