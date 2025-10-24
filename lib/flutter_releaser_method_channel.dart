@@ -10,10 +10,6 @@ class MethodChannelFlutterReleaser extends FlutterReleaserPlatform {
   final methodChannel = const MethodChannel("flutter_releaser");
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>(
-      "getPlatformVersion",
-    );
-    return version;
-  }
+  Future<String?> getPlatformVersion() =>
+      methodChannel.invokeMethod<String>("getPlatformVersion");
 }
