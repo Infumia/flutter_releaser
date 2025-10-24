@@ -20,7 +20,7 @@ void main() {
   });
 
   test("getPlatformVersion", () async {
-    final FlutterReleaser flutterReleaserPlugin = FlutterReleaser();
+    const FlutterReleaser flutterReleaserPlugin = FlutterReleaser();
     final MockFlutterReleaserPlatform fakePlatform =
         MockFlutterReleaserPlatform();
     FlutterReleaserPlatform.instance = fakePlatform;
