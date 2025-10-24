@@ -1,2 +1,2 @@
-# flutter_updater
-Desktop application updater for Dart/Flutter.
+# flutter_releaser
+Desktop application updater/releaser for Dart/Flutter.
