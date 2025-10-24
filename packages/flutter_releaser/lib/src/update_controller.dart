@@ -8,5 +8,6 @@ class UpdateController extends ChangeNotifier {
 
   UpdateController({required this.settings});
 
-  Future<void> initialize() async {}
+  Future<void> initialize() async {
+  }
 }
