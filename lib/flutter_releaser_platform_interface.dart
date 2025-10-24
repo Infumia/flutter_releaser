@@ -1,6 +1,6 @@
-import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import "package:plugin_platform_interface/plugin_platform_interface.dart";
 
-import 'flutter_releaser_method_channel.dart';
+import "package:flutter_releaser/flutter_releaser_method_channel.dart";
 
 abstract class FlutterReleaserPlatform extends PlatformInterface {
   /// Constructs a FlutterReleaserPlatform.
@@ -24,6 +24,6 @@ abstract class FlutterReleaserPlatform extends PlatformInterface {
   }
 
   Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
+    throw UnimplementedError("platformVersion() has not been implemented.");
   }
 }
