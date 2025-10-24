@@ -7,7 +7,4 @@ class UpdateController extends ChangeNotifier {
   final UpdateSettings settings;
 
   UpdateController({required this.settings});
-
-  Future<void> initialize() async {
-  }
 }
