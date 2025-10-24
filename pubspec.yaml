@@ -3,6 +3,7 @@ description: "A comprehensive desktop application updater and release tool that 
 version: 0.0.1
 homepage: https://github.com/Infumia/flutter_releaser/
 repository: https://github.com/Infumia/flutter_releaser/
+publish_to: none
 
 environment:
   sdk: ^3.9.0
@@ -28,3 +29,28 @@ flutter:
         pluginClass: FlutterReleaserPlugin
       windows:
         pluginClass: FlutterReleaserPluginCApi
+
+melos:
+  scripts:
+    fix:
+      run: dart fix --apply && dart format .
+      exec:
+        concurrency: 4
+    format:
+      run: dart format .
+      exec:
+        concurrency: 4
+    upgrade:
+      run: dart pub upgrade --major-versions
+      exec:
+        concurrency: 4
+    get:
+      run: flutter pub get
+      exec:
+        concurrency: 4
+    flutter_clean:
+      run: flutter clean
+      exec:
+        concurrency: 4
+    cache_repair:
+      run: flutter pub cache repair
