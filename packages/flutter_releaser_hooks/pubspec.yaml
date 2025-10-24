@@ -1,0 +1,14 @@
+name: flutter_releaser_hooks
+description: ""
+version: 0.0.1
+resolution: workspace
+homepage: https://github.com/Infumia/flutter_releaser/
+repository: https://github.com/Infumia/flutter_releaser/
+
+environment:
+  sdk: ^3.9.0
+  flutter: '>=3.3.0'
+
+dependencies:
+  flutter:
+    sdk: flutter

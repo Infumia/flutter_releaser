@@ -7,6 +7,8 @@ publish_to: none
 
 workspace:
   - packages/flutter_releaser
+  - packages/flutter_releaser_widgets
+  - packages/flutter_releaser_hooks
 
 environment:
   sdk: ^3.9.0
