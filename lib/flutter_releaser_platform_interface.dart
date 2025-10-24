@@ -24,6 +24,6 @@ abstract class FlutterReleaserPlatform extends PlatformInterface {
   }
 
   Future<String?> getPlatformVersion() {
-    throw UnimplementedError("platformVersion() has not been implemented.");
+    throw UnimplementedError("getPlatformVersion() has not been implemented.");
   }
 }
