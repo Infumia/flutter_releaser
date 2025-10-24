@@ -17,6 +17,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flint: ^2.14.0
+  melos: ^7.3.0
 
 flutter:
   plugin:
