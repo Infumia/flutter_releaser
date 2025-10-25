@@ -7,8 +7,6 @@ import "package:flutter_releaser/src/files.dart";
 import "package:flutter_releaser/src/version.dart";
 
 Future<Version?> checkVersion(FlutterReleaserSettings settings) async {
-  final logger = settings.logger;
-
   final directory = await retrieveExecutableDirectory(settings);
   if (directory == null) {
     return null;
@@ -23,10 +21,12 @@ Future<Version?> checkVersion(FlutterReleaserSettings settings) async {
     jsonDecode(applicationArchiveString) as Map<String, dynamic>,
   );
 
-  final newVersion = await retrieveNewVersion(settings, applicationArchive);
+  final newVersion = await extractNewVersion(settings, applicationArchive);
   if (newVersion == null) {
     return null;
   }
+
+
 
   return null;
 }

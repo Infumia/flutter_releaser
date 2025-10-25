@@ -10,11 +10,28 @@ final _cache = <String, sem.Version>{};
 sem.Version parseVersion(String version) =>
     _cache.putIfAbsent(version, () => sem.Version.parse(version));
 
-Future<Version?> retrieveNewVersion(
+Future<Version?> extractNewVersion(
   FlutterReleaserSettings settings,
   ApplicationArchive archive,
 ) async {
-  final logger = settings.logger;
+  final latestVersion = _extractLatestVersion(settings, archive);
+
+  final info = await PackageInfo.fromPlatform();
+  final currentVersion = parseVersion(info.version);
+
+  if (currentVersion >= latestVersion.parsedVersion()) {
+    settings.logDebug("Could not found newer version than '$currentVersion'");
+    return null;
+  }
+
+  settings.logDebug("New version found '${latestVersion.version}'");
+  return latestVersion;
+}
+
+Version _extractLatestVersion(
+  FlutterReleaserSettings settings,
+  ApplicationArchive archive,
+) {
   final versions =
       archive.versions
           .where((element) => element.platform.name == Platform.operatingSystem)
@@ -28,18 +45,8 @@ Future<Version?> retrieveNewVersion(
     );
   }
 
-  logger.debug(
+  settings.logDebug(
     "Latest version for '${archive.name}' found '${latestVersion.version}'",
   );
-
-  final info = await PackageInfo.fromPlatform();
-  final currentVersion = parseVersion(info.version);
-
-  if (currentVersion >= latestVersion.parsedVersion()) {
-    logger.debug("Could not found newer version than '$currentVersion'");
-    return null;
-  }
-
-  logger.debug("New version found '${latestVersion.version}'");
   return latestVersion;
 }

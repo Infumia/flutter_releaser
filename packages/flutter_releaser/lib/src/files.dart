@@ -17,7 +17,7 @@ Future<Directory?> retrieveExecutableDirectory(
   }
 
   if (!directory.existsSync()) {
-    settings.logger.error("Could not found directory '$directoryPath'");
+    settings.logError("Could not found directory '$directoryPath'");
     return null;
   }
 
@@ -31,7 +31,7 @@ Future<Directory> createTemporaryDirectory(
     "flutter_releaser",
   );
 
-  settings.logger.debug(
+  settings.logDebug(
     "Temporary directory '$temporaryDirectory' will be used for flutter_releaser",
   );
 
@@ -54,7 +54,7 @@ Future<File> writeApplicationArchive(
     await sink.close();
   }
 
-  settings.logger.debug(
+  settings.logDebug(
     "Application archive file downloaded to '${outputFile.path}'",
   );
 

@@ -10,11 +10,6 @@ class LoggerPrint implements Logger {
   const LoggerPrint();
 
   @override
-  void info(String message) {
-    debugPrint(message);
-  }
-
-  @override
   void debug(String message) {
     debugPrint(message);
   }
