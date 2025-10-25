@@ -26,7 +26,5 @@ Future<Version?> checkVersion(FlutterReleaserSettings settings) async {
     return null;
   }
 
-
-
   return null;
 }
