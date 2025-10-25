@@ -1,4 +1,6 @@
+import "package:flutter_releaser/src/version.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:pub_semver/pub_semver.dart" as sem;
 
 part "models.freezed.dart";
 part "models.g.dart";
@@ -8,7 +10,7 @@ sealed class ApplicationArchive with _$ApplicationArchive {
   const factory ApplicationArchive({
     required String name,
     required String description,
-    required List<Item> items,
+    required List<Version> versions,
   }) = _ApplicationArchive;
 
   factory ApplicationArchive.fromJson(Map<String, dynamic> json) =>
@@ -18,22 +20,23 @@ sealed class ApplicationArchive with _$ApplicationArchive {
 enum Platform { macos, linux, windows }
 
 @freezed
-sealed class Item with _$Item implements Comparable<Item> {
-  const factory Item({
+sealed class Version with _$Version implements Comparable<Version> {
+  const factory Version({
     required String version,
-    required int shortVersion,
     required DateTime date,
     required bool mandatory,
     required Uri url,
     required Platform platform,
     required List<Change>? changes,
-  }) = _Item;
+  }) = _Version;
 
-  factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+  factory Version.fromJson(Map<String, dynamic> json) =>
+      _$VersionFromJson(json);
 
   @override
-  int compareTo(Item other) =>
-      shortVersion.compareTo(other.shortVersion);
+  int compareTo(Version other) => parsedVersion().compareTo(parsedVersion());
+
+  sem.Version parsedVersion() => parseVersion(version);
 }
 
 enum ChangeType {

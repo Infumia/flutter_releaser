@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ApplicationArchive {
 
- String get name; String get description; List<Item> get items;
+ String get name; String get description; List<Version> get versions;
 /// Create a copy of ApplicationArchive
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ApplicationArchiveCopyWith<ApplicationArchive> get copyWith => _$ApplicationArc
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApplicationArchive&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other.items, items));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApplicationArchive&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other.versions, versions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,description,const DeepCollectionEquality().hash(items));
+int get hashCode => Object.hash(runtimeType,name,description,const DeepCollectionEquality().hash(versions));
 
 @override
 String toString() {
-  return 'ApplicationArchive(name: $name, description: $description, items: $items)';
+  return 'ApplicationArchive(name: $name, description: $description, versions: $versions)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ApplicationArchiveCopyWith<$Res>  {
   factory $ApplicationArchiveCopyWith(ApplicationArchive value, $Res Function(ApplicationArchive) _then) = _$ApplicationArchiveCopyWithImpl;
 @useResult
 $Res call({
- String name, String description, List<Item> items
+ String name, String description, List<Version> versions
 });
 
 
@@ -65,12 +65,12 @@ class _$ApplicationArchiveCopyWithImpl<$Res>
 
 /// Create a copy of ApplicationArchive
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? description = null,Object? items = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? description = null,Object? versions = null,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,items: null == items ? _self.items : items // ignore: cast_nullable_to_non_nullable
-as List<Item>,
+as String,versions: null == versions ? _self.versions : versions // ignore: cast_nullable_to_non_nullable
+as List<Version>,
   ));
 }
 
@@ -152,10 +152,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String description,  List<Item> items)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String description,  List<Version> versions)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ApplicationArchive() when $default != null:
-return $default(_that.name,_that.description,_that.items);case _:
+return $default(_that.name,_that.description,_that.versions);case _:
   return orElse();
 
 }
@@ -173,10 +173,10 @@ return $default(_that.name,_that.description,_that.items);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String description,  List<Item> items)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String description,  List<Version> versions)  $default,) {final _that = this;
 switch (_that) {
 case _ApplicationArchive():
-return $default(_that.name,_that.description,_that.items);}
+return $default(_that.name,_that.description,_that.versions);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -190,10 +190,10 @@ return $default(_that.name,_that.description,_that.items);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String description,  List<Item> items)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String description,  List<Version> versions)?  $default,) {final _that = this;
 switch (_that) {
 case _ApplicationArchive() when $default != null:
-return $default(_that.name,_that.description,_that.items);case _:
+return $default(_that.name,_that.description,_that.versions);case _:
   return null;
 
 }
@@ -205,16 +205,16 @@ return $default(_that.name,_that.description,_that.items);case _:
 @JsonSerializable()
 
 class _ApplicationArchive implements ApplicationArchive {
-  const _ApplicationArchive({required this.name, required this.description, required final  List<Item> items}): _items = items;
+  const _ApplicationArchive({required this.name, required this.description, required final  List<Version> versions}): _versions = versions;
   factory _ApplicationArchive.fromJson(Map<String, dynamic> json) => _$ApplicationArchiveFromJson(json);
 
 @override final  String name;
 @override final  String description;
- final  List<Item> _items;
-@override List<Item> get items {
-  if (_items is EqualUnmodifiableListView) return _items;
+ final  List<Version> _versions;
+@override List<Version> get versions {
+  if (_versions is EqualUnmodifiableListView) return _versions;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_items);
+  return EqualUnmodifiableListView(_versions);
 }
 
 
@@ -231,16 +231,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApplicationArchive&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other._items, _items));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApplicationArchive&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other._versions, _versions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,description,const DeepCollectionEquality().hash(_items));
+int get hashCode => Object.hash(runtimeType,name,description,const DeepCollectionEquality().hash(_versions));
 
 @override
 String toString() {
-  return 'ApplicationArchive(name: $name, description: $description, items: $items)';
+  return 'ApplicationArchive(name: $name, description: $description, versions: $versions)';
 }
 
 
@@ -251,7 +251,7 @@ abstract mixin class _$ApplicationArchiveCopyWith<$Res> implements $ApplicationA
   factory _$ApplicationArchiveCopyWith(_ApplicationArchive value, $Res Function(_ApplicationArchive) _then) = __$ApplicationArchiveCopyWithImpl;
 @override @useResult
 $Res call({
- String name, String description, List<Item> items
+ String name, String description, List<Version> versions
 });
 
 
@@ -268,12 +268,12 @@ class __$ApplicationArchiveCopyWithImpl<$Res>
 
 /// Create a copy of ApplicationArchive
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? description = null,Object? items = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? description = null,Object? versions = null,}) {
   return _then(_ApplicationArchive(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,items: null == items ? _self._items : items // ignore: cast_nullable_to_non_nullable
-as List<Item>,
+as String,versions: null == versions ? _self._versions : versions // ignore: cast_nullable_to_non_nullable
+as List<Version>,
   ));
 }
 
@@ -282,42 +282,42 @@ as List<Item>,
 
 
 /// @nodoc
-mixin _$Item {
+mixin _$Version {
 
- String get version; int get shortVersion; DateTime get date; bool get mandatory; Uri get url; Platform get platform; List<Change>? get changes;
-/// Create a copy of Item
+ String get version; DateTime get date; bool get mandatory; Uri get url; Platform get platform; List<Change>? get changes;
+/// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ItemCopyWith<Item> get copyWith => _$ItemCopyWithImpl<Item>(this as Item, _$identity);
+$VersionCopyWith<Version> get copyWith => _$VersionCopyWithImpl<Version>(this as Version, _$identity);
 
-  /// Serializes this Item to a JSON map.
+  /// Serializes this Version to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Item&&(identical(other.version, version) || other.version == version)&&(identical(other.shortVersion, shortVersion) || other.shortVersion == shortVersion)&&(identical(other.date, date) || other.date == date)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&(identical(other.url, url) || other.url == url)&&(identical(other.platform, platform) || other.platform == platform)&&const DeepCollectionEquality().equals(other.changes, changes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Version&&(identical(other.version, version) || other.version == version)&&(identical(other.date, date) || other.date == date)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&(identical(other.url, url) || other.url == url)&&(identical(other.platform, platform) || other.platform == platform)&&const DeepCollectionEquality().equals(other.changes, changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,version,shortVersion,date,mandatory,url,platform,const DeepCollectionEquality().hash(changes));
+int get hashCode => Object.hash(runtimeType,version,date,mandatory,url,platform,const DeepCollectionEquality().hash(changes));
 
 @override
 String toString() {
-  return 'Item(version: $version, shortVersion: $shortVersion, date: $date, mandatory: $mandatory, url: $url, platform: $platform, changes: $changes)';
+  return 'Version(version: $version, date: $date, mandatory: $mandatory, url: $url, platform: $platform, changes: $changes)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ItemCopyWith<$Res>  {
-  factory $ItemCopyWith(Item value, $Res Function(Item) _then) = _$ItemCopyWithImpl;
+abstract mixin class $VersionCopyWith<$Res>  {
+  factory $VersionCopyWith(Version value, $Res Function(Version) _then) = _$VersionCopyWithImpl;
 @useResult
 $Res call({
- String version, int shortVersion, DateTime date, bool mandatory, Uri url, Platform platform, List<Change>? changes
+ String version, DateTime date, bool mandatory, Uri url, Platform platform, List<Change>? changes
 });
 
 
@@ -325,20 +325,19 @@ $Res call({
 
 }
 /// @nodoc
-class _$ItemCopyWithImpl<$Res>
-    implements $ItemCopyWith<$Res> {
-  _$ItemCopyWithImpl(this._self, this._then);
+class _$VersionCopyWithImpl<$Res>
+    implements $VersionCopyWith<$Res> {
+  _$VersionCopyWithImpl(this._self, this._then);
 
-  final Item _self;
-  final $Res Function(Item) _then;
+  final Version _self;
+  final $Res Function(Version) _then;
 
-/// Create a copy of Item
+/// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? version = null,Object? shortVersion = null,Object? date = null,Object? mandatory = null,Object? url = null,Object? platform = null,Object? changes = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? version = null,Object? date = null,Object? mandatory = null,Object? url = null,Object? platform = null,Object? changes = freezed,}) {
   return _then(_self.copyWith(
 version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
-as String,shortVersion: null == shortVersion ? _self.shortVersion : shortVersion // ignore: cast_nullable_to_non_nullable
-as int,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as DateTime,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
 as bool,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as Uri,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
@@ -350,8 +349,8 @@ as List<Change>?,
 }
 
 
-/// Adds pattern-matching-related methods to [Item].
-extension ItemPatterns on Item {
+/// Adds pattern-matching-related methods to [Version].
+extension VersionPatterns on Version {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -364,10 +363,10 @@ extension ItemPatterns on Item {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Item value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Version value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Item() when $default != null:
+case _Version() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -386,10 +385,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Item value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Version value)  $default,){
 final _that = this;
 switch (_that) {
-case _Item():
+case _Version():
 return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -404,10 +403,10 @@ return $default(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Item value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Version value)?  $default,){
 final _that = this;
 switch (_that) {
-case _Item() when $default != null:
+case _Version() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -425,10 +424,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String version,  int shortVersion,  DateTime date,  bool mandatory,  Uri url,  Platform platform,  List<Change>? changes)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String version,  DateTime date,  bool mandatory,  Uri url,  Platform platform,  List<Change>? changes)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Item() when $default != null:
-return $default(_that.version,_that.shortVersion,_that.date,_that.mandatory,_that.url,_that.platform,_that.changes);case _:
+case _Version() when $default != null:
+return $default(_that.version,_that.date,_that.mandatory,_that.url,_that.platform,_that.changes);case _:
   return orElse();
 
 }
@@ -446,10 +445,10 @@ return $default(_that.version,_that.shortVersion,_that.date,_that.mandatory,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String version,  int shortVersion,  DateTime date,  bool mandatory,  Uri url,  Platform platform,  List<Change>? changes)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String version,  DateTime date,  bool mandatory,  Uri url,  Platform platform,  List<Change>? changes)  $default,) {final _that = this;
 switch (_that) {
-case _Item():
-return $default(_that.version,_that.shortVersion,_that.date,_that.mandatory,_that.url,_that.platform,_that.changes);}
+case _Version():
+return $default(_that.version,_that.date,_that.mandatory,_that.url,_that.platform,_that.changes);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -463,10 +462,10 @@ return $default(_that.version,_that.shortVersion,_that.date,_that.mandatory,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String version,  int shortVersion,  DateTime date,  bool mandatory,  Uri url,  Platform platform,  List<Change>? changes)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String version,  DateTime date,  bool mandatory,  Uri url,  Platform platform,  List<Change>? changes)?  $default,) {final _that = this;
 switch (_that) {
-case _Item() when $default != null:
-return $default(_that.version,_that.shortVersion,_that.date,_that.mandatory,_that.url,_that.platform,_that.changes);case _:
+case _Version() when $default != null:
+return $default(_that.version,_that.date,_that.mandatory,_that.url,_that.platform,_that.changes);case _:
   return null;
 
 }
@@ -477,12 +476,11 @@ return $default(_that.version,_that.shortVersion,_that.date,_that.mandatory,_tha
 /// @nodoc
 @JsonSerializable()
 
-class _Item implements Item {
-  const _Item({required this.version, required this.shortVersion, required this.date, required this.mandatory, required this.url, required this.platform, required final  List<Change>? changes}): _changes = changes;
-  factory _Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+class _Version implements Version {
+  const _Version({required this.version, required this.date, required this.mandatory, required this.url, required this.platform, required final  List<Change>? changes}): _changes = changes;
+  factory _Version.fromJson(Map<String, dynamic> json) => _$VersionFromJson(json);
 
 @override final  String version;
-@override final  int shortVersion;
 @override final  DateTime date;
 @override final  bool mandatory;
 @override final  Uri url;
@@ -497,40 +495,40 @@ class _Item implements Item {
 }
 
 
-/// Create a copy of Item
+/// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ItemCopyWith<_Item> get copyWith => __$ItemCopyWithImpl<_Item>(this, _$identity);
+_$VersionCopyWith<_Version> get copyWith => __$VersionCopyWithImpl<_Version>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$ItemToJson(this, );
+  return _$VersionToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Item&&(identical(other.version, version) || other.version == version)&&(identical(other.shortVersion, shortVersion) || other.shortVersion == shortVersion)&&(identical(other.date, date) || other.date == date)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&(identical(other.url, url) || other.url == url)&&(identical(other.platform, platform) || other.platform == platform)&&const DeepCollectionEquality().equals(other._changes, _changes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Version&&(identical(other.version, version) || other.version == version)&&(identical(other.date, date) || other.date == date)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&(identical(other.url, url) || other.url == url)&&(identical(other.platform, platform) || other.platform == platform)&&const DeepCollectionEquality().equals(other._changes, _changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,version,shortVersion,date,mandatory,url,platform,const DeepCollectionEquality().hash(_changes));
+int get hashCode => Object.hash(runtimeType,version,date,mandatory,url,platform,const DeepCollectionEquality().hash(_changes));
 
 @override
 String toString() {
-  return 'Item(version: $version, shortVersion: $shortVersion, date: $date, mandatory: $mandatory, url: $url, platform: $platform, changes: $changes)';
+  return 'Version(version: $version, date: $date, mandatory: $mandatory, url: $url, platform: $platform, changes: $changes)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
-  factory _$ItemCopyWith(_Item value, $Res Function(_Item) _then) = __$ItemCopyWithImpl;
+abstract mixin class _$VersionCopyWith<$Res> implements $VersionCopyWith<$Res> {
+  factory _$VersionCopyWith(_Version value, $Res Function(_Version) _then) = __$VersionCopyWithImpl;
 @override @useResult
 $Res call({
- String version, int shortVersion, DateTime date, bool mandatory, Uri url, Platform platform, List<Change>? changes
+ String version, DateTime date, bool mandatory, Uri url, Platform platform, List<Change>? changes
 });
 
 
@@ -538,20 +536,19 @@ $Res call({
 
 }
 /// @nodoc
-class __$ItemCopyWithImpl<$Res>
-    implements _$ItemCopyWith<$Res> {
-  __$ItemCopyWithImpl(this._self, this._then);
+class __$VersionCopyWithImpl<$Res>
+    implements _$VersionCopyWith<$Res> {
+  __$VersionCopyWithImpl(this._self, this._then);
 
-  final _Item _self;
-  final $Res Function(_Item) _then;
+  final _Version _self;
+  final $Res Function(_Version) _then;
 
-/// Create a copy of Item
+/// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? version = null,Object? shortVersion = null,Object? date = null,Object? mandatory = null,Object? url = null,Object? platform = null,Object? changes = freezed,}) {
-  return _then(_Item(
+@override @pragma('vm:prefer-inline') $Res call({Object? version = null,Object? date = null,Object? mandatory = null,Object? url = null,Object? platform = null,Object? changes = freezed,}) {
+  return _then(_Version(
 version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
-as String,shortVersion: null == shortVersion ? _self.shortVersion : shortVersion // ignore: cast_nullable_to_non_nullable
-as int,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as DateTime,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
 as bool,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as Uri,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable

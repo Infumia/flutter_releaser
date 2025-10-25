@@ -10,8 +10,8 @@ _ApplicationArchive _$ApplicationArchiveFromJson(Map<String, dynamic> json) =>
     _ApplicationArchive(
       name: json['name'] as String,
       description: json['description'] as String,
-      items: (json['items'] as List<dynamic>)
-          .map((e) => Item.fromJson(e as Map<String, dynamic>))
+      versions: (json['versions'] as List<dynamic>)
+          .map((e) => Version.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -19,12 +19,11 @@ Map<String, dynamic> _$ApplicationArchiveToJson(_ApplicationArchive instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
-      'items': instance.items,
+      'versions': instance.versions,
     };
 
-_Item _$ItemFromJson(Map<String, dynamic> json) => _Item(
+_Version _$VersionFromJson(Map<String, dynamic> json) => _Version(
   version: json['version'] as String,
-  shortVersion: (json['shortVersion'] as num).toInt(),
   date: DateTime.parse(json['date'] as String),
   mandatory: json['mandatory'] as bool,
   url: Uri.parse(json['url'] as String),
@@ -34,9 +33,8 @@ _Item _$ItemFromJson(Map<String, dynamic> json) => _Item(
       .toList(),
 );
 
-Map<String, dynamic> _$ItemToJson(_Item instance) => <String, dynamic>{
+Map<String, dynamic> _$VersionToJson(_Version instance) => <String, dynamic>{
   'version': instance.version,
-  'shortVersion': instance.shortVersion,
   'date': instance.date.toIso8601String(),
   'mandatory': instance.mandatory,
   'url': instance.url.toString(),
