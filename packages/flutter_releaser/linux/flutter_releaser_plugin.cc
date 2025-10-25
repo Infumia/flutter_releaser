@@ -26,11 +26,7 @@ static void flutter_releaser_plugin_handle_method_call(
 
   const gchar* method = fl_method_call_get_name(method_call);
 
-  if (strcmp(method, "getPlatformVersion") == 0) {
-    response = get_platform_version();
-  } else {
-    response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
-  }
+  response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
 
   fl_method_call_respond(method_call, response, nullptr);
 }
