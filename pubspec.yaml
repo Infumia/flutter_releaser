@@ -19,6 +19,19 @@ dev_dependencies:
 
 melos:
   scripts:
+    watch:
+      run: dart run build_runner watch -d
+      packageFilters:
+        dependsOn: build_runner
+      exec:
+        concurrency: 4
+    build:
+      run: dart run build_runner build -d
+      packageFilters:
+        dependsOn: build_runner
+      exec:
+        concurrency: 4
+        orderDependents: true
     fix:
       run: dart fix --apply && dart format .
       exec:

@@ -5,6 +5,9 @@ analyzer:
     strict-raw-types: true
     strict-casts: true
     strict-inference: true
+  exclude:
+    - "**/**.g.dart"
+    - "**/*.freezed.dart"
 
 formatter:
   page_width: 80
