@@ -13,7 +13,7 @@ class UpdateController extends ChangeNotifier {
 
   Future<Version?> check() => retrieveNewVersion(settings);
 
-  Future<void> checkAndNotify() async {
+  Future<Version?> checkAndNotify() async {
     final newVersion = await check();
 
     if (newVersion != null) {
@@ -23,5 +23,7 @@ class UpdateController extends ChangeNotifier {
       _nextVersion = null;
       notifyListeners();
     }
+
+    return newVersion;
   }
 }
