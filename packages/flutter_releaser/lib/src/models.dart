@@ -21,13 +21,16 @@ enum Platform { macos, linux, windows }
 
 @freezed
 sealed class Version with _$Version implements Comparable<Version> {
+  const Version._();
+
   const factory Version({
     required String version,
-    required DateTime date,
-    required bool mandatory,
     required Uri url,
     required Platform platform,
-    required List<Change>? changes,
+    BigInt? sizeInBytes,
+    DateTime? date,
+    bool? mandatory,
+    List<Change>? changes,
   }) = _Version;
 
   factory Version.fromJson(Map<String, dynamic> json) =>

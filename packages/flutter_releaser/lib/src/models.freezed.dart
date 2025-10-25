@@ -284,7 +284,7 @@ as List<Version>,
 /// @nodoc
 mixin _$Version {
 
- String get version; DateTime get date; bool get mandatory; Uri get url; Platform get platform; List<Change>? get changes;
+ String get version; Uri get url; Platform get platform; BigInt? get sizeInBytes; DateTime? get date; bool? get mandatory; List<Change>? get changes;
 /// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -297,16 +297,16 @@ $VersionCopyWith<Version> get copyWith => _$VersionCopyWithImpl<Version>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Version&&(identical(other.version, version) || other.version == version)&&(identical(other.date, date) || other.date == date)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&(identical(other.url, url) || other.url == url)&&(identical(other.platform, platform) || other.platform == platform)&&const DeepCollectionEquality().equals(other.changes, changes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Version&&(identical(other.version, version) || other.version == version)&&(identical(other.url, url) || other.url == url)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.date, date) || other.date == date)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&const DeepCollectionEquality().equals(other.changes, changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,version,date,mandatory,url,platform,const DeepCollectionEquality().hash(changes));
+int get hashCode => Object.hash(runtimeType,version,url,platform,sizeInBytes,date,mandatory,const DeepCollectionEquality().hash(changes));
 
 @override
 String toString() {
-  return 'Version(version: $version, date: $date, mandatory: $mandatory, url: $url, platform: $platform, changes: $changes)';
+  return 'Version(version: $version, url: $url, platform: $platform, sizeInBytes: $sizeInBytes, date: $date, mandatory: $mandatory, changes: $changes)';
 }
 
 
@@ -317,7 +317,7 @@ abstract mixin class $VersionCopyWith<$Res>  {
   factory $VersionCopyWith(Version value, $Res Function(Version) _then) = _$VersionCopyWithImpl;
 @useResult
 $Res call({
- String version, DateTime date, bool mandatory, Uri url, Platform platform, List<Change>? changes
+ String version, Uri url, Platform platform, BigInt? sizeInBytes, DateTime? date, bool? mandatory, List<Change>? changes
 });
 
 
@@ -334,14 +334,15 @@ class _$VersionCopyWithImpl<$Res>
 
 /// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? version = null,Object? date = null,Object? mandatory = null,Object? url = null,Object? platform = null,Object? changes = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? version = null,Object? url = null,Object? platform = null,Object? sizeInBytes = freezed,Object? date = freezed,Object? mandatory = freezed,Object? changes = freezed,}) {
   return _then(_self.copyWith(
 version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
-as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as DateTime,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
-as bool,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as Uri,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
-as Platform,changes: freezed == changes ? _self.changes : changes // ignore: cast_nullable_to_non_nullable
+as Platform,sizeInBytes: freezed == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
+as BigInt?,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as DateTime?,mandatory: freezed == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
+as bool?,changes: freezed == changes ? _self.changes : changes // ignore: cast_nullable_to_non_nullable
 as List<Change>?,
   ));
 }
@@ -424,10 +425,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String version,  DateTime date,  bool mandatory,  Uri url,  Platform platform,  List<Change>? changes)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String version,  Uri url,  Platform platform,  BigInt? sizeInBytes,  DateTime? date,  bool? mandatory,  List<Change>? changes)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Version() when $default != null:
-return $default(_that.version,_that.date,_that.mandatory,_that.url,_that.platform,_that.changes);case _:
+return $default(_that.version,_that.url,_that.platform,_that.sizeInBytes,_that.date,_that.mandatory,_that.changes);case _:
   return orElse();
 
 }
@@ -445,10 +446,10 @@ return $default(_that.version,_that.date,_that.mandatory,_that.url,_that.platfor
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String version,  DateTime date,  bool mandatory,  Uri url,  Platform platform,  List<Change>? changes)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String version,  Uri url,  Platform platform,  BigInt? sizeInBytes,  DateTime? date,  bool? mandatory,  List<Change>? changes)  $default,) {final _that = this;
 switch (_that) {
 case _Version():
-return $default(_that.version,_that.date,_that.mandatory,_that.url,_that.platform,_that.changes);}
+return $default(_that.version,_that.url,_that.platform,_that.sizeInBytes,_that.date,_that.mandatory,_that.changes);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -462,10 +463,10 @@ return $default(_that.version,_that.date,_that.mandatory,_that.url,_that.platfor
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String version,  DateTime date,  bool mandatory,  Uri url,  Platform platform,  List<Change>? changes)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String version,  Uri url,  Platform platform,  BigInt? sizeInBytes,  DateTime? date,  bool? mandatory,  List<Change>? changes)?  $default,) {final _that = this;
 switch (_that) {
 case _Version() when $default != null:
-return $default(_that.version,_that.date,_that.mandatory,_that.url,_that.platform,_that.changes);case _:
+return $default(_that.version,_that.url,_that.platform,_that.sizeInBytes,_that.date,_that.mandatory,_that.changes);case _:
   return null;
 
 }
@@ -476,15 +477,16 @@ return $default(_that.version,_that.date,_that.mandatory,_that.url,_that.platfor
 /// @nodoc
 @JsonSerializable()
 
-class _Version implements Version {
-  const _Version({required this.version, required this.date, required this.mandatory, required this.url, required this.platform, required final  List<Change>? changes}): _changes = changes;
+class _Version extends Version {
+  const _Version({required this.version, required this.url, required this.platform, this.sizeInBytes, this.date, this.mandatory, final  List<Change>? changes}): _changes = changes,super._();
   factory _Version.fromJson(Map<String, dynamic> json) => _$VersionFromJson(json);
 
 @override final  String version;
-@override final  DateTime date;
-@override final  bool mandatory;
 @override final  Uri url;
 @override final  Platform platform;
+@override final  BigInt? sizeInBytes;
+@override final  DateTime? date;
+@override final  bool? mandatory;
  final  List<Change>? _changes;
 @override List<Change>? get changes {
   final value = _changes;
@@ -508,16 +510,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Version&&(identical(other.version, version) || other.version == version)&&(identical(other.date, date) || other.date == date)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&(identical(other.url, url) || other.url == url)&&(identical(other.platform, platform) || other.platform == platform)&&const DeepCollectionEquality().equals(other._changes, _changes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Version&&(identical(other.version, version) || other.version == version)&&(identical(other.url, url) || other.url == url)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.date, date) || other.date == date)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&const DeepCollectionEquality().equals(other._changes, _changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,version,date,mandatory,url,platform,const DeepCollectionEquality().hash(_changes));
+int get hashCode => Object.hash(runtimeType,version,url,platform,sizeInBytes,date,mandatory,const DeepCollectionEquality().hash(_changes));
 
 @override
 String toString() {
-  return 'Version(version: $version, date: $date, mandatory: $mandatory, url: $url, platform: $platform, changes: $changes)';
+  return 'Version(version: $version, url: $url, platform: $platform, sizeInBytes: $sizeInBytes, date: $date, mandatory: $mandatory, changes: $changes)';
 }
 
 
@@ -528,7 +530,7 @@ abstract mixin class _$VersionCopyWith<$Res> implements $VersionCopyWith<$Res> {
   factory _$VersionCopyWith(_Version value, $Res Function(_Version) _then) = __$VersionCopyWithImpl;
 @override @useResult
 $Res call({
- String version, DateTime date, bool mandatory, Uri url, Platform platform, List<Change>? changes
+ String version, Uri url, Platform platform, BigInt? sizeInBytes, DateTime? date, bool? mandatory, List<Change>? changes
 });
 
 
@@ -545,14 +547,15 @@ class __$VersionCopyWithImpl<$Res>
 
 /// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? version = null,Object? date = null,Object? mandatory = null,Object? url = null,Object? platform = null,Object? changes = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? version = null,Object? url = null,Object? platform = null,Object? sizeInBytes = freezed,Object? date = freezed,Object? mandatory = freezed,Object? changes = freezed,}) {
   return _then(_Version(
 version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
-as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as DateTime,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
-as bool,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as Uri,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
-as Platform,changes: freezed == changes ? _self._changes : changes // ignore: cast_nullable_to_non_nullable
+as Platform,sizeInBytes: freezed == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
+as BigInt?,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as DateTime?,mandatory: freezed == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
+as bool?,changes: freezed == changes ? _self._changes : changes // ignore: cast_nullable_to_non_nullable
 as List<Change>?,
   ));
 }

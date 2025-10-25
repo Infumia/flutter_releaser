@@ -22,23 +22,11 @@ Directory? retrieveExecutableDirectory(FlutterReleaserSettings settings) {
   return directory;
 }
 
-Future<Directory> createTemporaryDirectory(
-  FlutterReleaserSettings settings,
-) async {
-  final directory = await Directory.systemTemp.createTemp("flutter_releaser");
-
-  settings.logDebug(
-    "Temporary directory '$directory' will be used for flutter_releaser",
-  );
-
-  return directory;
-}
-
 Future<File> writeApplicationArchive(
   FlutterReleaserSettings settings,
   StreamedResponse response,
 ) async {
-  final directory = await createTemporaryDirectory(settings);
+  final directory = await _createTemporaryDirectory(settings);
   final output = File(
     "${directory.path}${Platform.pathSeparator}application-archive.json",
   );
@@ -64,4 +52,16 @@ Future<File> writeApplicationArchive(
   }
 
   return output;
+}
+
+Future<Directory> _createTemporaryDirectory(
+  FlutterReleaserSettings settings,
+) async {
+  final directory = await Directory.systemTemp.createTemp("flutter_releaser");
+
+  settings.logDebug(
+    "Temporary directory '$directory' will be used for flutter_releaser",
+  );
+
+  return directory;
 }

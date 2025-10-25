@@ -28,7 +28,7 @@ class LoggerPrint implements Logger {
   void error(String message, [Exception? exception, StackTrace? trace]) {
     debugPrint(message);
     if (exception != null) {
-      debugPrint("Exception: $exception");
+      debugPrint(exception.toString());
     }
     if (trace != null) {
       debugPrint(

@@ -24,10 +24,13 @@ Map<String, dynamic> _$ApplicationArchiveToJson(_ApplicationArchive instance) =>
 
 _Version _$VersionFromJson(Map<String, dynamic> json) => _Version(
   version: json['version'] as String,
-  date: DateTime.parse(json['date'] as String),
-  mandatory: json['mandatory'] as bool,
   url: Uri.parse(json['url'] as String),
   platform: $enumDecode(_$PlatformEnumMap, json['platform']),
+  sizeInBytes: json['sizeInBytes'] == null
+      ? null
+      : BigInt.parse(json['sizeInBytes'] as String),
+  date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
+  mandatory: json['mandatory'] as bool?,
   changes: (json['changes'] as List<dynamic>?)
       ?.map((e) => Change.fromJson(e as Map<String, dynamic>))
       .toList(),
@@ -35,10 +38,11 @@ _Version _$VersionFromJson(Map<String, dynamic> json) => _Version(
 
 Map<String, dynamic> _$VersionToJson(_Version instance) => <String, dynamic>{
   'version': instance.version,
-  'date': instance.date.toIso8601String(),
-  'mandatory': instance.mandatory,
   'url': instance.url.toString(),
   'platform': _$PlatformEnumMap[instance.platform]!,
+  'sizeInBytes': instance.sizeInBytes?.toString(),
+  'date': instance.date?.toIso8601String(),
+  'mandatory': instance.mandatory,
   'changes': instance.changes,
 };
 
