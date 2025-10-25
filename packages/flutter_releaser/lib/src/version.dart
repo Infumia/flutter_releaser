@@ -1,6 +1,9 @@
+import "dart:convert";
 import "dart:io";
 
 import "package:flutter_releaser/flutter_releaser.dart";
+import "package:flutter_releaser/src/files.dart";
+import "package:flutter_releaser/src/http.dart";
 import "package:flutter_releaser/src/models.dart" hide Platform;
 import "package:package_info_plus/package_info_plus.dart";
 import "package:pub_semver/pub_semver.dart" as sem;
@@ -10,7 +13,31 @@ final _cache = <String, sem.Version>{};
 sem.Version parseVersion(String version) =>
     _cache.putIfAbsent(version, () => sem.Version.parse(version));
 
-Future<Version?> extractNewVersion(
+Future<Version?> retrieveNewVersion(FlutterReleaserSettings settings) async {
+  final directory = retrieveExecutableDirectory(settings);
+  if (directory == null) {
+    return null;
+  }
+  final response = await retrieveApplicationArchive(settings);
+  final output = await writeApplicationArchive(settings, response);
+  final text = await output.readAsString();
+  final ApplicationArchive archive;
+  try {
+    archive = ApplicationArchive.fromJson(
+      jsonDecode(text) as Map<String, dynamic>,
+    );
+  } on Exception catch (e, s) {
+    settings.logError(
+      "An error occurred while parsing json to create 'ApplicationArchive'",
+      e,
+      s,
+    );
+    rethrow;
+  }
+  return _extractNewVersion(settings, archive);
+}
+
+Future<Version?> _extractNewVersion(
   FlutterReleaserSettings settings,
   ApplicationArchive archive,
 ) async {
