@@ -15,8 +15,4 @@ abstract class FlutterReleaserPlatform extends PlatformInterface {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
-
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError("getPlatformVersion() has not been implemented.");
-  }
 }
