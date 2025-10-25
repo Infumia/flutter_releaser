@@ -1,3 +1,3 @@
 # flutter_releaser_hooks
 
-A Flutter package that provides hooks for the flutter_releaser tool, enabling custom actions during the release process.
+A collection of helpful Flutter hooks that provide easy integration with flutter_releaser's UpdateController for managing application updates in a reactive way.

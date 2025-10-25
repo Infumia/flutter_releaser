@@ -26,4 +26,7 @@ class UpdateController extends ChangeNotifier {
 
     return newVersion;
   }
+
+  Future<void> downloadNextVersion() async {
+  }
 }
