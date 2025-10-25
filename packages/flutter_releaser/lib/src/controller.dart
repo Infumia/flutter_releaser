@@ -23,8 +23,8 @@ class UpdateController {
     return newVersion;
   }
 
-  Future<void> download() async {
-    final nextVersion = nextVersionNotifier.value;
+  Future<void> download([Version? version]) async {
+    final nextVersion = version ?? nextVersionNotifier.value;
     if (nextVersion == null) {
       throw Exception("Could not found next version, please use #check");
     }

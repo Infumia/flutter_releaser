@@ -21,4 +21,5 @@ Future<void> main() async {
   );
 
   final newVersion = await controller.check();
+  await controller.download();
 }

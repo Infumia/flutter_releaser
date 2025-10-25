@@ -18,8 +18,21 @@ Future<Version?> retrieveNewVersion(FlutterReleaserSettings settings) async {
   if (directory == null) {
     return null;
   }
-  final response = await retrieveApplicationArchive(settings);
-  final output = await writeApplicationArchive(settings, response);
+  final (client, response) = await sendHttpGetRequest(
+    settings,
+    url: settings.applicationArchiveUrl,
+  );
+  if (response.statusCode != 200) {
+    client.close();
+    throw HttpException("Failed to download file '${settings.applicationArchiveUrl}'\n"
+        "Status code '${response.statusCode}");
+  }
+  final File output;
+  try {
+    output = await writeApplicationArchive(settings, response);
+  } finally {
+    client.close();
+  }
   final text = await output.readAsString();
   final ApplicationArchive archive;
   try {
