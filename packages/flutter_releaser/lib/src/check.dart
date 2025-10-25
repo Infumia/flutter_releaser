@@ -7,24 +7,15 @@ import "package:flutter_releaser/src/files.dart";
 import "package:flutter_releaser/src/version.dart";
 
 Future<Version?> checkVersion(FlutterReleaserSettings settings) async {
-  final directory = await retrieveExecutableDirectory(settings);
+  final directory = retrieveExecutableDirectory(settings);
   if (directory == null) {
     return null;
   }
-
   final response = await retrieveApplicationArchive(settings);
-
-  final outputFile = await writeApplicationArchive(settings, response);
-
-  final applicationArchiveString = await outputFile.readAsString();
-  final applicationArchive = ApplicationArchive.fromJson(
-    jsonDecode(applicationArchiveString) as Map<String, dynamic>,
+  final output = await writeApplicationArchive(settings, response);
+  final text = await output.readAsString();
+  final archive = ApplicationArchive.fromJson(
+    jsonDecode(text) as Map<String, dynamic>,
   );
-
-  final newVersion = await extractNewVersion(settings, applicationArchive);
-  if (newVersion == null) {
-    return null;
-  }
-
-  return null;
+  return extractNewVersion(settings, archive);
 }
