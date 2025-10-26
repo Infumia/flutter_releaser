@@ -1,16 +1,15 @@
-import "package:flutter_releaser/src/logger.dart";
-import "package:http/http.dart";
+import "package:flutter_releaser/flutter_releaser.dart";
 
 class FlutterReleaserSettings {
   final String applicationArchiveUrl;
-  final Client Function() clientFactory;
+  final HttpRequester requester;
   final Logger logger;
 
   FlutterReleaserSettings({
     required String applicationArchiveUrl,
-    Client Function()? clientFactory,
+    required HttpRequester requester,
     Logger logger = const LoggerPrint(),
-  }) : this._(applicationArchiveUrl, clientFactory ?? Client.new, logger);
+  }) : this._(applicationArchiveUrl, requester, logger);
 
   void logDebug(String message) => logger.debug(message);
 
@@ -19,7 +18,7 @@ class FlutterReleaserSettings {
 
   FlutterReleaserSettings._(
     this.applicationArchiveUrl,
-    this.clientFactory,
+    this.requester,
     this.logger,
   );
 }
