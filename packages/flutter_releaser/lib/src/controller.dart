@@ -24,6 +24,17 @@ class UpdateController extends ChangeNotifier {
     downloadProgressNotifier.addListener(notifyListeners);
   }
 
+  Future<void> update() => check().then((value) async {
+    final newVersion = value;
+    if (newVersion == null) {
+      return;
+    }
+
+    final file = await download(newVersion);
+    await extract(file);
+    await restartToUpdate();
+  });
+
   Future<Version?> check() => _lock.synchronized(() async {
     final newVersion = await retrieveNewVersion(settings);
     nextVersionNotifier.value = newVersion;
