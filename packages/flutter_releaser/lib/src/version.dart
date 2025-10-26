@@ -1,9 +1,7 @@
-import "dart:convert";
 import "dart:io";
 
 import "package:flutter_releaser/flutter_releaser.dart";
 import "package:flutter_releaser/src/files.dart";
-import "package:flutter_releaser/src/http.dart";
 import "package:flutter_releaser/src/models.dart" hide Platform;
 import "package:package_info_plus/package_info_plus.dart";
 import "package:pub_semver/pub_semver.dart" as sem;
@@ -17,31 +15,11 @@ Future<Version?> retrieveNewVersion(FlutterReleaserSettings settings) async {
   if (retrieveExecutableDirectory(settings) == null) {
     return null;
   }
-  final response = await sendHttpGetRequest(
+  final json = await settings.requester.get<Map<String, dynamic>>(
     settings,
     url: settings.applicationArchiveUrl,
   );
-  if (response.statusCode != 200) {
-    throw HttpException(
-      "Failed to download file '${settings.applicationArchiveUrl}'\n"
-      "Status code '${response.statusCode}",
-    );
-  }
-  final output = await writeApplicationArchive(settings, response);
-  final text = await output.readAsString();
-  final ApplicationArchive archive;
-  try {
-    archive = ApplicationArchive.fromJson(
-      jsonDecode(text) as Map<String, dynamic>,
-    );
-  } on Exception catch (e, s) {
-    settings.logError(
-      "An error occurred while parsing json to create 'ApplicationArchive'",
-      e,
-      s,
-    );
-    rethrow;
-  }
+  final archive = ApplicationArchive.fromJson(json);
   return _extractNewVersion(settings, archive);
 }
 

@@ -26,6 +26,7 @@ _Version _$VersionFromJson(Map<String, dynamic> json) => _Version(
   version: json['version'] as String,
   url: Uri.parse(json['url'] as String),
   platform: $enumDecode(_$PlatformEnumMap, json['platform']),
+  sizeInBytes: (json['sizeInBytes'] as num).toInt(),
   date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
   mandatory: json['mandatory'] as bool?,
   changes: (json['changes'] as List<dynamic>?)
@@ -37,6 +38,7 @@ Map<String, dynamic> _$VersionToJson(_Version instance) => <String, dynamic>{
   'version': instance.version,
   'url': instance.url.toString(),
   'platform': _$PlatformEnumMap[instance.platform]!,
+  'sizeInBytes': instance.sizeInBytes,
   'date': instance.date?.toIso8601String(),
   'mandatory': instance.mandatory,
   'changes': instance.changes,

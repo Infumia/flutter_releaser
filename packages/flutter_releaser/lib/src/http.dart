@@ -1,31 +1,25 @@
 import "package:flutter_releaser/flutter_releaser.dart";
-import "package:http/http.dart";
 
-Future<StreamedResponse> sendHttpGetRequest(
-  FlutterReleaserSettings settings, {
-  String? url,
-  Uri? uri,
-}) async {
-  final Uri location;
+typedef ProgressCallback = void Function(int count, int total);
+
+abstract interface class HttpRequester {
+  Future<T> get<T>(FlutterReleaserSettings settings, {String? url, Uri? uri});
+
+  Future<void> download(
+    FlutterReleaserSettings settings,
+    String path, {
+    String? url,
+    Uri? uri,
+    ProgressCallback? progress,
+  });
+}
+
+Uri toUri({String? url, Uri? uri}) {
   if (uri != null) {
-    location = uri;
+    return uri;
   } else if (url != null) {
-    location = Uri.parse(url);
+    return Uri.parse(url);
   } else {
     throw Exception("Both url and uri cannot be null");
-  }
-
-  final request = Request("GET", location);
-  final client = settings.clientFactory();
-  try {
-    return await client.send(request);
-  } on Exception catch (e, s) {
-    settings.logError(
-      "An error occurred while sending request to '$url'",
-      e,
-      s,
-    );
-    client.close();
-    rethrow;
   }
 }
