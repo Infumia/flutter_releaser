@@ -1,3 +1,7 @@
+## 0.0.6
+
+ - **FEAT**: abstraction layer for http requests. ([#2](https://github.com/Infumia/flutter_releaser//issues/2)).
+
 ## 0.0.5
 
  - **FEAT**: add update function.
