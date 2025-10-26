@@ -4,7 +4,6 @@ import "dart:io";
 import "package:flutter/foundation.dart";
 import "package:flutter_releaser/flutter_releaser.dart";
 import "package:flutter_releaser/src/download.dart";
-import "package:flutter_releaser/src/exceptions.dart";
 import "package:flutter_releaser/src/extract.dart";
 import "package:flutter_releaser/src/models.dart";
 import "package:flutter_releaser/src/progress.dart";
@@ -31,16 +30,9 @@ class UpdateController extends ChangeNotifier {
     return newVersion;
   });
 
-  Future<File> download([Version? version]) => _lock.synchronized(() {
-    final nextVersion = version ?? nextVersionNotifier.value;
-    if (nextVersion == null) {
-      throw CouldNotFoundNextVersion(
-        "Could not found next version, please use #check",
-      );
-    }
-
-    return downloadVersion(settings, nextVersion, downloadProgressNotifier);
-  });
+  Future<File> download(Version version) => _lock.synchronized(
+    () => downloadVersion(settings, version, downloadProgressNotifier),
+  );
 
   Future<void> extract(File file) =>
       _lock.synchronized(() => extractToUpdate(settings, file));

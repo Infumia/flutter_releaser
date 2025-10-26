@@ -3,9 +3,3 @@ class CouldNotDownloadFile implements Exception {
 
   CouldNotDownloadFile(this.message);
 }
-
-class CouldNotFoundNextVersion implements Exception {
-  final String message;
-
-  CouldNotFoundNextVersion(this.message);
-}
