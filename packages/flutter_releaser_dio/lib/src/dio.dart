@@ -19,7 +19,7 @@ class HttpRequesterDio implements HttpRequester {
     if (response.statusCode == 200) {
       final data = response.data;
       if (data == null) {
-        throw HttpException("Received no response body");
+        throw const HttpException("Received no response body");
       } else {
         return data;
       }

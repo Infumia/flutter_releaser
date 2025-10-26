@@ -15,7 +15,6 @@ abstract interface class HttpRequester {
 }
 
 Uri toUri({String? url, Uri? uri}) {
-  final Uri location;
   if (uri != null) {
     return uri;
   } else if (url != null) {
