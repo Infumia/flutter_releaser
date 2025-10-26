@@ -24,8 +24,10 @@ Future<Version?> retrieveNewVersion(FlutterReleaserSettings settings) async {
   );
   if (response.statusCode != 200) {
     client.close();
-    throw HttpException("Failed to download file '${settings.applicationArchiveUrl}'\n"
-        "Status code '${response.statusCode}");
+    throw HttpException(
+      "Failed to download file '${settings.applicationArchiveUrl}'\n"
+      "Status code '${response.statusCode}",
+    );
   }
   final File output;
   try {

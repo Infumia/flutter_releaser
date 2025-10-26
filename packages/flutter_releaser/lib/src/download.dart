@@ -12,13 +12,16 @@ Future<void> downloadVersion(
   Version version, [
   ValueNotifier<DownloadProgress?>? downloadProgressNotifier,
 ]) async {
-  final (client, response) = await sendHttpGetRequest(settings, uri: version.url);
+  final (client, response) = await sendHttpGetRequest(
+    settings,
+    uri: version.url,
+  );
 
   if (response.statusCode != 200) {
     client.close();
-    throw HttpException("Failed to download file '${version.url}'\n"
-        "Status code '${response.statusCode}");
+    throw HttpException(
+      "Failed to download file '${version.url}'\n"
+      "Status code '${response.statusCode}",
+    );
   }
-
-
 }
