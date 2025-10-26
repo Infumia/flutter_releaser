@@ -3,14 +3,14 @@ import "package:http/http.dart";
 
 class FlutterReleaserSettings {
   final String applicationArchiveUrl;
-  final Client client;
+  final Client Function() clientFactory;
   final Logger logger;
 
   FlutterReleaserSettings({
     required String applicationArchiveUrl,
-    Client? client,
+    Client Function()? clientFactory,
     Logger logger = const LoggerPrint(),
-  }) : this._(applicationArchiveUrl, client ?? Client(), logger);
+  }) : this._(applicationArchiveUrl, clientFactory ?? Client.new, logger);
 
   void logDebug(String message) => logger.debug(message);
 
@@ -19,7 +19,7 @@ class FlutterReleaserSettings {
 
   FlutterReleaserSettings._(
     this.applicationArchiveUrl,
-    this.client,
+    this.clientFactory,
     this.logger,
   );
 }

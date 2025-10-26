@@ -3,10 +3,81 @@
 #include <flutter_linux/flutter_linux.h>
 #include <gtk/gtk.h>
 #include <sys/utsname.h>
-
-#include <cstring>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <libgen.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <linux/limits.h>
 
 #include "flutter_releaser_plugin_private.h"
+
+bool copy_file(const char *source, const char *destination) {
+    char buffer[4096];
+    size_t size;
+
+    FILE *source_file = fopen(source, "rb");
+    FILE *dest_file = fopen(destination, "wb");
+
+    if (source_file == nullptr || dest_file == nullptr) {
+        if (source_file) {
+            fclose(source_file);
+        }
+        if (dest_file) {
+            fclose(dest_file);
+        }
+        return false;
+    }
+
+    while ((size = fread(buffer, 1, sizeof(buffer), source_file))) {
+        fwrite(buffer, 1, size, dest_file);
+    }
+
+    fclose(source_file);
+    fclose(dest_file);
+    return true;
+}
+
+void createUpdateScript(const char *executable_path) {
+    char *temp_path = strdup(executable_path);
+    const char *base_name = basename(temp_path);
+
+    const std::string script =
+      "#!/bin/bash\n"
+      "sleep 1\n"
+      "cp -R .update/* .\n"
+      "chmod +x " +
+      std::string(executable_path) + "\n"
+                                     "./" +
+      std::string(base_name) + " &\n"
+                               "sleep 1\n"
+                               "rm update_script.sh\n"
+                               "rm -rf .update\n"
+                               "exit\n";
+
+    FILE *file = fopen("update_script.sh", "w");
+    if (file) {
+        fprintf(file, "%s", script.c_str());
+        fclose(file);
+        chmod("update_script.sh", 0755);
+        g_print("Update script created.\n");
+    }
+
+    free(temp_path);
+}
+
+void runUpdateScript() {
+    pid_t pid = fork();
+
+    if (pid == 0) {
+        execl("/bin/sh", "sh", "update_script.sh", NULL);
+        _exit(1);
+    } else if (pid < 0) {
+        g_print("Failed to run the update script.\n");
+    }
+}
 
 #define FLUTTER_RELEASER_PLUGIN(obj) \
   (G_TYPE_CHECK_INSTANCE_CAST((obj), flutter_releaser_plugin_get_type(), \
@@ -26,7 +97,23 @@ static void flutter_releaser_plugin_handle_method_call(
 
   const gchar* method = fl_method_call_get_name(method_call);
 
-  response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
+    if (strcmp(method, "restartApplication") == 0) {
+        printf("Restarting the application...\n");
+
+        char executable_path[PATH_MAX];
+        ssize_t len = readlink("/proc/self/exe", executable_path, sizeof(executable_path) - 1);
+        if (len != -1) {
+            executable_path[len] = '\0';
+            printf("Executable path: %s\n", executable_path);
+
+            createUpdateScript(executable_path);
+            runUpdateScript();
+
+            exit(0);
+        }
+    } else {
+        response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
+    }
 
   fl_method_call_respond(method_call, response, nullptr);
 }

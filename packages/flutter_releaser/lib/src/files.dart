@@ -26,7 +26,7 @@ Future<File> writeApplicationArchive(
   FlutterReleaserSettings settings,
   StreamedResponse response,
 ) async {
-  final directory = await _createTemporaryDirectory(settings);
+  final directory = await createTemporaryDirectory(settings);
   final output = File(
     "${directory.path}${Platform.pathSeparator}application-archive.json",
   );
@@ -54,10 +54,14 @@ Future<File> writeApplicationArchive(
   return output;
 }
 
-Future<Directory> _createTemporaryDirectory(
+Future<Directory> createTemporaryDirectory(
   FlutterReleaserSettings settings,
 ) async {
   final directory = await Directory.systemTemp.createTemp("flutter_releaser");
+
+  if (!directory.existsSync()) {
+    throw Exception("Temporary directory does not exist");
+  }
 
   settings.logDebug(
     "Temporary directory '$directory' will be used for flutter_releaser",
