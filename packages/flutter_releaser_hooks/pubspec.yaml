@@ -4,7 +4,6 @@ version: 0.0.2
 resolution: workspace
 homepage: https://github.com/Infumia/flutter_releaser/
 repository: https://github.com/Infumia/flutter_releaser/
-publish_to: "none"
 
 environment:
   sdk: ^3.9.0
