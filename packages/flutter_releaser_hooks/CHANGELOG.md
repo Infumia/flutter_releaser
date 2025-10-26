@@ -1,3 +1,7 @@
+## 0.0.3
+
+ - **FEAT**: implement flutter_releaser_hooks.
+
 ## 0.0.2
 
  - **FEAT**: initial version. ([#1](https://github.com/Infumia/flutter_releaser//issues/1)).

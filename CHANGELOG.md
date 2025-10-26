@@ -15,6 +15,34 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_releaser` - `v0.0.4`](#flutter_releaser---v004)
+ - [`flutter_releaser_hooks` - `v0.0.3`](#flutter_releaser_hooks---v003)
+
+---
+
+#### `flutter_releaser` - `v0.0.4`
+
+ - **FEAT**: initial version. ([#1](https://github.com/Infumia/flutter_releaser//issues/1)).
+ - **FEAT**: return version in check and notify method as well.
+ - **FEAT**: add logger export.
+
+#### `flutter_releaser_hooks` - `v0.0.3`
+
+ - **FEAT**: implement flutter_releaser_hooks.
+
+
+## 2025-10-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_releaser` - `v0.0.3`](#flutter_releaser---v003)
  - [`flutter_releaser_hooks` - `v0.0.2`](#flutter_releaser_hooks---v002)
  - [`flutter_releaser_widgets` - `v0.0.1+2`](#flutter_releaser_widgets---v0012)
