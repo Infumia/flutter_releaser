@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$DownloadProgress {
 
- double get totalBytes; double get receivedBytes;
+ int get totalBytes; int get receivedBytes; bool get finished;
 /// Create a copy of DownloadProgress
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $DownloadProgressCopyWith<DownloadProgress> get copyWith => _$DownloadProgressCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DownloadProgress&&(identical(other.totalBytes, totalBytes) || other.totalBytes == totalBytes)&&(identical(other.receivedBytes, receivedBytes) || other.receivedBytes == receivedBytes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DownloadProgress&&(identical(other.totalBytes, totalBytes) || other.totalBytes == totalBytes)&&(identical(other.receivedBytes, receivedBytes) || other.receivedBytes == receivedBytes)&&(identical(other.finished, finished) || other.finished == finished));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,totalBytes,receivedBytes);
+int get hashCode => Object.hash(runtimeType,totalBytes,receivedBytes,finished);
 
 @override
 String toString() {
-  return 'DownloadProgress(totalBytes: $totalBytes, receivedBytes: $receivedBytes)';
+  return 'DownloadProgress(totalBytes: $totalBytes, receivedBytes: $receivedBytes, finished: $finished)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $DownloadProgressCopyWith<$Res>  {
   factory $DownloadProgressCopyWith(DownloadProgress value, $Res Function(DownloadProgress) _then) = _$DownloadProgressCopyWithImpl;
 @useResult
 $Res call({
- double totalBytes, double receivedBytes
+ int totalBytes, int receivedBytes, bool finished
 });
 
 
@@ -62,11 +62,12 @@ class _$DownloadProgressCopyWithImpl<$Res>
 
 /// Create a copy of DownloadProgress
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? totalBytes = null,Object? receivedBytes = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? totalBytes = null,Object? receivedBytes = null,Object? finished = null,}) {
   return _then(_self.copyWith(
 totalBytes: null == totalBytes ? _self.totalBytes : totalBytes // ignore: cast_nullable_to_non_nullable
-as double,receivedBytes: null == receivedBytes ? _self.receivedBytes : receivedBytes // ignore: cast_nullable_to_non_nullable
-as double,
+as int,receivedBytes: null == receivedBytes ? _self.receivedBytes : receivedBytes // ignore: cast_nullable_to_non_nullable
+as int,finished: null == finished ? _self.finished : finished // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -148,10 +149,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double totalBytes,  double receivedBytes)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int totalBytes,  int receivedBytes,  bool finished)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DownloadProgress() when $default != null:
-return $default(_that.totalBytes,_that.receivedBytes);case _:
+return $default(_that.totalBytes,_that.receivedBytes,_that.finished);case _:
   return orElse();
 
 }
@@ -169,10 +170,10 @@ return $default(_that.totalBytes,_that.receivedBytes);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double totalBytes,  double receivedBytes)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int totalBytes,  int receivedBytes,  bool finished)  $default,) {final _that = this;
 switch (_that) {
 case _DownloadProgress():
-return $default(_that.totalBytes,_that.receivedBytes);}
+return $default(_that.totalBytes,_that.receivedBytes,_that.finished);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -186,10 +187,10 @@ return $default(_that.totalBytes,_that.receivedBytes);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double totalBytes,  double receivedBytes)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int totalBytes,  int receivedBytes,  bool finished)?  $default,) {final _that = this;
 switch (_that) {
 case _DownloadProgress() when $default != null:
-return $default(_that.totalBytes,_that.receivedBytes);case _:
+return $default(_that.totalBytes,_that.receivedBytes,_that.finished);case _:
   return null;
 
 }
@@ -201,11 +202,12 @@ return $default(_that.totalBytes,_that.receivedBytes);case _:
 
 
 class _DownloadProgress implements DownloadProgress {
-  const _DownloadProgress({required this.totalBytes, required this.receivedBytes});
+  const _DownloadProgress({required this.totalBytes, required this.receivedBytes, required this.finished});
   
 
-@override final  double totalBytes;
-@override final  double receivedBytes;
+@override final  int totalBytes;
+@override final  int receivedBytes;
+@override final  bool finished;
 
 /// Create a copy of DownloadProgress
 /// with the given fields replaced by the non-null parameter values.
@@ -217,16 +219,16 @@ _$DownloadProgressCopyWith<_DownloadProgress> get copyWith => __$DownloadProgres
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DownloadProgress&&(identical(other.totalBytes, totalBytes) || other.totalBytes == totalBytes)&&(identical(other.receivedBytes, receivedBytes) || other.receivedBytes == receivedBytes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DownloadProgress&&(identical(other.totalBytes, totalBytes) || other.totalBytes == totalBytes)&&(identical(other.receivedBytes, receivedBytes) || other.receivedBytes == receivedBytes)&&(identical(other.finished, finished) || other.finished == finished));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,totalBytes,receivedBytes);
+int get hashCode => Object.hash(runtimeType,totalBytes,receivedBytes,finished);
 
 @override
 String toString() {
-  return 'DownloadProgress(totalBytes: $totalBytes, receivedBytes: $receivedBytes)';
+  return 'DownloadProgress(totalBytes: $totalBytes, receivedBytes: $receivedBytes, finished: $finished)';
 }
 
 
@@ -237,7 +239,7 @@ abstract mixin class _$DownloadProgressCopyWith<$Res> implements $DownloadProgre
   factory _$DownloadProgressCopyWith(_DownloadProgress value, $Res Function(_DownloadProgress) _then) = __$DownloadProgressCopyWithImpl;
 @override @useResult
 $Res call({
- double totalBytes, double receivedBytes
+ int totalBytes, int receivedBytes, bool finished
 });
 
 
@@ -254,11 +256,12 @@ class __$DownloadProgressCopyWithImpl<$Res>
 
 /// Create a copy of DownloadProgress
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? totalBytes = null,Object? receivedBytes = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? totalBytes = null,Object? receivedBytes = null,Object? finished = null,}) {
   return _then(_DownloadProgress(
 totalBytes: null == totalBytes ? _self.totalBytes : totalBytes // ignore: cast_nullable_to_non_nullable
-as double,receivedBytes: null == receivedBytes ? _self.receivedBytes : receivedBytes // ignore: cast_nullable_to_non_nullable
-as double,
+as int,receivedBytes: null == receivedBytes ? _self.receivedBytes : receivedBytes // ignore: cast_nullable_to_non_nullable
+as int,finished: null == finished ? _self.finished : finished // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

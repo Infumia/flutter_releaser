@@ -14,27 +14,20 @@ sem.Version parseVersion(String version) =>
     _cache.putIfAbsent(version, () => sem.Version.parse(version));
 
 Future<Version?> retrieveNewVersion(FlutterReleaserSettings settings) async {
-  final directory = retrieveExecutableDirectory(settings);
-  if (directory == null) {
+  if (retrieveExecutableDirectory(settings) == null) {
     return null;
   }
-  final (client, response) = await sendHttpGetRequest(
+  final response = await sendHttpGetRequest(
     settings,
     url: settings.applicationArchiveUrl,
   );
   if (response.statusCode != 200) {
-    client.close();
     throw HttpException(
       "Failed to download file '${settings.applicationArchiveUrl}'\n"
       "Status code '${response.statusCode}",
     );
   }
-  final File output;
-  try {
-    output = await writeApplicationArchive(settings, response);
-  } finally {
-    client.close();
-  }
+  final output = await writeApplicationArchive(settings, response);
   final text = await output.readAsString();
   final ApplicationArchive archive;
   try {

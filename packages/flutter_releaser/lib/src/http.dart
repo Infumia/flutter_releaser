@@ -1,7 +1,7 @@
 import "package:flutter_releaser/flutter_releaser.dart";
 import "package:http/http.dart";
 
-Future<(Client, StreamedResponse)> sendHttpGetRequest(
+Future<StreamedResponse> sendHttpGetRequest(
   FlutterReleaserSettings settings, {
   String? url,
   Uri? uri,
@@ -18,7 +18,7 @@ Future<(Client, StreamedResponse)> sendHttpGetRequest(
   final request = Request("GET", location);
   final client = settings.clientFactory();
   try {
-    return (client, await client.send(request));
+    return await client.send(request);
   } on Exception catch (e, s) {
     settings.logError(
       "An error occurred while sending request to '$url'",

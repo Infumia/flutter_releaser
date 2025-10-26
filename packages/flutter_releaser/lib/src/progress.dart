@@ -5,7 +5,8 @@ part "progress.freezed.dart";
 @freezed
 sealed class DownloadProgress with _$DownloadProgress {
   const factory DownloadProgress({
-    required double totalBytes,
-    required double receivedBytes,
+    required int totalBytes,
+    required int receivedBytes,
+    required bool finished,
   }) = _DownloadProgress;
 }

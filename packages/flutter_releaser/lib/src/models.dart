@@ -27,7 +27,6 @@ sealed class Version with _$Version implements Comparable<Version> {
     required String version,
     required Uri url,
     required Platform platform,
-    BigInt? sizeInBytes,
     DateTime? date,
     bool? mandatory,
     List<Change>? changes,

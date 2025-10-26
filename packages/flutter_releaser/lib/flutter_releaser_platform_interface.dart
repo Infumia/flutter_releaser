@@ -15,4 +15,8 @@ abstract class FlutterReleaserPlatform extends PlatformInterface {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
+
+  Future<void> restartApplication() {
+    throw UnimplementedError("restartApp() has not been implemented.");
+  }
 }
