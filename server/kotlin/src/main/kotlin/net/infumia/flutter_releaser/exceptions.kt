@@ -28,7 +28,8 @@ class InvalidFileSizeException(message: String) :
 
 class FileNotFoundException(message: String) : StatusException(message, HttpStatusCode.NotFound)
 
-class FileNotUploadedException(message: String) : StatusException(message, HttpStatusCode.NotFound)
+class FileNotUploadedException(message: String) :
+    StatusException(message, HttpStatusCode.BadRequest)
 
 class FileAlreadyUploadedException(message: String) :
     StatusException(message, HttpStatusCode.Conflict)

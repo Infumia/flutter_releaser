@@ -11,10 +11,10 @@ object FileUploadConfirmationService : KoinComponent {
     private val fileRepository by inject<FileRepository>()
 
     fun confirm(id: Int) {
-        val file = fileRepository.findById(id) ?: throw FileNotFoundException("File not found!")
+        val file = fileRepository.findById(id) ?: throw FileNotFoundException("File not found")
 
         if (file.uploadDate != null) {
-            throw FileAlreadyUploadedException("File already uploaded!")
+            throw FileAlreadyUploadedException("File already uploaded")
         }
 
         fileRepository.updateOrCreate(file.copy(uploadDate = localDateTimeNow))

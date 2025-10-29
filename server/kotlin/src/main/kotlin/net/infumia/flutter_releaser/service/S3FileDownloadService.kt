@@ -19,13 +19,13 @@ object S3FileDownloadService : KoinComponent {
     private val s3FileRepository by inject<S3FileRepository>()
 
     suspend fun createPresignedUrl(id: Int): Triple<S3File, String, Headers> {
-        val file = fileRepository.findById(id) ?: throw FileNotFoundException("File not found!")
+        val file = fileRepository.findById(id) ?: throw FileNotFoundException("File not found")
         val s3File =
             s3FileRepository.findByFileId(file.id())
-                ?: throw FileNotFoundException("S3File not found!")
+                ?: throw FileNotFoundException("S3File not found")
 
         if (file.uploadDate == null) {
-            throw FileNotUploadedException("File not uploaded!")
+            throw FileNotUploadedException("File not uploaded")
         }
 
         val signedRequest =

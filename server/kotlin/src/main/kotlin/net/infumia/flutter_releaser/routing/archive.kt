@@ -64,10 +64,7 @@ internal fun Application.routeArchive() {
                         HttpStatusCode.BadRequest to
                             {
                                 description =
-                                    "Invalid upload technology specified\n\n" +
-                                        "File Sha256 is empty\n\n" +
-                                        "File Sha256 must be a valid base64 encoded SHA256 hash\n\n" +
-                                        "File size must be greater than zero"
+                                    "Invalid upload technology specified | File Sha256 is empty | File Sha256 must be a valid base64 encoded SHA256 hash | File size must be greater than zero"
                                 body<StatusResponse>()
                             }
                         HttpStatusCode.Unauthorized to { description = "Authentication required" }
@@ -111,18 +108,20 @@ internal fun Application.routeArchive() {
                                     description = "Download URL generated successfully"
                                     body<DownloadS3FileResponse>()
                                 }
-                            HttpStatusCode.BadRequest to
-                                {
-                                    description = "Invalid download technology specified"
-                                }
                             HttpStatusCode.Unauthorized to
                                 {
                                     description = "Authentication required"
                                 }
-                            HttpStatusCode.NotFound to { description = "Archive version not found" }
-                            HttpStatusCode.InternalServerError to
+                            HttpStatusCode.BadRequest to
                                 {
-                                    description = "Download technology not supported"
+                                    description =
+                                        "Invalid download technology specified | File not uploaded"
+                                    body<StatusResponse>()
+                                }
+                            HttpStatusCode.NotFound to
+                                {
+                                    description = "Archive version not found"
+                                    body<StatusResponse>()
                                 }
                         }
                     }) {
@@ -156,7 +155,16 @@ internal fun Application.routeArchive() {
                                 {
                                     description = "Authentication required"
                                 }
-                            HttpStatusCode.NotFound to { description = "Archive version not found" }
+                            HttpStatusCode.NotFound to
+                                {
+                                    description = "Archive version not found"
+                                    body<StatusResponse>()
+                                }
+                            HttpStatusCode.Conflict to
+                                {
+                                    description = "File already uploaded"
+                                    body<StatusResponse>()
+                                }
                         }
                     }) {
                         val id: Int by call.pathParameters
