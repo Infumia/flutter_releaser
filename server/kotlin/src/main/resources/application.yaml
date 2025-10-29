@@ -1,0 +1,16 @@
+---
+ktor:
+  application:
+    modules:
+    - "net.infumia.flutter_releaser.KoinKt.configureKoin"
+    - "net.infumia.flutter_releaser.DatabaseKt.configureDatabase"
+    - "net.infumia.flutter_releaser.SerializationKt.configureSerialization"
+    - "net.infumia.flutter_releaser.security.AuthenticationKt.configureAuthentication"
+    - "net.infumia.flutter_releaser.Status_pagesKt.configureStatusPages"
+    - "net.infumia.flutter_releaser.S3Kt.configureS3"
+    - "net.infumia.flutter_releaser.routing.ArchiveKt.routeArchive"
+  deployment:
+    port: 8080
+    watch:
+    - "classes"
+    - "resources"

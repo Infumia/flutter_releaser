@@ -1,0 +1,34 @@
+name: flutter_releaser
+
+services:
+  postgresql:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgresql_data:/bitnami/postgresql'
+    environment:
+      - POSTGRESQL_USERNAME=root
+      - POSTGRESQL_PASSWORD=local
+      - POSTGRESQL_DATABASE=flutter_releaser
+  minio:
+    image: minio/minio:latest
+    command: server --address ":9000" --console-address ":9001" /minio/data
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    environment:
+      - MINIO_ROOT_USER=7ccdc36add7cd651f7f5ef51029fb85b
+      - MINIO_ROOT_PASSWORD=de2e6cb47725ca7427b3c8c69fdf363e
+      - MINIO_SKIP_CLIENT=yes
+      - MINIO_BROWSER=off
+    volumes:
+      - 'minio_data:/minio/data'
+
+volumes:
+  postgresql_data:
+    driver: local
+  redis_data:
+    driver: local
+  minio_data:
+    driver: local

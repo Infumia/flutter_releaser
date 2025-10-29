@@ -1,0 +1,30 @@
+[versions]
+spotless = "8.0.0"
+ktor = "3.3.1"
+ktor-plugin = "3.3.1"
+kotlin = "2.2.21"
+logback = "1.5.20"
+exposed = "1.0.0-rc-2"
+postgresql = "42.7.8"
+flyway = "11.15.0"
+s3 = "1.5.67"
+hikari = "7.0.2"
+koin = "4.1.1"
+ktfmt = "0.58"
+
+[libraries]
+ktor-bom = { module = "io.ktor:ktor-bom", version.ref = "ktor" }
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
+exposed-bom = { module = "org.jetbrains.exposed:exposed-bom", version.ref = "exposed" }
+hikari = { module = "com.zaxxer:HikariCP", version.ref = "hikari" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+flyway = { module = "org.flywaydb:flyway-core", version.ref = "flyway" }
+flyway-postgresql = { module = "org.flywaydb:flyway-database-postgresql", version.ref = "flyway" }
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+s3 = { module = "aws.sdk.kotlin:s3", version.ref = "s3" }
+
+[plugins]
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+ktor = { id = "io.ktor.plugin", version.ref = "ktor-plugin" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
