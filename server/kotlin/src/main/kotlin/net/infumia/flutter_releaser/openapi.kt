@@ -2,6 +2,7 @@ package net.infumia.flutter_releaser
 
 import io.github.smiley4.ktoropenapi.OpenApi
 import io.github.smiley4.ktoropenapi.openApi
+import io.github.smiley4.ktorredoc.redoc
 import io.github.smiley4.ktorswaggerui.swaggerUI
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
@@ -25,5 +26,7 @@ internal fun Application.configureOpenapi() {
         route("api.json") { openApi() }
 
         route("swagger") { swaggerUI("/api.json") }
+
+        route("redoc") { redoc("/api.json") }
     }
 }

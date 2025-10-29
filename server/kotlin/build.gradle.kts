@@ -65,6 +65,7 @@ dependencies {
     implementation(libs.s3)
     implementation(libs.openapi)
     implementation(libs.swagger)
+    implementation(libs.redoc)
     implementation(libs.flyway)
     implementation(libs.flyway.postgresql)
     runtimeOnly(libs.logback)

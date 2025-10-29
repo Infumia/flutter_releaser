@@ -25,6 +25,7 @@ logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 s3 = { module = "aws.sdk.kotlin:s3", version.ref = "s3" }
 openapi = { module = "io.github.smiley4:ktor-openapi", version.ref = "openapi" }
 swagger = { module = "io.github.smiley4:ktor-swagger-ui", version.ref = "openapi" }
+redoc = { module = "io.github.smiley4:ktor-redoc", version.ref = "openapi" }
 
 [plugins]
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
