@@ -15,6 +15,6 @@ object ArchiveService : KoinComponent {
         ApplicationArchive(
             name = name,
             description = description,
-            versions = versionRepository.all(),
+            versions = versionRepository.allUploaded(),
         )
 }

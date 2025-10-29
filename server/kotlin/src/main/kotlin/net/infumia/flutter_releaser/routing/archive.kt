@@ -85,7 +85,7 @@ internal fun Application.routeArchive() {
                                     version = request.version,
                                     platform = request.platform,
                                     mandatory = request.mandatory,
-                                    changes = request.changes
+                                    changes = request.changes,
                                 )
                             UploadFileResponse(id = fileId, url = preSignedUrl, headers = headers)
                         } else {
