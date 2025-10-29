@@ -17,7 +17,7 @@ class VersionEntity(id: EntityID<Int>) : IntEntity(id) {
         override fun VersionEntity.toModel(): Version =
             Version(
                 id = id.value,
-                file = file.toModel(),
+                file = file.file.toModel(),
                 version = version,
                 platform = platform,
                 sizeInBytes = sizeInBytes,
