@@ -302,7 +302,7 @@ as List<Change>,
 /// @nodoc
 mixin _$UploadS3FileRequest implements DiagnosticableTreeMixin {
 
- String get name; int get sizeInBytes; String get sha256;
+ String get name; int get sizeInBytes; String get sha256; String get version; Platform get platform; bool get mandatory; List<Change> get changes;
 /// Create a copy of UploadS3FileRequest
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -316,21 +316,21 @@ $UploadS3FileRequestCopyWith<UploadS3FileRequest> get copyWith => _$UploadS3File
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'UploadS3FileRequest'))
-    ..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('sizeInBytes', sizeInBytes))..add(DiagnosticsProperty('sha256', sha256));
+    ..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('sizeInBytes', sizeInBytes))..add(DiagnosticsProperty('sha256', sha256))..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('platform', platform))..add(DiagnosticsProperty('mandatory', mandatory))..add(DiagnosticsProperty('changes', changes));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UploadS3FileRequest&&(identical(other.name, name) || other.name == name)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.sha256, sha256) || other.sha256 == sha256));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UploadS3FileRequest&&(identical(other.name, name) || other.name == name)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.sha256, sha256) || other.sha256 == sha256)&&(identical(other.version, version) || other.version == version)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&const DeepCollectionEquality().equals(other.changes, changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,sizeInBytes,sha256);
+int get hashCode => Object.hash(runtimeType,name,sizeInBytes,sha256,version,platform,mandatory,const DeepCollectionEquality().hash(changes));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'UploadS3FileRequest(name: $name, sizeInBytes: $sizeInBytes, sha256: $sha256)';
+  return 'UploadS3FileRequest(name: $name, sizeInBytes: $sizeInBytes, sha256: $sha256, version: $version, platform: $platform, mandatory: $mandatory, changes: $changes)';
 }
 
 
@@ -341,7 +341,7 @@ abstract mixin class $UploadS3FileRequestCopyWith<$Res>  {
   factory $UploadS3FileRequestCopyWith(UploadS3FileRequest value, $Res Function(UploadS3FileRequest) _then) = _$UploadS3FileRequestCopyWithImpl;
 @useResult
 $Res call({
- String name, int sizeInBytes, String sha256
+ String name, int sizeInBytes, String sha256, String version, Platform platform, bool mandatory, List<Change> changes
 });
 
 
@@ -358,12 +358,16 @@ class _$UploadS3FileRequestCopyWithImpl<$Res>
 
 /// Create a copy of UploadS3FileRequest
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? sizeInBytes = null,Object? sha256 = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? sizeInBytes = null,Object? sha256 = null,Object? version = null,Object? platform = null,Object? mandatory = null,Object? changes = null,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
 as int,sha256: null == sha256 ? _self.sha256 : sha256 // ignore: cast_nullable_to_non_nullable
-as String,
+as String,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+as String,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
+as Platform,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
+as bool,changes: null == changes ? _self.changes : changes // ignore: cast_nullable_to_non_nullable
+as List<Change>,
   ));
 }
 
@@ -445,10 +449,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  int sizeInBytes,  String sha256)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  int sizeInBytes,  String sha256,  String version,  Platform platform,  bool mandatory,  List<Change> changes)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UploadS3FileRequest() when $default != null:
-return $default(_that.name,_that.sizeInBytes,_that.sha256);case _:
+return $default(_that.name,_that.sizeInBytes,_that.sha256,_that.version,_that.platform,_that.mandatory,_that.changes);case _:
   return orElse();
 
 }
@@ -466,10 +470,10 @@ return $default(_that.name,_that.sizeInBytes,_that.sha256);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  int sizeInBytes,  String sha256)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  int sizeInBytes,  String sha256,  String version,  Platform platform,  bool mandatory,  List<Change> changes)  $default,) {final _that = this;
 switch (_that) {
 case _UploadS3FileRequest():
-return $default(_that.name,_that.sizeInBytes,_that.sha256);}
+return $default(_that.name,_that.sizeInBytes,_that.sha256,_that.version,_that.platform,_that.mandatory,_that.changes);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -483,10 +487,10 @@ return $default(_that.name,_that.sizeInBytes,_that.sha256);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  int sizeInBytes,  String sha256)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  int sizeInBytes,  String sha256,  String version,  Platform platform,  bool mandatory,  List<Change> changes)?  $default,) {final _that = this;
 switch (_that) {
 case _UploadS3FileRequest() when $default != null:
-return $default(_that.name,_that.sizeInBytes,_that.sha256);case _:
+return $default(_that.name,_that.sizeInBytes,_that.sha256,_that.version,_that.platform,_that.mandatory,_that.changes);case _:
   return null;
 
 }
@@ -498,12 +502,22 @@ return $default(_that.name,_that.sizeInBytes,_that.sha256);case _:
 @JsonSerializable()
 
 class _UploadS3FileRequest with DiagnosticableTreeMixin implements UploadS3FileRequest {
-  const _UploadS3FileRequest({required this.name, required this.sizeInBytes, required this.sha256});
+  const _UploadS3FileRequest({required this.name, required this.sizeInBytes, required this.sha256, required this.version, required this.platform, required this.mandatory, required final  List<Change> changes}): _changes = changes;
   factory _UploadS3FileRequest.fromJson(Map<String, dynamic> json) => _$UploadS3FileRequestFromJson(json);
 
 @override final  String name;
 @override final  int sizeInBytes;
 @override final  String sha256;
+@override final  String version;
+@override final  Platform platform;
+@override final  bool mandatory;
+ final  List<Change> _changes;
+@override List<Change> get changes {
+  if (_changes is EqualUnmodifiableListView) return _changes;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_changes);
+}
+
 
 /// Create a copy of UploadS3FileRequest
 /// with the given fields replaced by the non-null parameter values.
@@ -519,21 +533,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'UploadS3FileRequest'))
-    ..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('sizeInBytes', sizeInBytes))..add(DiagnosticsProperty('sha256', sha256));
+    ..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('sizeInBytes', sizeInBytes))..add(DiagnosticsProperty('sha256', sha256))..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('platform', platform))..add(DiagnosticsProperty('mandatory', mandatory))..add(DiagnosticsProperty('changes', changes));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UploadS3FileRequest&&(identical(other.name, name) || other.name == name)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.sha256, sha256) || other.sha256 == sha256));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UploadS3FileRequest&&(identical(other.name, name) || other.name == name)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.sha256, sha256) || other.sha256 == sha256)&&(identical(other.version, version) || other.version == version)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&const DeepCollectionEquality().equals(other._changes, _changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,sizeInBytes,sha256);
+int get hashCode => Object.hash(runtimeType,name,sizeInBytes,sha256,version,platform,mandatory,const DeepCollectionEquality().hash(_changes));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'UploadS3FileRequest(name: $name, sizeInBytes: $sizeInBytes, sha256: $sha256)';
+  return 'UploadS3FileRequest(name: $name, sizeInBytes: $sizeInBytes, sha256: $sha256, version: $version, platform: $platform, mandatory: $mandatory, changes: $changes)';
 }
 
 
@@ -544,7 +558,7 @@ abstract mixin class _$UploadS3FileRequestCopyWith<$Res> implements $UploadS3Fil
   factory _$UploadS3FileRequestCopyWith(_UploadS3FileRequest value, $Res Function(_UploadS3FileRequest) _then) = __$UploadS3FileRequestCopyWithImpl;
 @override @useResult
 $Res call({
- String name, int sizeInBytes, String sha256
+ String name, int sizeInBytes, String sha256, String version, Platform platform, bool mandatory, List<Change> changes
 });
 
 
@@ -561,12 +575,16 @@ class __$UploadS3FileRequestCopyWithImpl<$Res>
 
 /// Create a copy of UploadS3FileRequest
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? sizeInBytes = null,Object? sha256 = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? sizeInBytes = null,Object? sha256 = null,Object? version = null,Object? platform = null,Object? mandatory = null,Object? changes = null,}) {
   return _then(_UploadS3FileRequest(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
 as int,sha256: null == sha256 ? _self.sha256 : sha256 // ignore: cast_nullable_to_non_nullable
-as String,
+as String,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+as String,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
+as Platform,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
+as bool,changes: null == changes ? _self._changes : changes // ignore: cast_nullable_to_non_nullable
+as List<Change>,
   ));
 }
 

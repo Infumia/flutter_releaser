@@ -32,8 +32,8 @@ sealed class Version with _$Version implements Comparable<Version> {
     required Platform platform,
     required int sizeInBytes,
     required bool mandatory,
-    DateTime? timestamp,
-    List<Change>? changes,
+    required DateTime timestamp,
+    required List<Change> changes,
   }) = _Version;
 
   factory Version.fromJson(Map<String, dynamic> json) =>
@@ -67,7 +67,6 @@ sealed class Change with _$Change {
 @freezed
 sealed class NetworkFile with _$NetworkFile {
   const factory NetworkFile({
-    required int id,
     required String name,
     required int size,
     required String sha256,

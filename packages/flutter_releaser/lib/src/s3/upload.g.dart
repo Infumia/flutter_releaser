@@ -39,6 +39,12 @@ _UploadS3FileRequest _$UploadS3FileRequestFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       sizeInBytes: (json['sizeInBytes'] as num).toInt(),
       sha256: json['sha256'] as String,
+      version: json['version'] as String,
+      platform: $enumDecode(_$PlatformEnumMap, json['platform']),
+      mandatory: json['mandatory'] as bool,
+      changes: (json['changes'] as List<dynamic>)
+          .map((e) => Change.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$UploadS3FileRequestToJson(
@@ -47,6 +53,10 @@ Map<String, dynamic> _$UploadS3FileRequestToJson(
   'name': instance.name,
   'sizeInBytes': instance.sizeInBytes,
   'sha256': instance.sha256,
+  'version': instance.version,
+  'platform': _$PlatformEnumMap[instance.platform]!,
+  'mandatory': instance.mandatory,
+  'changes': instance.changes,
 };
 
 _UploadS3FileResponse _$UploadS3FileResponseFromJson(

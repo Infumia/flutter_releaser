@@ -29,11 +29,9 @@ _Version _$VersionFromJson(Map<String, dynamic> json) => _Version(
   platform: $enumDecode(_$PlatformEnumMap, json['platform']),
   sizeInBytes: (json['sizeInBytes'] as num).toInt(),
   mandatory: json['mandatory'] as bool,
-  timestamp: json['timestamp'] == null
-      ? null
-      : DateTime.parse(json['timestamp'] as String),
-  changes: (json['changes'] as List<dynamic>?)
-      ?.map((e) => Change.fromJson(e as Map<String, dynamic>))
+  timestamp: DateTime.parse(json['timestamp'] as String),
+  changes: (json['changes'] as List<dynamic>)
+      .map((e) => Change.fromJson(e as Map<String, dynamic>))
       .toList(),
 );
 
@@ -44,7 +42,7 @@ Map<String, dynamic> _$VersionToJson(_Version instance) => <String, dynamic>{
   'platform': _$PlatformEnumMap[instance.platform]!,
   'sizeInBytes': instance.sizeInBytes,
   'mandatory': instance.mandatory,
-  'timestamp': instance.timestamp?.toIso8601String(),
+  'timestamp': instance.timestamp.toIso8601String(),
   'changes': instance.changes,
 };
 
@@ -72,7 +70,6 @@ const _$ChangeTypeEnumMap = {
 };
 
 _NetworkFile _$NetworkFileFromJson(Map<String, dynamic> json) => _NetworkFile(
-  id: (json['id'] as num).toInt(),
   name: json['name'] as String,
   size: (json['size'] as num).toInt(),
   sha256: json['sha256'] as String,
@@ -84,7 +81,6 @@ _NetworkFile _$NetworkFileFromJson(Map<String, dynamic> json) => _NetworkFile(
 
 Map<String, dynamic> _$NetworkFileToJson(_NetworkFile instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'name': instance.name,
       'size': instance.size,
       'sha256': instance.sha256,

@@ -34,8 +34,12 @@ Future<void> uploadS3File(
     apiPath: "/archive?s3=true",
     data: UploadS3FileRequest(
       name: name,
-      sha256: base64Encode(sha256.bytes),
       sizeInBytes: sizeInBytes,
+      sha256: base64Encode(sha256.bytes),
+      version: request.version,
+      platform: request.platform,
+      mandatory: request.mandatory,
+      changes: request.changes,
     ),
   );
 
@@ -79,6 +83,10 @@ sealed class UploadS3FileRequest with _$UploadS3FileRequest {
     required String name,
     required int sizeInBytes,
     required String sha256,
+    required String version,
+    required Platform platform,
+    required bool mandatory,
+    required List<Change> changes,
   }) = _UploadS3FileRequest;
 
   factory UploadS3FileRequest.fromJson(Map<String, dynamic> json) =>
