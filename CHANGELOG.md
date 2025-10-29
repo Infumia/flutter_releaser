@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-10-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`flutter_releaser` - `v0.1.0`](#flutter_releaser---v010)
+ - [`flutter_releaser_dio` - `v0.1.0`](#flutter_releaser_dio---v010)
+ - [`flutter_releaser_http` - `v0.1.0`](#flutter_releaser_http---v010)
+
+Packages with other changes:
+
+ - [`flutter_releaser_hooks` - `v0.0.3+3`](#flutter_releaser_hooks---v0033)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_releaser_hooks` - `v0.0.3+3`
+
+---
+
+#### `flutter_releaser` - `v0.1.0`
+
+ - **FIX**: add listener to upload progress notifier as well.
+ - **FIX**: macos plugin.
+ - **FIX**: give archive path.
+ - **FEAT**: upload with new parameters.
+ - **FEAT**: implement upload system.
+ - **FEAT**: const.
+ - **BREAKING** **FEAT**: start working on upload system.
+ - **BREAKING** **CHANGE**: implementing the new api specifications. ([#3](https://github.com/Infumia/flutter_releaser//issues/3)).
+
+#### `flutter_releaser_dio` - `v0.1.0`
+
+ - **FEAT**: implement upload system.
+ - **BREAKING** **CHANGE**: implementing the new api specifications. ([#3](https://github.com/Infumia/flutter_releaser//issues/3)).
+
+#### `flutter_releaser_http` - `v0.1.0`
+
+ - **FEAT**: implement upload system.
+ - **BREAKING** **CHANGE**: implementing the new api specifications. ([#3](https://github.com/Infumia/flutter_releaser//issues/3)).
+
+
 ## 2025-10-26
 
 ### Changes

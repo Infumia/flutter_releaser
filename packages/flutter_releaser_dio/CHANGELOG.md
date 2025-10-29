@@ -1,3 +1,10 @@
+## 0.1.0
+
+> Note: This release has breaking changes.
+
+ - **FEAT**: implement upload system.
+ - **BREAKING** **CHANGE**: implementing the new api specifications. ([#3](https://github.com/Infumia/flutter_releaser//issues/3)).
+
 ## 0.0.2
 
  - **FEAT**: abstraction layer for http requests. ([#2](https://github.com/Infumia/flutter_releaser//issues/2)).

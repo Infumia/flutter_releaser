@@ -1,6 +1,6 @@
 name: flutter_releaser_http
 description: HTTP implementation for flutter_releaser package, providing HTTP-based release checking and downloading capabilities for Flutter applications.
-version: 0.0.2
+version: 0.1.0
 resolution: workspace
 homepage: https://github.com/Infumia/flutter_releaser/
 repository: https://github.com/Infumia/flutter_releaser/
@@ -12,5 +12,5 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_releaser: ^0.0.6
+  flutter_releaser: ^0.1.0
   http: ^1.5.0
