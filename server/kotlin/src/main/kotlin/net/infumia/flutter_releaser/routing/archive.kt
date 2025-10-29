@@ -8,7 +8,6 @@ import io.ktor.server.auth.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import io.ktor.server.routing.get
 import io.ktor.server.util.*
 import kotlinx.serialization.Serializable
 import net.infumia.flutter_releaser.ApplicationArchive
@@ -81,7 +80,7 @@ internal fun Application.routeArchive() {
                                     fileSizeInBytes = request.sizeInBytes,
                                     fileSha256 = request.sha256,
                                 )
-                            UploadFileResponse(preSignedUrl, headers, fileId)
+                            UploadFileResponse(id = fileId, url = preSignedUrl, headers = headers)
                         } else {
                             throw UnknownUploadTechnologyException(
                                 "Unknown upload technology '${call.queryParameters}'"
@@ -133,7 +132,11 @@ internal fun Application.routeArchive() {
                                 val (file, downloadUrl, headers) =
                                     s3FileDownloadService.value.createPresignedUrl(id)
 
-                                DownloadS3FileResponse(file.file, downloadUrl, headers)
+                                DownloadS3FileResponse(
+                                    file = file.file,
+                                    url = downloadUrl,
+                                    headers = headers,
+                                )
                             } else {
                                 throw UnknownUploadTechnologyException(
                                     "Unknown upload technology '${call.queryParameters}'"
@@ -180,11 +183,7 @@ internal fun Application.routeArchive() {
 }
 
 @Serializable
-private data class DownloadS3FileResponse(
-    val file: File,
-    val preSignedUrl: String,
-    val headers: Headers,
-)
+private data class DownloadS3FileResponse(val file: File, val url: String, val headers: Headers)
 
 @Serializable
 private data class UploadVersionRequest(
@@ -194,4 +193,4 @@ private data class UploadVersionRequest(
 )
 
 @Serializable
-private data class UploadFileResponse(val url: String, val headers: Headers, val id: Int)
+private data class UploadFileResponse(val id: Int, val url: String, val headers: Headers)
