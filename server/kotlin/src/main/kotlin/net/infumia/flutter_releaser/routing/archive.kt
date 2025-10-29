@@ -1,16 +1,15 @@
 package net.infumia.flutter_releaser.routing
 
-import io.ktor.http.HttpStatusCode
-import io.ktor.server.application.Application
-import io.ktor.server.auth.authenticate
-import io.ktor.server.request.receive
-import io.ktor.server.response.respond
+import io.github.smiley4.ktoropenapi.get
+import io.github.smiley4.ktoropenapi.put
+import io.ktor.http.*
+import io.ktor.server.application.*
+import io.ktor.server.auth.*
+import io.ktor.server.request.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
 import io.ktor.server.routing.get
-import io.ktor.server.routing.put
-import io.ktor.server.routing.route
-import io.ktor.server.routing.routing
-import io.ktor.server.util.getValue
-import kotlin.String
+import io.ktor.server.util.*
 import kotlinx.serialization.Serializable
 import net.infumia.flutter_releaser.File
 import net.infumia.flutter_releaser.Headers
@@ -29,9 +28,17 @@ internal fun Application.routeArchive() {
     routing {
         authenticate {
             route("archive") {
-                get { call.respond(archiveService.retrieve()) }
+                get({
+                    description = "..."
+                    response {}
+                }) {
+                    call.respond(archiveService.retrieve())
+                }
 
-                put {
+                put({
+                    description = "..."
+                    response {}
+                }) {
                     val request = call.receive<UploadVersionRequest>()
                     val s3 = call.queryParameters["s3"]?.toBoolean() ?: false
 
@@ -53,7 +60,10 @@ internal fun Application.routeArchive() {
                 }
 
                 route("{id}") {
-                    get {
+                    get({
+                        description = "..."
+                        response {}
+                    }) {
                         val id: Int by call.pathParameters
                         val s3 = call.queryParameters["s3"]?.toBoolean() ?: false
 
@@ -71,7 +81,10 @@ internal fun Application.routeArchive() {
                         )
                     }
 
-                    put {
+                    put({
+                        description = "..."
+                        response {}
+                    }) {
                         val id: Int by call.pathParameters
 
                         fileUploadConfirmationService.confirm(id)

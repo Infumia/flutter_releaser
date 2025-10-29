@@ -8,6 +8,7 @@ ktor:
     - "net.infumia.flutter_releaser.security.AuthenticationKt.configureAuthentication"
     - "net.infumia.flutter_releaser.Status_pagesKt.configureStatusPages"
     - "net.infumia.flutter_releaser.S3Kt.configureS3"
+    - "net.infumia.flutter_releaser.OpenapiKt.configureOpenapi"
     - "net.infumia.flutter_releaser.routing.ArchiveKt.routeArchive"
   deployment:
     port: 8080

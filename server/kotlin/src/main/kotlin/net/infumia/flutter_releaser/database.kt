@@ -28,9 +28,9 @@ private val driverClassName by env("DATABASE_DRIVER_CLASS_NAME")
 fun hikariDataSource(): HikariDataSource =
     HikariDataSource(
         HikariConfig().apply {
-            jdbcUrl = jdbcUrl
-            username = username
-            password = password
-            driverClassName = driverClassName
+            jdbcUrl = net.infumia.flutter_releaser.jdbcUrl
+            username = net.infumia.flutter_releaser.username
+            password = net.infumia.flutter_releaser.password
+            driverClassName = net.infumia.flutter_releaser.driverClassName
         }
     )
