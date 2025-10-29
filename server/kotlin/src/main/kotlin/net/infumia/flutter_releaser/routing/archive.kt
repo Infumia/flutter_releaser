@@ -11,6 +11,7 @@ import io.ktor.server.routing.*
 import io.ktor.server.routing.get
 import io.ktor.server.util.*
 import kotlinx.serialization.Serializable
+import net.infumia.flutter_releaser.ApplicationArchive
 import net.infumia.flutter_releaser.File
 import net.infumia.flutter_releaser.Headers
 import net.infumia.flutter_releaser.UnknownUploadTechnologyException
@@ -29,15 +30,46 @@ internal fun Application.routeArchive() {
         authenticate {
             route("archive") {
                 get({
-                    description = "..."
-                    response {}
+                    description = "Retrieve all archives"
+                    response {
+                        HttpStatusCode.OK to
+                            {
+                                description = "List of archives retrieved successfully"
+                                body<ApplicationArchive>()
+                            }
+                        HttpStatusCode.Unauthorized to { description = "Authentication required" }
+                    }
                 }) {
                     call.respond(archiveService.retrieve())
                 }
 
                 put({
-                    description = "..."
-                    response {}
+                    description = "Upload a new version to the archive"
+                    request {
+                        body<UploadVersionRequest> {
+                            description = "Information about the file to upload"
+                        }
+                        queryParameter<Boolean>("s3") {
+                            description = "Whether to use S3 for upload (default: false)"
+                            required = false
+                        }
+                    }
+                    response {
+                        HttpStatusCode.OK to
+                            {
+                                description = "Upload URL generated successfully"
+                                body<UploadFileResponse>()
+                            }
+                        HttpStatusCode.BadRequest to
+                            {
+                                description = "Invalid upload technology specified"
+                            }
+                        HttpStatusCode.Unauthorized to { description = "Authentication required" }
+                        HttpStatusCode.InternalServerError to
+                            {
+                                description = "Upload technology not supported"
+                            }
+                    }
                 }) {
                     val request = call.receive<UploadVersionRequest>()
                     val s3 = call.queryParameters["s3"]?.toBoolean() ?: false
@@ -61,8 +93,36 @@ internal fun Application.routeArchive() {
 
                 route("{id}") {
                     get({
-                        description = "..."
-                        response {}
+                        description = "Download a specific archive version by ID"
+                        request {
+                            pathParameter<Int>("id") {
+                                description = "ID of the archive version to download"
+                            }
+                            queryParameter<Boolean>("s3") {
+                                description = "Whether to use S3 for download (default: false)"
+                                required = false
+                            }
+                        }
+                        response {
+                            HttpStatusCode.OK to
+                                {
+                                    description = "Download URL generated successfully"
+                                    body<DownloadS3FileResponse>()
+                                }
+                            HttpStatusCode.BadRequest to
+                                {
+                                    description = "Invalid download technology specified"
+                                }
+                            HttpStatusCode.Unauthorized to
+                                {
+                                    description = "Authentication required"
+                                }
+                            HttpStatusCode.NotFound to { description = "Archive version not found" }
+                            HttpStatusCode.InternalServerError to
+                                {
+                                    description = "Download technology not supported"
+                                }
+                        }
                     }) {
                         val id: Int by call.pathParameters
                         val s3 = call.queryParameters["s3"]?.toBoolean() ?: false
@@ -82,8 +142,20 @@ internal fun Application.routeArchive() {
                     }
 
                     put({
-                        description = "..."
-                        response {}
+                        description = "Confirm the upload of a specific archive version by ID"
+                        request {
+                            pathParameter<Int>("id") {
+                                description = "ID of the archive version to confirm"
+                            }
+                        }
+                        response {
+                            HttpStatusCode.OK to { description = "Upload confirmed successfully" }
+                            HttpStatusCode.Unauthorized to
+                                {
+                                    description = "Authentication required"
+                                }
+                            HttpStatusCode.NotFound to { description = "Archive version not found" }
+                        }
                     }) {
                         val id: Int by call.pathParameters
 
