@@ -7,7 +7,7 @@ class FlutterReleaserSettings {
   final Logger logger;
   final FileStorage fileStorage;
 
-  FlutterReleaserSettings({
+  const FlutterReleaserSettings({
     required Uri apiUri,
     required HttpRequester requester,
     FileStorage fileStorage = FileStorage.s3,
@@ -19,7 +19,7 @@ class FlutterReleaserSettings {
   void logError(String message, [Exception? exception, StackTrace? trace]) =>
       logger.error(message, exception, trace);
 
-  FlutterReleaserSettings._(
+  const FlutterReleaserSettings._(
     this.apiUri,
     this.requester,
     this.logger,
