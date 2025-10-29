@@ -1,86 +1,114 @@
-# Flutter Releaser Server
+# Flutter Releaser Server Templates
 
-This directory contains the backend server for the Flutter Releaser tool, which enables automated packaging, releasing, and updating of Flutter desktop applications across Windows, Linux, and macOS platforms.
+This directory contains backend server templates for the Flutter Releaser tool. This is a collection of example implementations in different technologies that provide a foundation for creating your own server to manage automated packaging, releasing, and updating of Flutter desktop applications across Windows, Linux, and macOS platforms.
 
 ## Overview
 
-The Flutter Releaser Server is a robust backend API built with Kotlin and the Ktor framework. It handles version management, file storage, and release management for Flutter desktop applications, providing a centralized system for managing application updates across multiple platforms.
+The Flutter Releaser Server Templates are robust backend APIs that serve as examples you can customize and deploy to handle version management, file storage, and release management for your own Flutter desktop applications. This directory contains multiple technology-specific implementations to suit different preferences and requirements.
+
+Currently available implementations:
+- **Kotlin**: A Ktor-based implementation in the `kotlin/` directory
+
+Future implementations may include:
+- **Go**
+- **Node.js/TypeScript**
+- **Python/FastAPI**
+- **Rust**
 
 ### Key Features
+
+All server implementations provide:
 
 - **Version Management**: Track and manage different versions of your Flutter applications
 - **File Storage**: Secure file storage using S3-compatible services (with MinIO support)
 - **Release Management**: Comprehensive release workflow management
-- **Authentication**: JWT-based authentication for secure access
-- **API Documentation**: OpenAPI/Swagger documentation with Redoc interface
+- **Authentication**: Access key and secret key based authentication for secure access
+- **API Documentation**: OpenAPI documentation with Swagger/Redoc interface
 - **Database Integration**: PostgreSQL database with migration support
 - **Cross-platform Support**: Handles releases for Windows, Linux, and macOS
 
-## Architecture
+## Getting Started
 
-The server is built using the following technologies:
+These are templates that should be customized for your own deployment. Follow these steps to set up your own instance:
 
-- **Backend Framework**: [Ktor](https://ktor.io/) for Kotlin
-- **Language**: Kotlin
-- **Database**: PostgreSQL
-- **Storage**: S3-compatible object storage (with MinIO support)
-- **Dependency Injection**: Koin
-- **Database ORM**: Exposed
-- **Serialization**: Kotlinx Serialization
-- **Authentication**: JWT (JSON Web Tokens)
+### Using This Template
 
-## Setup and Installation
+1. **Choose your preferred technology stack** from the available implementations
+2. **Create a new repository** from your chosen template:
+   - Create a new repository in your preferred Git hosting service
+   - Copy the code from the relevant subdirectory (e.g., `server/kotlin/`) to your new repository
+   - Update package names and application settings to match your organization
 
-### Prerequisites
-
-- Java 17 or higher
-- Docker and Docker Compose (for local development with PostgreSQL and MinIO)
-
-### Local Development Setup
-
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd flutter_releaser/server/kotlin
-   ```
-
-2. **Set up local environment**:
-   Create a `.local.env` file based on the example with your environment variables:
+3. **Set up local environment**:
+   Create a `.local.env` file with your environment variables:
    ```env
-   DATABASE_URL=jdbc:postgresql://localhost:5432/flutter_releaser
-   DATABASE_USER=root
+   DATABASE_DRIVER_CLASS_NAME=org.postgresql.Driver
+   DATABASE_JDBC_URL=jdbc:postgresql://127.0.0.1:5432/flutter_releaser
+   DATABASE_USERNAME=root
    DATABASE_PASSWORD=local
-   S3_ACCESS_KEY=your_access_key
-   S3_SECRET_KEY=your_secret_key
-   S3_ENDPOINT=http://localhost:9000
-   S3_BUCKET_NAME=flutter-releaser
-   JWT_SECRET=your_jwt_secret
+   S3_HOST=http://127.0.0.1:9000
+   S3_REGION=us-east-1
+   S3_ACCESS_KEY=7ccdc36add7cd651f7f5ef51029fb85b
+   S3_SECRET_KEY=de2e6cb47725ca7427b3c8c69fdf363e
+   S3_APPLICATION_ARCHIVE_BUCKET_ID=flutter-releaser
+   S3_APPLICATION_ARCHIVE_BUCKET_PATH=
+   FLUTTER_RELEASER_ACCESS_KEY=root
+   FLUTTER_RELEASER_SECRET_KEY=local
+   APPLICATION_ARCHIVE_NAME='Flutter Releaser'
+   APPLICATION_ARCHIVE_DESCRIPTION='Flutter releaser application to upload/download/test your own applications'
    ```
 
-3. **Start required services**:
+4. **Start required services** (Docker Compose is provided for local development):
    The server requires PostgreSQL and MinIO (S3-compatible storage). Use the provided Docker Compose file:
    ```bash
-   cd kotlin
-   docker-compose up -d
+   docker compose up -d
    ```
 
-4. **Run the application**:
+5. **Run the application** (commands vary by implementation):
+   For Kotlin:
    ```bash
    ./gradlew run
    ```
 
 The server will start on `http://localhost:8080`.
 
-### Database Migrations
+### Customization
 
-The server uses Flyway for database migrations. To generate a new migration:
+When using any template, you should customize:
+
+- Package names to match your organization
+- Application name and configuration
+- Database configuration
+- S3 storage settings
+- Flutter Releaser access and secret keys for authentication
+- API endpoints to match your specific requirements
+
+## Available Implementations
+
+### Kotlin Implementation
+
+Located in the `kotlin/` directory, built with:
+
+- **Backend Framework**: [Ktor](https://ktor.io/) for Kotlin
+- **Language**: Kotlin
+- **Database**: PostgreSQL
+- **Storage**: S3-compatible object storage
+- **Dependency Injection**: Koin
+- **Database ORM**: Exposed
+- **Serialization**: Kotlinx Serialization
+- **Authentication**: Access key and secret key based authentication
+
+To run the Kotlin implementation:
 ```bash
-./gradlew generateMigration -PmigrationName="your_migration_name"
+cd kotlin
+./gradlew run
 ```
+
+More implementation details are in the `kotlin/README.md` file.
 
 ## API Documentation
 
-The API is documented using OpenAPI/Swagger. Once the server is running, you can access:
+All implementations provide API documentation using OpenAPI/Swagger. Once the server is running, you can typically access:
 
 - **Swagger UI**: `http://localhost:8080/swagger`
 - **ReDoc**: `http://localhost:8080/redoc`
@@ -88,68 +116,35 @@ The API is documented using OpenAPI/Swagger. Once the server is running, you can
 
 ## Production Deployment
 
-For production deployment, you can build a fat JAR:
+Each implementation has its own deployment strategy:
 
-```bash
-./gradlew shadowJar
-```
+- **Kotlin**: Build a fat JAR with `./gradlew shadowJar`
 
-The resulting JAR file will be located at `build/libs/flutter_releaser_api.jar`.
-
-### Docker Deployment
-
-The server can also be containerized for deployment. An example Dockerfile would package the fat JAR and run it with the appropriate environment variables.
+Check the README in each implementation's directory for specific deployment instructions.
 
 ## Configuration
 
-The server uses `application.yaml` for configuration, which can be found in `src/main/resources/application.yaml`. 
-
-Key configuration points:
-- Server port (default: 8080)
-- Database connection settings
-- S3 storage configuration
-- JWT authentication settings
-- Application modules configuration
+Each implementation has its own configuration approach. See the relevant subdirectory for details.
 
 ## Environment Variables
 
-Required environment variables:
+Required environment variables for the Kotlin implementation:
 
-- `DATABASE_URL`: PostgreSQL database URL
-- `DATABASE_USER`: Database user
+- `DATABASE_DRIVER_CLASS_NAME`: Database driver class name (e.g., org.postgresql.Driver)
+- `DATABASE_JDBC_URL`: PostgreSQL database JDBC URL
+- `DATABASE_USERNAME`: Database username
 - `DATABASE_PASSWORD`: Database password
+- `S3_HOST`: S3-compatible storage host URL
+- `S3_REGION`: S3 region
 - `S3_ACCESS_KEY`: S3 access key
 - `S3_SECRET_KEY`: S3 secret key
-- `S3_ENDPOINT`: S3 endpoint URL
-- `S3_BUCKET_NAME`: S3 bucket name for file storage
-- `JWT_SECRET`: Secret key for JWT token generation
+- `S3_APPLICATION_ARCHIVE_BUCKET_ID`: S3 bucket ID for application archives
+- `S3_APPLICATION_ARCHIVE_BUCKET_PATH`: S3 path for application archives
+- `FLUTTER_RELEASER_ACCESS_KEY`: Access key for Flutter Releaser authentication
+- `FLUTTER_RELEASER_SECRET_KEY`: Secret key for Flutter Releaser authentication
+- `APPLICATION_ARCHIVE_NAME`: Name for the application archive
+- `APPLICATION_ARCHIVE_DESCRIPTION`: Description for the application archive
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Run the formatter: `./gradlew format`
-5. Commit your changes (`git commit -m 'Add some amazing feature'`)
-6. Push to the branch (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
-
-## Project Structure
-
-```
-server/kotlin/
-├── build.gradle.kts          # Gradle build configuration
-├── settings.gradle.kts       # Gradle settings
-├── docker-compose.yaml       # Docker services for local development
-├── .local.env                # Local environment variables template
-├── src/
-│   └── main/
-│       ├── kotlin/           # Kotlin source code
-│       └── resources/
-│           └── application.yaml # Application configuration
-└── README.md                 # This file
-```
-
-## License
-
-This project is licensed under the terms specified in the main repository.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for details on how to contribute to these server templates.
