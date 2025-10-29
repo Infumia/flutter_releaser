@@ -11,6 +11,33 @@ CREATE
 
 CREATE
     TABLE
+        IF NOT EXISTS versions(
+            id SERIAL PRIMARY KEY,
+            file INT NOT NULL,
+            "version" TEXT NOT NULL,
+            platform VARCHAR(16) NOT NULL,
+            size_in_bytes BIGINT NOT NULL,
+            mandatory BOOLEAN NOT NULL,
+            "timestamp" TIMESTAMP NOT NULL,
+            changes JSON NOT NULL,
+            CONSTRAINT fk_versions_file__id FOREIGN KEY(file) REFERENCES files(id) ON
+            DELETE
+                CASCADE ON
+                UPDATE
+                    RESTRICT
+        );
+
+ALTER TABLE
+    versions ADD CONSTRAINT versions_file_unique UNIQUE(file);
+
+ALTER TABLE
+    versions ADD CONSTRAINT versions_version_platform_unique UNIQUE(
+        "version",
+        platform
+    );
+
+CREATE
+    TABLE
         IF NOT EXISTS s3_files(
             id SERIAL PRIMARY KEY,
             file INT NOT NULL,
@@ -37,29 +64,11 @@ START WITH
     1 MINVALUE 1 MAXVALUE 9223372036854775807;
 
 CREATE
-    SEQUENCE IF NOT EXISTS s3_files_id_seq
+    SEQUENCE IF NOT EXISTS versions_id_seq
 START WITH
     1 MINVALUE 1 MAXVALUE 9223372036854775807;
 
-ALTER TABLE
-    versions ADD file INT NOT NULL;
-
-ALTER TABLE
-    versions ADD CONSTRAINT versions_file_unique UNIQUE(file);
-
-ALTER TABLE
-    versions ADD CONSTRAINT fk_versions_file__id FOREIGN KEY(file) REFERENCES files(id) ON
-    DELETE
-        CASCADE ON
-        UPDATE
-            RESTRICT;
-
-ALTER TABLE
-    versions DROP
-        COLUMN url;
-
-ALTER TABLE
-    versions ADD CONSTRAINT versions_version_platform_unique UNIQUE(
-        "version",
-        platform
-    );
+CREATE
+    SEQUENCE IF NOT EXISTS s3_files_id_seq
+START WITH
+    1 MINVALUE 1 MAXVALUE 9223372036854775807;
