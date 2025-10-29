@@ -284,7 +284,7 @@ as List<Version>,
 /// @nodoc
 mixin _$Version {
 
- String get version; Uri get url; Platform get platform; int get sizeInBytes; DateTime? get date; bool? get mandatory; List<Change>? get changes;
+ int get id; NetworkFile get file; String get version; Platform get platform; int get sizeInBytes; bool get mandatory; DateTime? get timestamp; List<Change>? get changes;
 /// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -297,16 +297,16 @@ $VersionCopyWith<Version> get copyWith => _$VersionCopyWithImpl<Version>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Version&&(identical(other.version, version) || other.version == version)&&(identical(other.url, url) || other.url == url)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.date, date) || other.date == date)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&const DeepCollectionEquality().equals(other.changes, changes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Version&&(identical(other.id, id) || other.id == id)&&(identical(other.file, file) || other.file == file)&&(identical(other.version, version) || other.version == version)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp)&&const DeepCollectionEquality().equals(other.changes, changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,version,url,platform,sizeInBytes,date,mandatory,const DeepCollectionEquality().hash(changes));
+int get hashCode => Object.hash(runtimeType,id,file,version,platform,sizeInBytes,mandatory,timestamp,const DeepCollectionEquality().hash(changes));
 
 @override
 String toString() {
-  return 'Version(version: $version, url: $url, platform: $platform, sizeInBytes: $sizeInBytes, date: $date, mandatory: $mandatory, changes: $changes)';
+  return 'Version(id: $id, file: $file, version: $version, platform: $platform, sizeInBytes: $sizeInBytes, mandatory: $mandatory, timestamp: $timestamp, changes: $changes)';
 }
 
 
@@ -317,11 +317,11 @@ abstract mixin class $VersionCopyWith<$Res>  {
   factory $VersionCopyWith(Version value, $Res Function(Version) _then) = _$VersionCopyWithImpl;
 @useResult
 $Res call({
- String version, Uri url, Platform platform, int sizeInBytes, DateTime? date, bool? mandatory, List<Change>? changes
+ int id, NetworkFile file, String version, Platform platform, int sizeInBytes, bool mandatory, DateTime? timestamp, List<Change>? changes
 });
 
 
-
+$NetworkFileCopyWith<$Res> get file;
 
 }
 /// @nodoc
@@ -334,19 +334,29 @@ class _$VersionCopyWithImpl<$Res>
 
 /// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? version = null,Object? url = null,Object? platform = null,Object? sizeInBytes = null,Object? date = freezed,Object? mandatory = freezed,Object? changes = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? file = null,Object? version = null,Object? platform = null,Object? sizeInBytes = null,Object? mandatory = null,Object? timestamp = freezed,Object? changes = freezed,}) {
   return _then(_self.copyWith(
-version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
-as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
-as Uri,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
+as NetworkFile,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+as String,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
 as Platform,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
-as int,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as DateTime?,mandatory: freezed == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
-as bool?,changes: freezed == changes ? _self.changes : changes // ignore: cast_nullable_to_non_nullable
+as int,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
+as bool,timestamp: freezed == timestamp ? _self.timestamp : timestamp // ignore: cast_nullable_to_non_nullable
+as DateTime?,changes: freezed == changes ? _self.changes : changes // ignore: cast_nullable_to_non_nullable
 as List<Change>?,
   ));
 }
-
+/// Create a copy of Version
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$NetworkFileCopyWith<$Res> get file {
+  
+  return $NetworkFileCopyWith<$Res>(_self.file, (value) {
+    return _then(_self.copyWith(file: value));
+  });
+}
 }
 
 
@@ -425,10 +435,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String version,  Uri url,  Platform platform,  int sizeInBytes,  DateTime? date,  bool? mandatory,  List<Change>? changes)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  NetworkFile file,  String version,  Platform platform,  int sizeInBytes,  bool mandatory,  DateTime? timestamp,  List<Change>? changes)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Version() when $default != null:
-return $default(_that.version,_that.url,_that.platform,_that.sizeInBytes,_that.date,_that.mandatory,_that.changes);case _:
+return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInBytes,_that.mandatory,_that.timestamp,_that.changes);case _:
   return orElse();
 
 }
@@ -446,10 +456,10 @@ return $default(_that.version,_that.url,_that.platform,_that.sizeInBytes,_that.d
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String version,  Uri url,  Platform platform,  int sizeInBytes,  DateTime? date,  bool? mandatory,  List<Change>? changes)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  NetworkFile file,  String version,  Platform platform,  int sizeInBytes,  bool mandatory,  DateTime? timestamp,  List<Change>? changes)  $default,) {final _that = this;
 switch (_that) {
 case _Version():
-return $default(_that.version,_that.url,_that.platform,_that.sizeInBytes,_that.date,_that.mandatory,_that.changes);}
+return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInBytes,_that.mandatory,_that.timestamp,_that.changes);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -463,10 +473,10 @@ return $default(_that.version,_that.url,_that.platform,_that.sizeInBytes,_that.d
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String version,  Uri url,  Platform platform,  int sizeInBytes,  DateTime? date,  bool? mandatory,  List<Change>? changes)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  NetworkFile file,  String version,  Platform platform,  int sizeInBytes,  bool mandatory,  DateTime? timestamp,  List<Change>? changes)?  $default,) {final _that = this;
 switch (_that) {
 case _Version() when $default != null:
-return $default(_that.version,_that.url,_that.platform,_that.sizeInBytes,_that.date,_that.mandatory,_that.changes);case _:
+return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInBytes,_that.mandatory,_that.timestamp,_that.changes);case _:
   return null;
 
 }
@@ -478,15 +488,16 @@ return $default(_that.version,_that.url,_that.platform,_that.sizeInBytes,_that.d
 @JsonSerializable()
 
 class _Version extends Version {
-  const _Version({required this.version, required this.url, required this.platform, required this.sizeInBytes, this.date, this.mandatory, final  List<Change>? changes}): _changes = changes,super._();
+  const _Version({required this.id, required this.file, required this.version, required this.platform, required this.sizeInBytes, required this.mandatory, this.timestamp, final  List<Change>? changes}): _changes = changes,super._();
   factory _Version.fromJson(Map<String, dynamic> json) => _$VersionFromJson(json);
 
+@override final  int id;
+@override final  NetworkFile file;
 @override final  String version;
-@override final  Uri url;
 @override final  Platform platform;
 @override final  int sizeInBytes;
-@override final  DateTime? date;
-@override final  bool? mandatory;
+@override final  bool mandatory;
+@override final  DateTime? timestamp;
  final  List<Change>? _changes;
 @override List<Change>? get changes {
   final value = _changes;
@@ -510,16 +521,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Version&&(identical(other.version, version) || other.version == version)&&(identical(other.url, url) || other.url == url)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.date, date) || other.date == date)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&const DeepCollectionEquality().equals(other._changes, _changes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Version&&(identical(other.id, id) || other.id == id)&&(identical(other.file, file) || other.file == file)&&(identical(other.version, version) || other.version == version)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp)&&const DeepCollectionEquality().equals(other._changes, _changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,version,url,platform,sizeInBytes,date,mandatory,const DeepCollectionEquality().hash(_changes));
+int get hashCode => Object.hash(runtimeType,id,file,version,platform,sizeInBytes,mandatory,timestamp,const DeepCollectionEquality().hash(_changes));
 
 @override
 String toString() {
-  return 'Version(version: $version, url: $url, platform: $platform, sizeInBytes: $sizeInBytes, date: $date, mandatory: $mandatory, changes: $changes)';
+  return 'Version(id: $id, file: $file, version: $version, platform: $platform, sizeInBytes: $sizeInBytes, mandatory: $mandatory, timestamp: $timestamp, changes: $changes)';
 }
 
 
@@ -530,11 +541,11 @@ abstract mixin class _$VersionCopyWith<$Res> implements $VersionCopyWith<$Res> {
   factory _$VersionCopyWith(_Version value, $Res Function(_Version) _then) = __$VersionCopyWithImpl;
 @override @useResult
 $Res call({
- String version, Uri url, Platform platform, int sizeInBytes, DateTime? date, bool? mandatory, List<Change>? changes
+ int id, NetworkFile file, String version, Platform platform, int sizeInBytes, bool mandatory, DateTime? timestamp, List<Change>? changes
 });
 
 
-
+@override $NetworkFileCopyWith<$Res> get file;
 
 }
 /// @nodoc
@@ -547,20 +558,30 @@ class __$VersionCopyWithImpl<$Res>
 
 /// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? version = null,Object? url = null,Object? platform = null,Object? sizeInBytes = null,Object? date = freezed,Object? mandatory = freezed,Object? changes = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? file = null,Object? version = null,Object? platform = null,Object? sizeInBytes = null,Object? mandatory = null,Object? timestamp = freezed,Object? changes = freezed,}) {
   return _then(_Version(
-version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
-as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
-as Uri,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
+as NetworkFile,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+as String,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
 as Platform,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
-as int,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as DateTime?,mandatory: freezed == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
-as bool?,changes: freezed == changes ? _self._changes : changes // ignore: cast_nullable_to_non_nullable
+as int,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
+as bool,timestamp: freezed == timestamp ? _self.timestamp : timestamp // ignore: cast_nullable_to_non_nullable
+as DateTime?,changes: freezed == changes ? _self._changes : changes // ignore: cast_nullable_to_non_nullable
 as List<Change>?,
   ));
 }
 
-
+/// Create a copy of Version
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$NetworkFileCopyWith<$Res> get file {
+  
+  return $NetworkFileCopyWith<$Res>(_self.file, (value) {
+    return _then(_self.copyWith(file: value));
+  });
+}
 }
 
 
@@ -825,42 +846,42 @@ as String,
 
 
 /// @nodoc
-mixin _$FileHash {
+mixin _$NetworkFile {
 
- String get path; String get hash; int get length;
-/// Create a copy of FileHash
+ int get id; String get name; int get size; String get sha256; DateTime get requestDate; DateTime? get uploadDate;
+/// Create a copy of NetworkFile
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$FileHashCopyWith<FileHash> get copyWith => _$FileHashCopyWithImpl<FileHash>(this as FileHash, _$identity);
+$NetworkFileCopyWith<NetworkFile> get copyWith => _$NetworkFileCopyWithImpl<NetworkFile>(this as NetworkFile, _$identity);
 
-  /// Serializes this FileHash to a JSON map.
+  /// Serializes this NetworkFile to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FileHash&&(identical(other.path, path) || other.path == path)&&(identical(other.hash, hash) || other.hash == hash)&&(identical(other.length, length) || other.length == length));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NetworkFile&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.size, size) || other.size == size)&&(identical(other.sha256, sha256) || other.sha256 == sha256)&&(identical(other.requestDate, requestDate) || other.requestDate == requestDate)&&(identical(other.uploadDate, uploadDate) || other.uploadDate == uploadDate));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,path,hash,length);
+int get hashCode => Object.hash(runtimeType,id,name,size,sha256,requestDate,uploadDate);
 
 @override
 String toString() {
-  return 'FileHash(path: $path, hash: $hash, length: $length)';
+  return 'NetworkFile(id: $id, name: $name, size: $size, sha256: $sha256, requestDate: $requestDate, uploadDate: $uploadDate)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $FileHashCopyWith<$Res>  {
-  factory $FileHashCopyWith(FileHash value, $Res Function(FileHash) _then) = _$FileHashCopyWithImpl;
+abstract mixin class $NetworkFileCopyWith<$Res>  {
+  factory $NetworkFileCopyWith(NetworkFile value, $Res Function(NetworkFile) _then) = _$NetworkFileCopyWithImpl;
 @useResult
 $Res call({
- String path, String hash, int length
+ int id, String name, int size, String sha256, DateTime requestDate, DateTime? uploadDate
 });
 
 
@@ -868,29 +889,32 @@ $Res call({
 
 }
 /// @nodoc
-class _$FileHashCopyWithImpl<$Res>
-    implements $FileHashCopyWith<$Res> {
-  _$FileHashCopyWithImpl(this._self, this._then);
+class _$NetworkFileCopyWithImpl<$Res>
+    implements $NetworkFileCopyWith<$Res> {
+  _$NetworkFileCopyWithImpl(this._self, this._then);
 
-  final FileHash _self;
-  final $Res Function(FileHash) _then;
+  final NetworkFile _self;
+  final $Res Function(NetworkFile) _then;
 
-/// Create a copy of FileHash
+/// Create a copy of NetworkFile
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? path = null,Object? hash = null,Object? length = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? size = null,Object? sha256 = null,Object? requestDate = null,Object? uploadDate = freezed,}) {
   return _then(_self.copyWith(
-path: null == path ? _self.path : path // ignore: cast_nullable_to_non_nullable
-as String,hash: null == hash ? _self.hash : hash // ignore: cast_nullable_to_non_nullable
-as String,length: null == length ? _self.length : length // ignore: cast_nullable_to_non_nullable
-as int,
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,size: null == size ? _self.size : size // ignore: cast_nullable_to_non_nullable
+as int,sha256: null == sha256 ? _self.sha256 : sha256 // ignore: cast_nullable_to_non_nullable
+as String,requestDate: null == requestDate ? _self.requestDate : requestDate // ignore: cast_nullable_to_non_nullable
+as DateTime,uploadDate: freezed == uploadDate ? _self.uploadDate : uploadDate // ignore: cast_nullable_to_non_nullable
+as DateTime?,
   ));
 }
 
 }
 
 
-/// Adds pattern-matching-related methods to [FileHash].
-extension FileHashPatterns on FileHash {
+/// Adds pattern-matching-related methods to [NetworkFile].
+extension NetworkFilePatterns on NetworkFile {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -903,10 +927,10 @@ extension FileHashPatterns on FileHash {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _FileHash value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _NetworkFile value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _FileHash() when $default != null:
+case _NetworkFile() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -925,10 +949,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _FileHash value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _NetworkFile value)  $default,){
 final _that = this;
 switch (_that) {
-case _FileHash():
+case _NetworkFile():
 return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -943,10 +967,10 @@ return $default(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _FileHash value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _NetworkFile value)?  $default,){
 final _that = this;
 switch (_that) {
-case _FileHash() when $default != null:
+case _NetworkFile() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -964,10 +988,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String path,  String hash,  int length)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  int size,  String sha256,  DateTime requestDate,  DateTime? uploadDate)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _FileHash() when $default != null:
-return $default(_that.path,_that.hash,_that.length);case _:
+case _NetworkFile() when $default != null:
+return $default(_that.id,_that.name,_that.size,_that.sha256,_that.requestDate,_that.uploadDate);case _:
   return orElse();
 
 }
@@ -985,10 +1009,10 @@ return $default(_that.path,_that.hash,_that.length);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String path,  String hash,  int length)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  int size,  String sha256,  DateTime requestDate,  DateTime? uploadDate)  $default,) {final _that = this;
 switch (_that) {
-case _FileHash():
-return $default(_that.path,_that.hash,_that.length);}
+case _NetworkFile():
+return $default(_that.id,_that.name,_that.size,_that.sha256,_that.requestDate,_that.uploadDate);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -1002,10 +1026,10 @@ return $default(_that.path,_that.hash,_that.length);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String path,  String hash,  int length)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  int size,  String sha256,  DateTime requestDate,  DateTime? uploadDate)?  $default,) {final _that = this;
 switch (_that) {
-case _FileHash() when $default != null:
-return $default(_that.path,_that.hash,_that.length);case _:
+case _NetworkFile() when $default != null:
+return $default(_that.id,_that.name,_that.size,_that.sha256,_that.requestDate,_that.uploadDate);case _:
   return null;
 
 }
@@ -1016,48 +1040,51 @@ return $default(_that.path,_that.hash,_that.length);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _FileHash implements FileHash {
-  const _FileHash({required this.path, required this.hash, required this.length});
-  factory _FileHash.fromJson(Map<String, dynamic> json) => _$FileHashFromJson(json);
+class _NetworkFile implements NetworkFile {
+  const _NetworkFile({required this.id, required this.name, required this.size, required this.sha256, required this.requestDate, this.uploadDate});
+  factory _NetworkFile.fromJson(Map<String, dynamic> json) => _$NetworkFileFromJson(json);
 
-@override final  String path;
-@override final  String hash;
-@override final  int length;
+@override final  int id;
+@override final  String name;
+@override final  int size;
+@override final  String sha256;
+@override final  DateTime requestDate;
+@override final  DateTime? uploadDate;
 
-/// Create a copy of FileHash
+/// Create a copy of NetworkFile
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$FileHashCopyWith<_FileHash> get copyWith => __$FileHashCopyWithImpl<_FileHash>(this, _$identity);
+_$NetworkFileCopyWith<_NetworkFile> get copyWith => __$NetworkFileCopyWithImpl<_NetworkFile>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$FileHashToJson(this, );
+  return _$NetworkFileToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FileHash&&(identical(other.path, path) || other.path == path)&&(identical(other.hash, hash) || other.hash == hash)&&(identical(other.length, length) || other.length == length));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NetworkFile&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.size, size) || other.size == size)&&(identical(other.sha256, sha256) || other.sha256 == sha256)&&(identical(other.requestDate, requestDate) || other.requestDate == requestDate)&&(identical(other.uploadDate, uploadDate) || other.uploadDate == uploadDate));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,path,hash,length);
+int get hashCode => Object.hash(runtimeType,id,name,size,sha256,requestDate,uploadDate);
 
 @override
 String toString() {
-  return 'FileHash(path: $path, hash: $hash, length: $length)';
+  return 'NetworkFile(id: $id, name: $name, size: $size, sha256: $sha256, requestDate: $requestDate, uploadDate: $uploadDate)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$FileHashCopyWith<$Res> implements $FileHashCopyWith<$Res> {
-  factory _$FileHashCopyWith(_FileHash value, $Res Function(_FileHash) _then) = __$FileHashCopyWithImpl;
+abstract mixin class _$NetworkFileCopyWith<$Res> implements $NetworkFileCopyWith<$Res> {
+  factory _$NetworkFileCopyWith(_NetworkFile value, $Res Function(_NetworkFile) _then) = __$NetworkFileCopyWithImpl;
 @override @useResult
 $Res call({
- String path, String hash, int length
+ int id, String name, int size, String sha256, DateTime requestDate, DateTime? uploadDate
 });
 
 
@@ -1065,21 +1092,24 @@ $Res call({
 
 }
 /// @nodoc
-class __$FileHashCopyWithImpl<$Res>
-    implements _$FileHashCopyWith<$Res> {
-  __$FileHashCopyWithImpl(this._self, this._then);
+class __$NetworkFileCopyWithImpl<$Res>
+    implements _$NetworkFileCopyWith<$Res> {
+  __$NetworkFileCopyWithImpl(this._self, this._then);
 
-  final _FileHash _self;
-  final $Res Function(_FileHash) _then;
+  final _NetworkFile _self;
+  final $Res Function(_NetworkFile) _then;
 
-/// Create a copy of FileHash
+/// Create a copy of NetworkFile
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? path = null,Object? hash = null,Object? length = null,}) {
-  return _then(_FileHash(
-path: null == path ? _self.path : path // ignore: cast_nullable_to_non_nullable
-as String,hash: null == hash ? _self.hash : hash // ignore: cast_nullable_to_non_nullable
-as String,length: null == length ? _self.length : length // ignore: cast_nullable_to_non_nullable
-as int,
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? size = null,Object? sha256 = null,Object? requestDate = null,Object? uploadDate = freezed,}) {
+  return _then(_NetworkFile(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,size: null == size ? _self.size : size // ignore: cast_nullable_to_non_nullable
+as int,sha256: null == sha256 ? _self.sha256 : sha256 // ignore: cast_nullable_to_non_nullable
+as String,requestDate: null == requestDate ? _self.requestDate : requestDate // ignore: cast_nullable_to_non_nullable
+as DateTime,uploadDate: freezed == uploadDate ? _self.uploadDate : uploadDate // ignore: cast_nullable_to_non_nullable
+as DateTime?,
   ));
 }
 

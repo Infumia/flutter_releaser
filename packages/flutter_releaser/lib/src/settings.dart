@@ -1,15 +1,18 @@
 import "package:flutter_releaser/flutter_releaser.dart";
+import "package:flutter_releaser/src/models.dart";
 
 class FlutterReleaserSettings {
-  final String applicationArchiveUrl;
+  final Uri apiUri;
   final HttpRequester requester;
   final Logger logger;
+  final FileStorage fileStorage;
 
   FlutterReleaserSettings({
-    required String applicationArchiveUrl,
+    required Uri apiUri,
     required HttpRequester requester,
+    FileStorage fileStorage = FileStorage.s3,
     Logger logger = const LoggerPrint(),
-  }) : this._(applicationArchiveUrl, requester, logger);
+  }) : this._(apiUri, requester, logger, fileStorage);
 
   void logDebug(String message) => logger.debug(message);
 
@@ -17,8 +20,9 @@ class FlutterReleaserSettings {
       logger.error(message, exception, trace);
 
   FlutterReleaserSettings._(
-    this.applicationArchiveUrl,
+    this.apiUri,
     this.requester,
     this.logger,
+    this.fileStorage,
   );
 }

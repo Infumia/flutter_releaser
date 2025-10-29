@@ -23,24 +23,28 @@ Map<String, dynamic> _$ApplicationArchiveToJson(_ApplicationArchive instance) =>
     };
 
 _Version _$VersionFromJson(Map<String, dynamic> json) => _Version(
+  id: (json['id'] as num).toInt(),
+  file: NetworkFile.fromJson(json['file'] as Map<String, dynamic>),
   version: json['version'] as String,
-  url: Uri.parse(json['url'] as String),
   platform: $enumDecode(_$PlatformEnumMap, json['platform']),
   sizeInBytes: (json['sizeInBytes'] as num).toInt(),
-  date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-  mandatory: json['mandatory'] as bool?,
+  mandatory: json['mandatory'] as bool,
+  timestamp: json['timestamp'] == null
+      ? null
+      : DateTime.parse(json['timestamp'] as String),
   changes: (json['changes'] as List<dynamic>?)
       ?.map((e) => Change.fromJson(e as Map<String, dynamic>))
       .toList(),
 );
 
 Map<String, dynamic> _$VersionToJson(_Version instance) => <String, dynamic>{
+  'id': instance.id,
+  'file': instance.file,
   'version': instance.version,
-  'url': instance.url.toString(),
   'platform': _$PlatformEnumMap[instance.platform]!,
   'sizeInBytes': instance.sizeInBytes,
-  'date': instance.date?.toIso8601String(),
   'mandatory': instance.mandatory,
+  'timestamp': instance.timestamp?.toIso8601String(),
   'changes': instance.changes,
 };
 
@@ -67,14 +71,23 @@ const _$ChangeTypeEnumMap = {
   ChangeType.doc: 'doc',
 };
 
-_FileHash _$FileHashFromJson(Map<String, dynamic> json) => _FileHash(
-  path: json['path'] as String,
-  hash: json['hash'] as String,
-  length: (json['length'] as num).toInt(),
+_NetworkFile _$NetworkFileFromJson(Map<String, dynamic> json) => _NetworkFile(
+  id: (json['id'] as num).toInt(),
+  name: json['name'] as String,
+  size: (json['size'] as num).toInt(),
+  sha256: json['sha256'] as String,
+  requestDate: DateTime.parse(json['requestDate'] as String),
+  uploadDate: json['uploadDate'] == null
+      ? null
+      : DateTime.parse(json['uploadDate'] as String),
 );
 
-Map<String, dynamic> _$FileHashToJson(_FileHash instance) => <String, dynamic>{
-  'path': instance.path,
-  'hash': instance.hash,
-  'length': instance.length,
-};
+Map<String, dynamic> _$NetworkFileToJson(_NetworkFile instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'size': instance.size,
+      'sha256': instance.sha256,
+      'requestDate': instance.requestDate.toIso8601String(),
+      'uploadDate': instance.uploadDate?.toIso8601String(),
+    };

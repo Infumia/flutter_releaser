@@ -5,6 +5,8 @@ import "package:pub_semver/pub_semver.dart" as sem;
 part "models.freezed.dart";
 part "models.g.dart";
 
+enum FileStorage { s3 }
+
 @freezed
 sealed class ApplicationArchive with _$ApplicationArchive {
   const factory ApplicationArchive({
@@ -24,12 +26,13 @@ sealed class Version with _$Version implements Comparable<Version> {
   const Version._();
 
   const factory Version({
+    required int id,
+    required NetworkFile file,
     required String version,
-    required Uri url,
     required Platform platform,
     required int sizeInBytes,
-    DateTime? date,
-    bool? mandatory,
+    required bool mandatory,
+    DateTime? timestamp,
     List<Change>? changes,
   }) = _Version;
 
@@ -62,13 +65,16 @@ sealed class Change with _$Change {
 }
 
 @freezed
-sealed class FileHash with _$FileHash {
-  const factory FileHash({
-    required String path,
-    required String hash,
-    required int length,
-  }) = _FileHash;
+sealed class NetworkFile with _$NetworkFile {
+  const factory NetworkFile({
+    required int id,
+    required String name,
+    required int size,
+    required String sha256,
+    required DateTime requestDate,
+    DateTime? uploadDate,
+  }) = _NetworkFile;
 
-  factory FileHash.fromJson(Map<String, dynamic> json) =>
-      _$FileHashFromJson(json);
+  factory NetworkFile.fromJson(Map<String, dynamic> json) =>
+      _$NetworkFileFromJson(json);
 }
