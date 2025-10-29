@@ -47,12 +47,12 @@ Future<File> downloadS3File(
     },
   );
 
-  final downloadZip = File(downloadPath);
-  if (!downloadZip.existsSync()) {
+  final file = File(downloadPath);
+  if (!file.existsSync()) {
     throw CouldNotDownloadFile("Could not download version '$version'");
   }
 
-  return downloadZip;
+  return file;
 }
 
 @freezed
