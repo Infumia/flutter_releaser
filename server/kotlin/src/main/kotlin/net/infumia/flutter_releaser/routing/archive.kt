@@ -14,6 +14,7 @@ import kotlinx.serialization.Serializable
 import net.infumia.flutter_releaser.ApplicationArchive
 import net.infumia.flutter_releaser.File
 import net.infumia.flutter_releaser.Headers
+import net.infumia.flutter_releaser.StatusResponse
 import net.infumia.flutter_releaser.UnknownUploadTechnologyException
 import net.infumia.flutter_releaser.service.ArchiveService
 import net.infumia.flutter_releaser.service.FileUploadConfirmationService
@@ -62,13 +63,14 @@ internal fun Application.routeArchive() {
                             }
                         HttpStatusCode.BadRequest to
                             {
-                                description = "Invalid upload technology specified"
+                                description =
+                                    "Invalid upload technology specified\n\n" +
+                                        "File Sha256 is empty\n\n" +
+                                        "File Sha256 must be a valid base64 encoded SHA256 hash\n\n" +
+                                        "File size must be greater than zero"
+                                body<StatusResponse>()
                             }
                         HttpStatusCode.Unauthorized to { description = "Authentication required" }
-                        HttpStatusCode.InternalServerError to
-                            {
-                                description = "Upload technology not supported"
-                            }
                     }
                 }) {
                     val request = call.receive<UploadVersionRequest>()

@@ -34,15 +34,15 @@ object S3FileUploadService : KoinComponent {
         fileSha256: String,
     ): Triple<String, Headers, Int> {
         if (fileSha256.isEmpty()) {
-            throw InvalidSha256Exception("File Sha256 is empty!")
+            throw InvalidSha256Exception("File Sha256 is empty")
         }
 
         if (!isValidSha256Base64(fileSha256)) {
-            throw InvalidBase64Exception("File Sha256 must be a valid base64 encoded SHA256 hash!")
+            throw InvalidBase64Exception("File Sha256 must be a valid base64 encoded SHA256 hash")
         }
 
         if (fileSizeInBytes <= 0) {
-            throw InvalidFileSizeException("File size must be greater than zero!")
+            throw InvalidFileSizeException("File size must be greater than zero")
         }
 
         val file =

@@ -61,11 +61,15 @@ dependencies {
     implementation("io.insert-koin:koin-ktor")
     implementation("io.insert-koin:koin-logger-slf4j")
 
-    implementation(libs.hikari)
-    implementation(libs.s3)
     implementation(libs.openapi)
     implementation(libs.swagger)
     implementation(libs.redoc)
+    implementation(libs.schema.core)
+    implementation(libs.schema.serialization)
+    implementation(libs.schema.swagger)
+
+    implementation(libs.hikari)
+    implementation(libs.s3)
     implementation(libs.flyway)
     implementation(libs.flyway.postgresql)
     runtimeOnly(libs.logback)
