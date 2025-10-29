@@ -17,9 +17,9 @@ Future<File> downloadS3File(
   Version version,
   ValueNotifier<DownloadProgress?> downloadProgressNotifier,
 ) async {
+  final requester = settings.requester;
   final directory = await createTemporaryDirectory(settings);
   final downloadPath = path.join(directory.path, "download.zip");
-  final requester = settings.requester;
   final response = await requester.get<DownloadS3FileResponse>(
     settings,
     apiPath: "/archive/${version.id}?s3=true",
