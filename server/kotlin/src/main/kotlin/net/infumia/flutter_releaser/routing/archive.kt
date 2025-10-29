@@ -11,10 +11,13 @@ import io.ktor.server.routing.*
 import io.ktor.server.util.*
 import kotlinx.serialization.Serializable
 import net.infumia.flutter_releaser.ApplicationArchive
+import net.infumia.flutter_releaser.Change
 import net.infumia.flutter_releaser.File
 import net.infumia.flutter_releaser.Headers
+import net.infumia.flutter_releaser.Platform
 import net.infumia.flutter_releaser.StatusResponse
 import net.infumia.flutter_releaser.UnknownUploadTechnologyException
+import net.infumia.flutter_releaser.exposed.VersionsTable.platform
 import net.infumia.flutter_releaser.service.ArchiveService
 import net.infumia.flutter_releaser.service.FileUploadConfirmationService
 import net.infumia.flutter_releaser.service.S3FileDownloadService
@@ -79,6 +82,10 @@ internal fun Application.routeArchive() {
                                     fileName = request.name,
                                     fileSizeInBytes = request.sizeInBytes,
                                     fileSha256 = request.sha256,
+                                    version = request.version,
+                                    platform = request.platform,
+                                    mandatory = request.mandatory,
+                                    changes = request.changes
                                 )
                             UploadFileResponse(id = fileId, url = preSignedUrl, headers = headers)
                         } else {
@@ -190,6 +197,10 @@ private data class UploadVersionRequest(
     val name: String,
     val sizeInBytes: Long,
     val sha256: String,
+    val version: String,
+    val platform: Platform,
+    val mandatory: Boolean,
+    val changes: List<Change>,
 )
 
 @Serializable
