@@ -49,4 +49,6 @@ class UpdateController extends ChangeNotifier {
       _lock.synchronized(() => extractToUpdate(settings, file));
 
   Future<void> restartToUpdate() => _plugin.restartApplication();
+
+  Future<void> upload() async {}
 }
