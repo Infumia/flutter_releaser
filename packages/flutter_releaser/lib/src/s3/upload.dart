@@ -41,7 +41,7 @@ Future<void> uploadS3File(
 
   await requester.upload(
     settings,
-    "",
+    archivePath,
     uri: Uri.parse(response.url),
     headers: response.headers,
     progress: (sent, total) {
