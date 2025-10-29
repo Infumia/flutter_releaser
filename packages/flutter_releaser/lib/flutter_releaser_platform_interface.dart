@@ -17,6 +17,6 @@ abstract class FlutterReleaserPlatform extends PlatformInterface {
   }
 
   Future<void> restartApplication() {
-    throw UnimplementedError("restartApp() has not been implemented.");
+    throw UnimplementedError("restartApplication() has not been implemented.");
   }
 }
