@@ -1,7 +1,6 @@
 import "dart:async";
 import "dart:io";
 
-import "package:archive/archive_io.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter_releaser/flutter_releaser.dart";
 import "package:flutter_releaser/src/download.dart";
