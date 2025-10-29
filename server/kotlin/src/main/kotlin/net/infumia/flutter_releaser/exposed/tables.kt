@@ -10,6 +10,14 @@ import org.jetbrains.exposed.v1.json.json
 
 val commonTables = arrayOf(FilesTable, VersionsTable, S3FilesTable)
 
+object FilesTable : IntIdTable("files") {
+    val name = text("name")
+    val size = long("size")
+    val sha256 = text("sha256")
+    val requestDate = datetime("request_date")
+    val uploadDate = datetime("upload_date").nullable()
+}
+
 object VersionsTable : IntIdTable("versions") {
     val file = reference("file", FilesTable, onDelete = ReferenceOption.CASCADE).uniqueIndex()
     val version = text("version")
@@ -22,14 +30,6 @@ object VersionsTable : IntIdTable("versions") {
     init {
         uniqueIndex(version, platform)
     }
-}
-
-object FilesTable : IntIdTable("files") {
-    val name = text("name")
-    val size = long("size")
-    val sha256 = text("sha256")
-    val requestDate = datetime("request_date")
-    val uploadDate = datetime("upload_date").nullable()
 }
 
 object S3FilesTable : IntIdTable("s3_files") {
