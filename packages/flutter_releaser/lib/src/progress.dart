@@ -10,3 +10,12 @@ sealed class DownloadProgress with _$DownloadProgress {
     required bool finished,
   }) = _DownloadProgress;
 }
+
+@freezed
+sealed class UploadProgress with _$UploadProgress {
+  const factory UploadProgress({
+    required int totalBytes,
+    required int sentBytes,
+    required bool finished,
+  }) = _UploadProgress;
+}

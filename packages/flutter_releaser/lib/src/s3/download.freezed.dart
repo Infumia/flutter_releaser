@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$DownloadS3FileResponse implements DiagnosticableTreeMixin {
 
- NetworkFile get file; String get preSignedUrl; Headers get headers;
+ NetworkFile get file; String get url; Headers get headers;
 /// Create a copy of DownloadS3FileResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,21 +29,21 @@ $DownloadS3FileResponseCopyWith<DownloadS3FileResponse> get copyWith => _$Downlo
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'DownloadS3FileResponse'))
-    ..add(DiagnosticsProperty('file', file))..add(DiagnosticsProperty('preSignedUrl', preSignedUrl))..add(DiagnosticsProperty('headers', headers));
+    ..add(DiagnosticsProperty('file', file))..add(DiagnosticsProperty('url', url))..add(DiagnosticsProperty('headers', headers));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DownloadS3FileResponse&&(identical(other.file, file) || other.file == file)&&(identical(other.preSignedUrl, preSignedUrl) || other.preSignedUrl == preSignedUrl)&&const DeepCollectionEquality().equals(other.headers, headers));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DownloadS3FileResponse&&(identical(other.file, file) || other.file == file)&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other.headers, headers));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,file,preSignedUrl,const DeepCollectionEquality().hash(headers));
+int get hashCode => Object.hash(runtimeType,file,url,const DeepCollectionEquality().hash(headers));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'DownloadS3FileResponse(file: $file, preSignedUrl: $preSignedUrl, headers: $headers)';
+  return 'DownloadS3FileResponse(file: $file, url: $url, headers: $headers)';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $DownloadS3FileResponseCopyWith<$Res>  {
   factory $DownloadS3FileResponseCopyWith(DownloadS3FileResponse value, $Res Function(DownloadS3FileResponse) _then) = _$DownloadS3FileResponseCopyWithImpl;
 @useResult
 $Res call({
- NetworkFile file, String preSignedUrl, Headers headers
+ NetworkFile file, String url, Headers headers
 });
 
 
@@ -71,10 +71,10 @@ class _$DownloadS3FileResponseCopyWithImpl<$Res>
 
 /// Create a copy of DownloadS3FileResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? file = null,Object? preSignedUrl = null,Object? headers = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? file = null,Object? url = null,Object? headers = null,}) {
   return _then(_self.copyWith(
 file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
-as NetworkFile,preSignedUrl: null == preSignedUrl ? _self.preSignedUrl : preSignedUrl // ignore: cast_nullable_to_non_nullable
+as NetworkFile,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String,headers: null == headers ? _self.headers : headers // ignore: cast_nullable_to_non_nullable
 as Headers,
   ));
@@ -167,10 +167,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( NetworkFile file,  String preSignedUrl,  Headers headers)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( NetworkFile file,  String url,  Headers headers)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DownloadS3FileResponse() when $default != null:
-return $default(_that.file,_that.preSignedUrl,_that.headers);case _:
+return $default(_that.file,_that.url,_that.headers);case _:
   return orElse();
 
 }
@@ -188,10 +188,10 @@ return $default(_that.file,_that.preSignedUrl,_that.headers);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( NetworkFile file,  String preSignedUrl,  Headers headers)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( NetworkFile file,  String url,  Headers headers)  $default,) {final _that = this;
 switch (_that) {
 case _DownloadS3FileResponse():
-return $default(_that.file,_that.preSignedUrl,_that.headers);}
+return $default(_that.file,_that.url,_that.headers);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -205,10 +205,10 @@ return $default(_that.file,_that.preSignedUrl,_that.headers);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( NetworkFile file,  String preSignedUrl,  Headers headers)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( NetworkFile file,  String url,  Headers headers)?  $default,) {final _that = this;
 switch (_that) {
 case _DownloadS3FileResponse() when $default != null:
-return $default(_that.file,_that.preSignedUrl,_that.headers);case _:
+return $default(_that.file,_that.url,_that.headers);case _:
   return null;
 
 }
@@ -220,11 +220,11 @@ return $default(_that.file,_that.preSignedUrl,_that.headers);case _:
 @JsonSerializable()
 
 class _DownloadS3FileResponse with DiagnosticableTreeMixin implements DownloadS3FileResponse {
-  const _DownloadS3FileResponse({required this.file, required this.preSignedUrl, required final  Headers headers}): _headers = headers;
+  const _DownloadS3FileResponse({required this.file, required this.url, required final  Headers headers}): _headers = headers;
   factory _DownloadS3FileResponse.fromJson(Map<String, dynamic> json) => _$DownloadS3FileResponseFromJson(json);
 
 @override final  NetworkFile file;
-@override final  String preSignedUrl;
+@override final  String url;
  final  Headers _headers;
 @override Headers get headers {
   if (_headers is EqualUnmodifiableMapView) return _headers;
@@ -247,21 +247,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'DownloadS3FileResponse'))
-    ..add(DiagnosticsProperty('file', file))..add(DiagnosticsProperty('preSignedUrl', preSignedUrl))..add(DiagnosticsProperty('headers', headers));
+    ..add(DiagnosticsProperty('file', file))..add(DiagnosticsProperty('url', url))..add(DiagnosticsProperty('headers', headers));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DownloadS3FileResponse&&(identical(other.file, file) || other.file == file)&&(identical(other.preSignedUrl, preSignedUrl) || other.preSignedUrl == preSignedUrl)&&const DeepCollectionEquality().equals(other._headers, _headers));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DownloadS3FileResponse&&(identical(other.file, file) || other.file == file)&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other._headers, _headers));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,file,preSignedUrl,const DeepCollectionEquality().hash(_headers));
+int get hashCode => Object.hash(runtimeType,file,url,const DeepCollectionEquality().hash(_headers));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'DownloadS3FileResponse(file: $file, preSignedUrl: $preSignedUrl, headers: $headers)';
+  return 'DownloadS3FileResponse(file: $file, url: $url, headers: $headers)';
 }
 
 
@@ -272,7 +272,7 @@ abstract mixin class _$DownloadS3FileResponseCopyWith<$Res> implements $Download
   factory _$DownloadS3FileResponseCopyWith(_DownloadS3FileResponse value, $Res Function(_DownloadS3FileResponse) _then) = __$DownloadS3FileResponseCopyWithImpl;
 @override @useResult
 $Res call({
- NetworkFile file, String preSignedUrl, Headers headers
+ NetworkFile file, String url, Headers headers
 });
 
 
@@ -289,10 +289,10 @@ class __$DownloadS3FileResponseCopyWithImpl<$Res>
 
 /// Create a copy of DownloadS3FileResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? file = null,Object? preSignedUrl = null,Object? headers = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? file = null,Object? url = null,Object? headers = null,}) {
   return _then(_DownloadS3FileResponse(
 file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
-as NetworkFile,preSignedUrl: null == preSignedUrl ? _self.preSignedUrl : preSignedUrl // ignore: cast_nullable_to_non_nullable
+as NetworkFile,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String,headers: null == headers ? _self._headers : headers // ignore: cast_nullable_to_non_nullable
 as Headers,
   ));

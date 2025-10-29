@@ -1,12 +1,15 @@
 import "dart:async";
 import "dart:io";
 
+import "package:archive/archive_io.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter_releaser/flutter_releaser.dart";
 import "package:flutter_releaser/src/download.dart";
 import "package:flutter_releaser/src/extract.dart";
 import "package:flutter_releaser/src/models.dart";
 import "package:flutter_releaser/src/progress.dart";
+import "package:flutter_releaser/src/s3/upload.dart";
+import "package:flutter_releaser/src/upload.dart";
 import "package:flutter_releaser/src/version.dart";
 import "package:synchronized/synchronized.dart";
 
@@ -15,6 +18,9 @@ class UpdateController extends ChangeNotifier {
   final ValueNotifier<Version?> nextVersionNotifier = ValueNotifier(null);
   final ValueNotifier<DownloadProgress?> downloadProgressNotifier =
       ValueNotifier(null);
+  final ValueNotifier<UploadProgress?> uploadProgressNotifier = ValueNotifier(
+    null,
+  );
   final _lock = Lock();
 
   final FlutterReleaserSettings settings;
@@ -50,5 +56,23 @@ class UpdateController extends ChangeNotifier {
 
   Future<void> restartToUpdate() => _plugin.restartApplication();
 
-  Future<void> upload() async {}
+  Future<void> upload(
+    String version,
+    String archivePath,
+    Platform platform, {
+    bool mandatory = true,
+    List<Change>? changes,
+  }) async => _lock.synchronized(
+    () => uploadVersion(
+      settings,
+      UploadVersionRequest(
+        version: version,
+        archivePath: archivePath,
+        platform: platform,
+        mandatory: mandatory,
+        changes: changes ?? const [],
+      ),
+      uploadProgressNotifier,
+    ),
+  );
 }

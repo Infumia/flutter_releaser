@@ -22,10 +22,10 @@ Future<File> downloadS3File(
   final requester = settings.requester;
   final response = await requester.get<DownloadS3FileResponse>(
     settings,
-    apiPath: "/archive/${version.id}",
+    apiPath: "/archive/${version.id}?s3=true",
   );
 
-  final preSignedUri = Uri.parse(response.preSignedUrl);
+  final preSignedUri = Uri.parse(response.url);
   final headers = response.headers;
 
   await requester.download(
@@ -49,7 +49,9 @@ Future<File> downloadS3File(
 
   final file = File(downloadPath);
   if (!file.existsSync()) {
-    throw CouldNotDownloadFile("Could not download version '$version'");
+    throw CouldNotDownloadFileException(
+      "Could not download version '$version'",
+    );
   }
 
   return file;
@@ -59,7 +61,7 @@ Future<File> downloadS3File(
 sealed class DownloadS3FileResponse with _$DownloadS3FileResponse {
   const factory DownloadS3FileResponse({
     required NetworkFile file,
-    required String preSignedUrl,
+    required String url,
     required Headers headers,
   }) = _DownloadS3FileResponse;
 

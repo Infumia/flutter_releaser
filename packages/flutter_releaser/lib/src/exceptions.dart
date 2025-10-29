@@ -1,5 +1,11 @@
-class CouldNotDownloadFile implements Exception {
+class CouldNotDownloadFileException implements Exception {
   final String message;
 
-  CouldNotDownloadFile(this.message);
+  CouldNotDownloadFileException(this.message);
+}
+
+class FileNotFoundException implements Exception {
+  final String message;
+
+  FileNotFoundException(this.message);
 }

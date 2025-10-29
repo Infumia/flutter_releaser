@@ -33,6 +33,32 @@ class HttpRequesterDio implements HttpRequester {
   }
 
   @override
+  Future<T> put<T>(
+    FlutterReleaserSettings settings, {
+    Object? data,
+    Uri? uri,
+    String? apiPath,
+    Headers? headers,
+  }) async {
+    final Uri location = toUri(settings, uri: uri, apiPath: apiPath);
+    final response = await _dio.putUri<T>(
+      location,
+      data: data,
+      options: Options(headers: headers),
+    );
+    if (response.statusCode == 200) {
+      final data = response.data;
+      if (data == null) {
+        throw const HttpException("Received no response body");
+      } else {
+        return data;
+      }
+    } else {
+      throw HttpException("Received '${response.statusCode}' status code");
+    }
+  }
+
+  @override
   Future<void> download(
     FlutterReleaserSettings settings,
     String path, {
@@ -47,6 +73,24 @@ class HttpRequesterDio implements HttpRequester {
       path,
       options: Options(responseType: ResponseType.stream, headers: headers),
       onReceiveProgress: progress,
+    );
+  }
+
+  @override
+  Future<void> upload(
+    FlutterReleaserSettings settings,
+    String path, {
+    Uri? uri,
+    String? apiPath,
+    Headers? headers,
+    ProgressCallback? progress,
+  }) async {
+    final Uri location = toUri(settings, uri: uri, apiPath: apiPath);
+    await _dio.putUri<dynamic>(
+      location,
+      data: File(path).openRead(),
+      options: Options(headers: headers),
+      onSendProgress: progress,
     );
   }
 }

@@ -11,7 +11,24 @@ abstract interface class HttpRequester {
     Headers? headers,
   });
 
+  Future<T> put<T>(
+    FlutterReleaserSettings settings, {
+    Object? data,
+    Uri? uri,
+    String? apiPath,
+    Headers? headers,
+  });
+
   Future<void> download(
+    FlutterReleaserSettings settings,
+    String path, {
+    Uri? uri,
+    String? apiPath,
+    Headers? headers,
+    ProgressCallback? progress,
+  });
+
+  Future<void> upload(
     FlutterReleaserSettings settings,
     String path, {
     Uri? uri,
