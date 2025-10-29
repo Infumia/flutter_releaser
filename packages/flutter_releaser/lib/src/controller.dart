@@ -27,6 +27,7 @@ class UpdateController extends ChangeNotifier {
   UpdateController({required this.settings}) {
     nextVersionNotifier.addListener(notifyListeners);
     downloadProgressNotifier.addListener(notifyListeners);
+    uploadProgressNotifier.addListener(notifyListeners);
   }
 
   Future<void> update() => check().then((value) async {
