@@ -11,6 +11,7 @@ workspace:
   - packages/flutter_releaser_hooks
   - packages/flutter_releaser_http
   - packages/flutter_releaser_dio
+  - applications/flutter_releaser_desktop
 
 environment:
   sdk: ^3.9.0
