@@ -1,7 +1,6 @@
 import "dart:io";
 
 import "package:flutter_releaser/flutter_releaser.dart";
-import "package:flutter_releaser/src/files.dart";
 import "package:flutter_releaser/src/models.dart" hide Platform;
 import "package:package_info_plus/package_info_plus.dart";
 import "package:pub_semver/pub_semver.dart" as sem;
@@ -12,14 +11,12 @@ sem.Version parseVersion(String version) =>
     _cache.putIfAbsent(version, () => sem.Version.parse(version));
 
 Future<Version?> retrieveNewVersion(FlutterReleaserSettings settings) async {
-  if (retrieveExecutableDirectory(settings) == null) {
-    return null;
-  }
   final json = await settings.requester.get<Map<String, dynamic>>(
     settings,
-    url: settings.applicationArchiveUrl,
+    apiPath: "/archive",
   );
   final archive = ApplicationArchive.fromJson(json);
+
   return _extractNewVersion(settings, archive);
 }
 
@@ -28,7 +25,6 @@ Future<Version?> _extractNewVersion(
   ApplicationArchive archive,
 ) async {
   final latestVersion = _extractLatestVersion(settings, archive);
-
   final info = await PackageInfo.fromPlatform();
   final currentVersion = parseVersion(info.version);
 

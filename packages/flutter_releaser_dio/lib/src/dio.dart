@@ -1,6 +1,6 @@
 import "dart:io";
 
-import "package:dio/dio.dart";
+import "package:dio/dio.dart" hide Headers;
 import "package:flutter_releaser/flutter_releaser.dart" hide ProgressCallback;
 
 class HttpRequesterDio implements HttpRequester {
@@ -11,11 +11,15 @@ class HttpRequesterDio implements HttpRequester {
   @override
   Future<T> get<T>(
     FlutterReleaserSettings settings, {
-    String? url,
     Uri? uri,
+    String? apiPath,
+    Headers? headers,
   }) async {
-    final Uri location = toUri(url: url, uri: uri);
-    final response = await _dio.getUri<T>(location);
+    final Uri location = toUri(settings, uri: uri, apiPath: apiPath);
+    final response = await _dio.getUri<T>(
+      location,
+      options: Options(headers: headers),
+    );
     if (response.statusCode == 200) {
       final data = response.data;
       if (data == null) {
@@ -32,15 +36,16 @@ class HttpRequesterDio implements HttpRequester {
   Future<void> download(
     FlutterReleaserSettings settings,
     String path, {
-    String? url,
     Uri? uri,
+    String? apiPath,
+    Headers? headers,
     ProgressCallback? progress,
   }) async {
-    final Uri location = toUri(url: url, uri: uri);
+    final Uri location = toUri(settings, uri: uri, apiPath: apiPath);
     await _dio.downloadUri(
       location,
       path,
-      options: Options(responseType: ResponseType.stream),
+      options: Options(responseType: ResponseType.stream, headers: headers),
       onReceiveProgress: progress,
     );
   }

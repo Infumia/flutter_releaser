@@ -10,14 +10,15 @@ class HttpRequesterHttp implements HttpRequester {
   @override
   Future<T> get<T>(
     FlutterReleaserSettings settings, {
-    String? url,
     Uri? uri,
+    String? apiPath,
+    Headers? headers,
   }) async {
-    final Uri location = toUri(url: url, uri: uri);
+    final Uri location = toUri(settings, uri: uri, apiPath: apiPath);
 
     final client = Client();
     try {
-      final response = await client.get(location);
+      final response = await client.get(location, headers: headers);
       if (response.statusCode == 200) {
         return jsonDecode(response.body) as T;
       } else {
@@ -25,7 +26,7 @@ class HttpRequesterHttp implements HttpRequester {
       }
     } on Exception catch (e, s) {
       settings.logError(
-        "An error occurred while sending request to '$url'",
+        "An error occurred while sending request to '$location'",
         e,
         s,
       );
@@ -39,15 +40,20 @@ class HttpRequesterHttp implements HttpRequester {
   Future<void> download(
     FlutterReleaserSettings settings,
     String path, {
-    String? url,
     Uri? uri,
+    String? apiPath,
+    Headers? headers,
     ProgressCallback? progress,
   }) async {
-    final Uri location = toUri(url: url, uri: uri);
+    final Uri location = toUri(settings, uri: uri, apiPath: apiPath);
 
     final client = Client();
     try {
-      final response = await client.send(Request("GET", location));
+      final request = Request("GET", location);
+      if (headers != null) {
+        request.headers.addAll(headers);
+      }
+      final response = await client.send(request);
       if (response.statusCode == 200) {
         await response.stream.pipe(File(path).openWrite());
       } else {
@@ -55,7 +61,7 @@ class HttpRequesterHttp implements HttpRequester {
       }
     } on Exception catch (e, s) {
       settings.logError(
-        "An error occurred while sending request to '$url'",
+        "An error occurred while sending request to '$location'",
         e,
         s,
       );

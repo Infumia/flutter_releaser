@@ -1,25 +1,32 @@
 import "package:flutter_releaser/flutter_releaser.dart";
 
 typedef ProgressCallback = void Function(int count, int total);
+typedef Headers = Map<String, String>;
 
 abstract interface class HttpRequester {
-  Future<T> get<T>(FlutterReleaserSettings settings, {String? url, Uri? uri});
+  Future<T> get<T>(
+    FlutterReleaserSettings settings, {
+    Uri? uri,
+    String? apiPath,
+    Headers? headers,
+  });
 
   Future<void> download(
     FlutterReleaserSettings settings,
     String path, {
-    String? url,
     Uri? uri,
+    String? apiPath,
+    Headers? headers,
     ProgressCallback? progress,
   });
 }
 
-Uri toUri({String? url, Uri? uri}) {
+Uri toUri(FlutterReleaserSettings settings, {Uri? uri, String? apiPath}) {
   if (uri != null) {
     return uri;
-  } else if (url != null) {
-    return Uri.parse(url);
+  } else if (apiPath != null) {
+    return settings.apiUri.resolve(apiPath);
   } else {
-    throw Exception("Both url and uri cannot be null");
+    throw Exception("Both api path and uri cannot be null");
   }
 }
