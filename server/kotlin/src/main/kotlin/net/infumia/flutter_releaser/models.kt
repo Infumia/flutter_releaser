@@ -14,7 +14,7 @@ data class ApplicationArchive(
 @Serializable
 data class Version(
     override val id: Int? = null,
-    val file: S3File,
+    val file: File,
     val version: String,
     val platform: Platform,
     val sizeInBytes: Long,
