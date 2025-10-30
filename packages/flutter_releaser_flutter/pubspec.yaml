@@ -1,5 +1,5 @@
 name: flutter_releaser_flutter
-description: ""
+description: Flutter-friendly interface for the flutter_releaser package with reactive state management for desktop application updates
 version: 0.1.0
 resolution: workspace
 homepage: https://github.com/Infumia/flutter_releaser/

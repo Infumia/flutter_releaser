@@ -1,5 +1,5 @@
 name: flutter_releaser_plugin
-description: ""
+description: Platform-specific plugin for restarting Flutter desktop applications after updates on Windows, Linux, and macOS
 version: 0.1.0
 resolution: workspace
 homepage: https://github.com/Infumia/flutter_releaser/
