@@ -1,7 +1,7 @@
 import "dart:io";
 
 import "package:flutter_releaser/flutter_releaser.dart";
-import "package:flutter_releaser/src/models.dart" hide Platform;
+import "package:flutter_releaser/src/models.dart";
 import "package:package_info_plus/package_info_plus.dart";
 import "package:pub_semver/pub_semver.dart" as sem;
 

@@ -284,7 +284,7 @@ as List<Version>,
 /// @nodoc
 mixin _$Version {
 
- int get id; NetworkFile get file; String get version; Platform get platform; int get sizeInBytes; bool get mandatory; DateTime get timestamp; List<Change> get changes;
+ int get id; NetworkFile get file; String get version; TargetPlatform get platform; int get sizeInBytes; bool get mandatory; DateTime get timestamp; List<Change> get changes;
 /// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -317,7 +317,7 @@ abstract mixin class $VersionCopyWith<$Res>  {
   factory $VersionCopyWith(Version value, $Res Function(Version) _then) = _$VersionCopyWithImpl;
 @useResult
 $Res call({
- int id, NetworkFile file, String version, Platform platform, int sizeInBytes, bool mandatory, DateTime timestamp, List<Change> changes
+ int id, NetworkFile file, String version, TargetPlatform platform, int sizeInBytes, bool mandatory, DateTime timestamp, List<Change> changes
 });
 
 
@@ -340,7 +340,7 @@ id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
 as NetworkFile,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
-as Platform,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
+as TargetPlatform,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
 as int,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
 as bool,timestamp: null == timestamp ? _self.timestamp : timestamp // ignore: cast_nullable_to_non_nullable
 as DateTime,changes: null == changes ? _self.changes : changes // ignore: cast_nullable_to_non_nullable
@@ -435,7 +435,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  NetworkFile file,  String version,  Platform platform,  int sizeInBytes,  bool mandatory,  DateTime timestamp,  List<Change> changes)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  NetworkFile file,  String version,  TargetPlatform platform,  int sizeInBytes,  bool mandatory,  DateTime timestamp,  List<Change> changes)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Version() when $default != null:
 return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInBytes,_that.mandatory,_that.timestamp,_that.changes);case _:
@@ -456,7 +456,7 @@ return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInByt
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  NetworkFile file,  String version,  Platform platform,  int sizeInBytes,  bool mandatory,  DateTime timestamp,  List<Change> changes)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  NetworkFile file,  String version,  TargetPlatform platform,  int sizeInBytes,  bool mandatory,  DateTime timestamp,  List<Change> changes)  $default,) {final _that = this;
 switch (_that) {
 case _Version():
 return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInBytes,_that.mandatory,_that.timestamp,_that.changes);}
@@ -473,7 +473,7 @@ return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInByt
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  NetworkFile file,  String version,  Platform platform,  int sizeInBytes,  bool mandatory,  DateTime timestamp,  List<Change> changes)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  NetworkFile file,  String version,  TargetPlatform platform,  int sizeInBytes,  bool mandatory,  DateTime timestamp,  List<Change> changes)?  $default,) {final _that = this;
 switch (_that) {
 case _Version() when $default != null:
 return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInBytes,_that.mandatory,_that.timestamp,_that.changes);case _:
@@ -494,7 +494,7 @@ class _Version extends Version {
 @override final  int id;
 @override final  NetworkFile file;
 @override final  String version;
-@override final  Platform platform;
+@override final  TargetPlatform platform;
 @override final  int sizeInBytes;
 @override final  bool mandatory;
 @override final  DateTime timestamp;
@@ -539,7 +539,7 @@ abstract mixin class _$VersionCopyWith<$Res> implements $VersionCopyWith<$Res> {
   factory _$VersionCopyWith(_Version value, $Res Function(_Version) _then) = __$VersionCopyWithImpl;
 @override @useResult
 $Res call({
- int id, NetworkFile file, String version, Platform platform, int sizeInBytes, bool mandatory, DateTime timestamp, List<Change> changes
+ int id, NetworkFile file, String version, TargetPlatform platform, int sizeInBytes, bool mandatory, DateTime timestamp, List<Change> changes
 });
 
 
@@ -562,7 +562,7 @@ id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
 as NetworkFile,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
-as Platform,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
+as TargetPlatform,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
 as int,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
 as bool,timestamp: null == timestamp ? _self.timestamp : timestamp // ignore: cast_nullable_to_non_nullable
 as DateTime,changes: null == changes ? _self._changes : changes // ignore: cast_nullable_to_non_nullable

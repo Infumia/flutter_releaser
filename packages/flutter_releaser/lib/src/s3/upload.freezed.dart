@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UploadVersionRequest implements DiagnosticableTreeMixin {
 
- String get version; String get archivePath; Platform get platform; bool get mandatory; List<Change> get changes;
+ String get version; String get archivePath; TargetPlatform get platform; bool get mandatory; List<Change> get changes;
 /// Create a copy of UploadVersionRequest
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -54,7 +54,7 @@ abstract mixin class $UploadVersionRequestCopyWith<$Res>  {
   factory $UploadVersionRequestCopyWith(UploadVersionRequest value, $Res Function(UploadVersionRequest) _then) = _$UploadVersionRequestCopyWithImpl;
 @useResult
 $Res call({
- String version, String archivePath, Platform platform, bool mandatory, List<Change> changes
+ String version, String archivePath, TargetPlatform platform, bool mandatory, List<Change> changes
 });
 
 
@@ -76,7 +76,7 @@ class _$UploadVersionRequestCopyWithImpl<$Res>
 version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String,archivePath: null == archivePath ? _self.archivePath : archivePath // ignore: cast_nullable_to_non_nullable
 as String,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
-as Platform,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
+as TargetPlatform,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
 as bool,changes: null == changes ? _self.changes : changes // ignore: cast_nullable_to_non_nullable
 as List<Change>,
   ));
@@ -160,7 +160,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String version,  String archivePath,  Platform platform,  bool mandatory,  List<Change> changes)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String version,  String archivePath,  TargetPlatform platform,  bool mandatory,  List<Change> changes)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UploadVersionRequest() when $default != null:
 return $default(_that.version,_that.archivePath,_that.platform,_that.mandatory,_that.changes);case _:
@@ -181,7 +181,7 @@ return $default(_that.version,_that.archivePath,_that.platform,_that.mandatory,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String version,  String archivePath,  Platform platform,  bool mandatory,  List<Change> changes)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String version,  String archivePath,  TargetPlatform platform,  bool mandatory,  List<Change> changes)  $default,) {final _that = this;
 switch (_that) {
 case _UploadVersionRequest():
 return $default(_that.version,_that.archivePath,_that.platform,_that.mandatory,_that.changes);}
@@ -198,7 +198,7 @@ return $default(_that.version,_that.archivePath,_that.platform,_that.mandatory,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String version,  String archivePath,  Platform platform,  bool mandatory,  List<Change> changes)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String version,  String archivePath,  TargetPlatform platform,  bool mandatory,  List<Change> changes)?  $default,) {final _that = this;
 switch (_that) {
 case _UploadVersionRequest() when $default != null:
 return $default(_that.version,_that.archivePath,_that.platform,_that.mandatory,_that.changes);case _:
@@ -218,7 +218,7 @@ class _UploadVersionRequest with DiagnosticableTreeMixin implements UploadVersio
 
 @override final  String version;
 @override final  String archivePath;
-@override final  Platform platform;
+@override final  TargetPlatform platform;
 @override final  bool mandatory;
  final  List<Change> _changes;
 @override List<Change> get changes {
@@ -267,7 +267,7 @@ abstract mixin class _$UploadVersionRequestCopyWith<$Res> implements $UploadVers
   factory _$UploadVersionRequestCopyWith(_UploadVersionRequest value, $Res Function(_UploadVersionRequest) _then) = __$UploadVersionRequestCopyWithImpl;
 @override @useResult
 $Res call({
- String version, String archivePath, Platform platform, bool mandatory, List<Change> changes
+ String version, String archivePath, TargetPlatform platform, bool mandatory, List<Change> changes
 });
 
 
@@ -289,7 +289,7 @@ class __$UploadVersionRequestCopyWithImpl<$Res>
 version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String,archivePath: null == archivePath ? _self.archivePath : archivePath // ignore: cast_nullable_to_non_nullable
 as String,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
-as Platform,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
+as TargetPlatform,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
 as bool,changes: null == changes ? _self._changes : changes // ignore: cast_nullable_to_non_nullable
 as List<Change>,
   ));
@@ -302,7 +302,7 @@ as List<Change>,
 /// @nodoc
 mixin _$UploadS3FileRequest implements DiagnosticableTreeMixin {
 
- String get name; int get sizeInBytes; String get sha256; String get version; Platform get platform; bool get mandatory; List<Change> get changes;
+ String get name; int get sizeInBytes; String get sha256; String get version; TargetPlatform get platform; bool get mandatory; List<Change> get changes;
 /// Create a copy of UploadS3FileRequest
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -341,7 +341,7 @@ abstract mixin class $UploadS3FileRequestCopyWith<$Res>  {
   factory $UploadS3FileRequestCopyWith(UploadS3FileRequest value, $Res Function(UploadS3FileRequest) _then) = _$UploadS3FileRequestCopyWithImpl;
 @useResult
 $Res call({
- String name, int sizeInBytes, String sha256, String version, Platform platform, bool mandatory, List<Change> changes
+ String name, int sizeInBytes, String sha256, String version, TargetPlatform platform, bool mandatory, List<Change> changes
 });
 
 
@@ -365,7 +365,7 @@ as String,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // 
 as int,sha256: null == sha256 ? _self.sha256 : sha256 // ignore: cast_nullable_to_non_nullable
 as String,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
-as Platform,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
+as TargetPlatform,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
 as bool,changes: null == changes ? _self.changes : changes // ignore: cast_nullable_to_non_nullable
 as List<Change>,
   ));
@@ -449,7 +449,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  int sizeInBytes,  String sha256,  String version,  Platform platform,  bool mandatory,  List<Change> changes)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  int sizeInBytes,  String sha256,  String version,  TargetPlatform platform,  bool mandatory,  List<Change> changes)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UploadS3FileRequest() when $default != null:
 return $default(_that.name,_that.sizeInBytes,_that.sha256,_that.version,_that.platform,_that.mandatory,_that.changes);case _:
@@ -470,7 +470,7 @@ return $default(_that.name,_that.sizeInBytes,_that.sha256,_that.version,_that.pl
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  int sizeInBytes,  String sha256,  String version,  Platform platform,  bool mandatory,  List<Change> changes)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  int sizeInBytes,  String sha256,  String version,  TargetPlatform platform,  bool mandatory,  List<Change> changes)  $default,) {final _that = this;
 switch (_that) {
 case _UploadS3FileRequest():
 return $default(_that.name,_that.sizeInBytes,_that.sha256,_that.version,_that.platform,_that.mandatory,_that.changes);}
@@ -487,7 +487,7 @@ return $default(_that.name,_that.sizeInBytes,_that.sha256,_that.version,_that.pl
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  int sizeInBytes,  String sha256,  String version,  Platform platform,  bool mandatory,  List<Change> changes)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  int sizeInBytes,  String sha256,  String version,  TargetPlatform platform,  bool mandatory,  List<Change> changes)?  $default,) {final _that = this;
 switch (_that) {
 case _UploadS3FileRequest() when $default != null:
 return $default(_that.name,_that.sizeInBytes,_that.sha256,_that.version,_that.platform,_that.mandatory,_that.changes);case _:
@@ -509,7 +509,7 @@ class _UploadS3FileRequest with DiagnosticableTreeMixin implements UploadS3FileR
 @override final  int sizeInBytes;
 @override final  String sha256;
 @override final  String version;
-@override final  Platform platform;
+@override final  TargetPlatform platform;
 @override final  bool mandatory;
  final  List<Change> _changes;
 @override List<Change> get changes {
@@ -558,7 +558,7 @@ abstract mixin class _$UploadS3FileRequestCopyWith<$Res> implements $UploadS3Fil
   factory _$UploadS3FileRequestCopyWith(_UploadS3FileRequest value, $Res Function(_UploadS3FileRequest) _then) = __$UploadS3FileRequestCopyWithImpl;
 @override @useResult
 $Res call({
- String name, int sizeInBytes, String sha256, String version, Platform platform, bool mandatory, List<Change> changes
+ String name, int sizeInBytes, String sha256, String version, TargetPlatform platform, bool mandatory, List<Change> changes
 });
 
 
@@ -582,7 +582,7 @@ as String,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // 
 as int,sha256: null == sha256 ? _self.sha256 : sha256 // ignore: cast_nullable_to_non_nullable
 as String,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
-as Platform,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
+as TargetPlatform,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
 as bool,changes: null == changes ? _self._changes : changes // ignore: cast_nullable_to_non_nullable
 as List<Change>,
   ));

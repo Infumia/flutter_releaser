@@ -11,7 +11,7 @@ _UploadVersionRequest _$UploadVersionRequestFromJson(
 ) => _UploadVersionRequest(
   version: json['version'] as String,
   archivePath: json['archivePath'] as String,
-  platform: $enumDecode(_$PlatformEnumMap, json['platform']),
+  platform: $enumDecode(_$TargetPlatformEnumMap, json['platform']),
   mandatory: json['mandatory'] as bool,
   changes: (json['changes'] as List<dynamic>)
       .map((e) => Change.fromJson(e as Map<String, dynamic>))
@@ -23,15 +23,15 @@ Map<String, dynamic> _$UploadVersionRequestToJson(
 ) => <String, dynamic>{
   'version': instance.version,
   'archivePath': instance.archivePath,
-  'platform': _$PlatformEnumMap[instance.platform]!,
+  'platform': _$TargetPlatformEnumMap[instance.platform]!,
   'mandatory': instance.mandatory,
   'changes': instance.changes,
 };
 
-const _$PlatformEnumMap = {
-  Platform.macos: 'macos',
-  Platform.linux: 'linux',
-  Platform.windows: 'windows',
+const _$TargetPlatformEnumMap = {
+  TargetPlatform.macos: 'macos',
+  TargetPlatform.linux: 'linux',
+  TargetPlatform.windows: 'windows',
 };
 
 _UploadS3FileRequest _$UploadS3FileRequestFromJson(Map<String, dynamic> json) =>
@@ -40,7 +40,7 @@ _UploadS3FileRequest _$UploadS3FileRequestFromJson(Map<String, dynamic> json) =>
       sizeInBytes: (json['sizeInBytes'] as num).toInt(),
       sha256: json['sha256'] as String,
       version: json['version'] as String,
-      platform: $enumDecode(_$PlatformEnumMap, json['platform']),
+      platform: $enumDecode(_$TargetPlatformEnumMap, json['platform']),
       mandatory: json['mandatory'] as bool,
       changes: (json['changes'] as List<dynamic>)
           .map((e) => Change.fromJson(e as Map<String, dynamic>))
@@ -54,7 +54,7 @@ Map<String, dynamic> _$UploadS3FileRequestToJson(
   'sizeInBytes': instance.sizeInBytes,
   'sha256': instance.sha256,
   'version': instance.version,
-  'platform': _$PlatformEnumMap[instance.platform]!,
+  'platform': _$TargetPlatformEnumMap[instance.platform]!,
   'mandatory': instance.mandatory,
   'changes': instance.changes,
 };

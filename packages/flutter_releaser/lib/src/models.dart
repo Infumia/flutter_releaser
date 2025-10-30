@@ -19,7 +19,7 @@ sealed class ApplicationArchive with _$ApplicationArchive {
       _$ApplicationArchiveFromJson(json);
 }
 
-enum Platform { macos, linux, windows }
+enum TargetPlatform { macos, linux, windows }
 
 @freezed
 sealed class Version with _$Version implements Comparable<Version> {
@@ -29,7 +29,7 @@ sealed class Version with _$Version implements Comparable<Version> {
     required int id,
     required NetworkFile file,
     required String version,
-    required Platform platform,
+    required TargetPlatform platform,
     required int sizeInBytes,
     required bool mandatory,
     required DateTime timestamp,

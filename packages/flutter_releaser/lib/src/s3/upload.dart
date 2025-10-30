@@ -1,7 +1,7 @@
 import "dart:convert";
 import "dart:io";
 
-import "package:flutter/foundation.dart";
+import "package:flutter/foundation.dart" hide TargetPlatform;
 import "package:flutter_releaser/flutter_releaser.dart";
 import "package:flutter_releaser/src/exceptions.dart";
 import "package:flutter_releaser/src/extensions.dart";
@@ -68,7 +68,7 @@ sealed class UploadVersionRequest with _$UploadVersionRequest {
   const factory UploadVersionRequest({
     required String version,
     required String archivePath,
-    required Platform platform,
+    required TargetPlatform platform,
     required bool mandatory,
     required List<Change> changes,
   }) = _UploadVersionRequest;
@@ -84,7 +84,7 @@ sealed class UploadS3FileRequest with _$UploadS3FileRequest {
     required int sizeInBytes,
     required String sha256,
     required String version,
-    required Platform platform,
+    required TargetPlatform platform,
     required bool mandatory,
     required List<Change> changes,
   }) = _UploadS3FileRequest;

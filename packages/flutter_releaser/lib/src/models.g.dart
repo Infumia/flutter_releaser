@@ -26,7 +26,7 @@ _Version _$VersionFromJson(Map<String, dynamic> json) => _Version(
   id: (json['id'] as num).toInt(),
   file: NetworkFile.fromJson(json['file'] as Map<String, dynamic>),
   version: json['version'] as String,
-  platform: $enumDecode(_$PlatformEnumMap, json['platform']),
+  platform: $enumDecode(_$TargetPlatformEnumMap, json['platform']),
   sizeInBytes: (json['sizeInBytes'] as num).toInt(),
   mandatory: json['mandatory'] as bool,
   timestamp: DateTime.parse(json['timestamp'] as String),
@@ -39,17 +39,17 @@ Map<String, dynamic> _$VersionToJson(_Version instance) => <String, dynamic>{
   'id': instance.id,
   'file': instance.file,
   'version': instance.version,
-  'platform': _$PlatformEnumMap[instance.platform]!,
+  'platform': _$TargetPlatformEnumMap[instance.platform]!,
   'sizeInBytes': instance.sizeInBytes,
   'mandatory': instance.mandatory,
   'timestamp': instance.timestamp.toIso8601String(),
   'changes': instance.changes,
 };
 
-const _$PlatformEnumMap = {
-  Platform.macos: 'macos',
-  Platform.linux: 'linux',
-  Platform.windows: 'windows',
+const _$TargetPlatformEnumMap = {
+  TargetPlatform.macos: 'macos',
+  TargetPlatform.linux: 'linux',
+  TargetPlatform.windows: 'windows',
 };
 
 _Change _$ChangeFromJson(Map<String, dynamic> json) => _Change(

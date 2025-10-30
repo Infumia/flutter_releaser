@@ -1,7 +1,7 @@
 import "dart:async";
 import "dart:io";
 
-import "package:flutter/foundation.dart";
+import "package:flutter/foundation.dart" hide TargetPlatform;
 import "package:flutter_releaser/flutter_releaser.dart";
 import "package:flutter_releaser/src/download.dart";
 import "package:flutter_releaser/src/extract.dart";
@@ -59,7 +59,7 @@ class UpdateController extends ChangeNotifier {
   Future<void> upload(
     String version,
     String archivePath,
-    Platform platform, {
+    TargetPlatform platform, {
     bool mandatory = true,
     List<Change>? changes,
   }) async => _lock.synchronized(
