@@ -1,3 +1,23 @@
+## 0.2.0
+
+> Note: This release has breaking changes.
+
+ - **REFACTOR**: rename platform to targetplatform.
+ - **FIX**: add listener to upload progress notifier as well.
+ - **FIX**: macos plugin.
+ - **FIX**: give archive path.
+ - **FEAT**: add flutter_releaser:build cli.
+ - **FEAT**: add pubspec parser for the cli.
+ - **FEAT**: upload with new parameters.
+ - **FEAT**: implement upload system.
+ - **FEAT**: const.
+ - **FEAT**: abstraction layer for http requests. ([#2](https://github.com/Infumia/flutter_releaser//issues/2)).
+ - **FEAT**: add update function.
+ - **FEAT**: initial version. ([#1](https://github.com/Infumia/flutter_releaser//issues/1)).
+ - **FEAT**: test.
+ - **BREAKING** **FEAT**: start working on upload system.
+ - **BREAKING** **CHANGE**: implementing the new api specifications. ([#3](https://github.com/Infumia/flutter_releaser//issues/3)).
+
 ## 0.1.0
 
 > Note: This release has breaking changes.
