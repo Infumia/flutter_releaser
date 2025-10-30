@@ -1,3 +1,9 @@
+## 0.1.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**: create flutter_releaser_flutter  and plugin/flutter_releaser_plugin.
+
 ## 0.0.3+5
 
  - Update a dependency to the latest release.

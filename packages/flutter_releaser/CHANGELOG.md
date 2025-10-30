@@ -1,3 +1,11 @@
+## 0.3.0
+
+> Note: This release has breaking changes.
+
+ - **FEAT**: move to flutter_releaser_cli.
+ - **FEAT**: platforms.
+ - **BREAKING** **FEAT**: create flutter_releaser_flutter  and plugin/flutter_releaser_plugin.
+
 ## 0.2.0+1
 
  - **FIX**: remove unused variable.

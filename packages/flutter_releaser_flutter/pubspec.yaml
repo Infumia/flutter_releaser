@@ -1,6 +1,6 @@
 name: flutter_releaser_flutter
 description: ""
-version: 0.0.1
+version: 0.1.0
 resolution: workspace
 homepage: https://github.com/Infumia/flutter_releaser/
 repository: https://github.com/Infumia/flutter_releaser/
@@ -13,4 +13,4 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_releaser: ^0.2.0+1
+  flutter_releaser: ^0.3.0

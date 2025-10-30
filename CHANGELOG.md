@@ -11,6 +11,52 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 Packages with breaking changes:
 
+ - [`flutter_releaser` - `v0.3.0`](#flutter_releaser---v030)
+ - [`flutter_releaser_flutter` - `v0.1.0`](#flutter_releaser_flutter---v010)
+ - [`flutter_releaser_hooks` - `v0.1.0`](#flutter_releaser_hooks---v010)
+ - [`flutter_releaser_plugin` - `v0.1.0`](#flutter_releaser_plugin---v010)
+
+Packages with other changes:
+
+ - [`flutter_releaser_http` - `v0.1.0+3`](#flutter_releaser_http---v0103)
+ - [`flutter_releaser_dio` - `v0.1.0+3`](#flutter_releaser_dio---v0103)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_releaser_http` - `v0.1.0+3`
+ - `flutter_releaser_dio` - `v0.1.0+3`
+
+---
+
+#### `flutter_releaser` - `v0.3.0`
+
+ - **FEAT**: move to flutter_releaser_cli.
+ - **FEAT**: platforms.
+ - **BREAKING** **FEAT**: create flutter_releaser_flutter  and plugin/flutter_releaser_plugin.
+
+#### `flutter_releaser_flutter` - `v0.1.0`
+
+ - **BREAKING** **FEAT**: create flutter_releaser_flutter  and plugin/flutter_releaser_plugin.
+
+#### `flutter_releaser_hooks` - `v0.1.0`
+
+ - **BREAKING** **FEAT**: create flutter_releaser_flutter  and plugin/flutter_releaser_plugin.
+
+#### `flutter_releaser_plugin` - `v0.1.0`
+
+ - **BREAKING** **FEAT**: create flutter_releaser_flutter  and plugin/flutter_releaser_plugin.
+
+
+## 2025-10-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
  - There are no breaking changes in this release.
 
 Packages with other changes:
