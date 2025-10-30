@@ -87,29 +87,4 @@ Future<void> main(List<String> args) async {
   }
 
   debugPrint("Build completed successfully");
-
-  final buildPath = switch (platform) {
-    TargetPlatform.macos => path.join(
-      "build",
-      "macos",
-      "Build",
-      "Products",
-      "Release",
-      "$applicationName.app",
-    ),
-    TargetPlatform.linux => path.join(
-      "build",
-      "linux",
-      "x64",
-      "release",
-      "bundle",
-    ),
-    TargetPlatform.windows => path.join(
-      "build",
-      "windows",
-      "x64",
-      "runner",
-      "Release",
-    ),
-  };
 }
