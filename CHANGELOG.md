@@ -11,6 +11,38 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 Packages with breaking changes:
 
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_releaser` - `v0.2.0+1`](#flutter_releaser---v0201)
+ - [`flutter_releaser_hooks` - `v0.0.3+5`](#flutter_releaser_hooks---v0035)
+ - [`flutter_releaser_http` - `v0.1.0+2`](#flutter_releaser_http---v0102)
+ - [`flutter_releaser_dio` - `v0.1.0+2`](#flutter_releaser_dio---v0102)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_releaser_hooks` - `v0.0.3+5`
+ - `flutter_releaser_http` - `v0.1.0+2`
+ - `flutter_releaser_dio` - `v0.1.0+2`
+
+---
+
+#### `flutter_releaser` - `v0.2.0+1`
+
+ - **FIX**: remove unused variable.
+
+
+## 2025-10-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
  - [`flutter_releaser` - `v0.2.0`](#flutter_releaser---v020)
 
 Packages with other changes:
