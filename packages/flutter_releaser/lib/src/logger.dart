@@ -1,5 +1,3 @@
-import "package:flutter/foundation.dart";
-
 abstract interface class Logger {
   void debug(String message);
 
@@ -14,28 +12,4 @@ class LoggerNoop implements Logger {
 
   @override
   void error(String message, [Exception? exception, StackTrace? trace]) {}
-}
-
-class LoggerPrint implements Logger {
-  const LoggerPrint();
-
-  @override
-  void debug(String message) {
-    debugPrint(message);
-  }
-
-  @override
-  void error(String message, [Exception? exception, StackTrace? trace]) {
-    debugPrint(message);
-    if (exception != null) {
-      debugPrint(exception.toString());
-    }
-    if (trace != null) {
-      debugPrint(
-        FlutterError.defaultStackFilter(
-          trace.toString().trimRight().split("\n"),
-        ).join("\n"),
-      );
-    }
-  }
 }

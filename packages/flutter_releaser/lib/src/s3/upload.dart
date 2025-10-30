@@ -1,12 +1,9 @@
 import "dart:convert";
 import "dart:io";
 
-import "package:flutter/foundation.dart" hide TargetPlatform;
 import "package:flutter_releaser/flutter_releaser.dart";
 import "package:flutter_releaser/src/exceptions.dart";
 import "package:flutter_releaser/src/extensions.dart";
-import "package:flutter_releaser/src/models.dart";
-import "package:flutter_releaser/src/progress.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:path/path.dart" as path;
 
@@ -16,7 +13,7 @@ part "upload.g.dart";
 Future<void> uploadS3File(
   FlutterReleaserSettings settings,
   UploadVersionRequest request,
-  ValueNotifier<UploadProgress?> uploadProgressNotifier,
+  Ref<UploadProgress?> uploadProgressRef,
 ) async {
   final requester = settings.requester;
   final archivePath = request.archivePath;
@@ -50,13 +47,13 @@ Future<void> uploadS3File(
     headers: response.headers,
     progress: (sent, total) {
       final currentProgress =
-          uploadProgressNotifier.value ??
+          uploadProgressRef.value ??
           UploadProgress(
             totalBytes: sizeInBytes,
             sentBytes: sent,
             finished: false,
           );
-      uploadProgressNotifier.value = currentProgress.copyWith(sentBytes: sent);
+      uploadProgressRef.value = currentProgress.copyWith(sentBytes: sent);
     },
   );
 

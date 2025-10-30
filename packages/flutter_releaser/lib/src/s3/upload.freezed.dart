@@ -13,7 +13,7 @@ part of 'upload.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$UploadVersionRequest implements DiagnosticableTreeMixin {
+mixin _$UploadVersionRequest {
 
  String get version; String get archivePath; TargetPlatform get platform; bool get mandatory; List<Change> get changes;
 /// Create a copy of UploadVersionRequest
@@ -25,12 +25,6 @@ $UploadVersionRequestCopyWith<UploadVersionRequest> get copyWith => _$UploadVers
   /// Serializes this UploadVersionRequest to a JSON map.
   Map<String, dynamic> toJson();
 
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'UploadVersionRequest'))
-    ..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('archivePath', archivePath))..add(DiagnosticsProperty('platform', platform))..add(DiagnosticsProperty('mandatory', mandatory))..add(DiagnosticsProperty('changes', changes));
-}
 
 @override
 bool operator ==(Object other) {
@@ -42,7 +36,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,version,archivePath,platform,mandatory,const DeepCollectionEquality().hash(changes));
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'UploadVersionRequest(version: $version, archivePath: $archivePath, platform: $platform, mandatory: $mandatory, changes: $changes)';
 }
 
@@ -212,7 +206,7 @@ return $default(_that.version,_that.archivePath,_that.platform,_that.mandatory,_
 /// @nodoc
 @JsonSerializable()
 
-class _UploadVersionRequest with DiagnosticableTreeMixin implements UploadVersionRequest {
+class _UploadVersionRequest implements UploadVersionRequest {
   const _UploadVersionRequest({required this.version, required this.archivePath, required this.platform, required this.mandatory, required final  List<Change> changes}): _changes = changes;
   factory _UploadVersionRequest.fromJson(Map<String, dynamic> json) => _$UploadVersionRequestFromJson(json);
 
@@ -238,12 +232,6 @@ _$UploadVersionRequestCopyWith<_UploadVersionRequest> get copyWith => __$UploadV
 Map<String, dynamic> toJson() {
   return _$UploadVersionRequestToJson(this, );
 }
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'UploadVersionRequest'))
-    ..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('archivePath', archivePath))..add(DiagnosticsProperty('platform', platform))..add(DiagnosticsProperty('mandatory', mandatory))..add(DiagnosticsProperty('changes', changes));
-}
 
 @override
 bool operator ==(Object other) {
@@ -255,7 +243,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,version,archivePath,platform,mandatory,const DeepCollectionEquality().hash(_changes));
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'UploadVersionRequest(version: $version, archivePath: $archivePath, platform: $platform, mandatory: $mandatory, changes: $changes)';
 }
 
@@ -300,7 +288,7 @@ as List<Change>,
 
 
 /// @nodoc
-mixin _$UploadS3FileRequest implements DiagnosticableTreeMixin {
+mixin _$UploadS3FileRequest {
 
  String get name; int get sizeInBytes; String get sha256; String get version; TargetPlatform get platform; bool get mandatory; List<Change> get changes;
 /// Create a copy of UploadS3FileRequest
@@ -312,12 +300,6 @@ $UploadS3FileRequestCopyWith<UploadS3FileRequest> get copyWith => _$UploadS3File
   /// Serializes this UploadS3FileRequest to a JSON map.
   Map<String, dynamic> toJson();
 
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'UploadS3FileRequest'))
-    ..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('sizeInBytes', sizeInBytes))..add(DiagnosticsProperty('sha256', sha256))..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('platform', platform))..add(DiagnosticsProperty('mandatory', mandatory))..add(DiagnosticsProperty('changes', changes));
-}
 
 @override
 bool operator ==(Object other) {
@@ -329,7 +311,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,name,sizeInBytes,sha256,version,platform,mandatory,const DeepCollectionEquality().hash(changes));
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'UploadS3FileRequest(name: $name, sizeInBytes: $sizeInBytes, sha256: $sha256, version: $version, platform: $platform, mandatory: $mandatory, changes: $changes)';
 }
 
@@ -501,7 +483,7 @@ return $default(_that.name,_that.sizeInBytes,_that.sha256,_that.version,_that.pl
 /// @nodoc
 @JsonSerializable()
 
-class _UploadS3FileRequest with DiagnosticableTreeMixin implements UploadS3FileRequest {
+class _UploadS3FileRequest implements UploadS3FileRequest {
   const _UploadS3FileRequest({required this.name, required this.sizeInBytes, required this.sha256, required this.version, required this.platform, required this.mandatory, required final  List<Change> changes}): _changes = changes;
   factory _UploadS3FileRequest.fromJson(Map<String, dynamic> json) => _$UploadS3FileRequestFromJson(json);
 
@@ -529,12 +511,6 @@ _$UploadS3FileRequestCopyWith<_UploadS3FileRequest> get copyWith => __$UploadS3F
 Map<String, dynamic> toJson() {
   return _$UploadS3FileRequestToJson(this, );
 }
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'UploadS3FileRequest'))
-    ..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('sizeInBytes', sizeInBytes))..add(DiagnosticsProperty('sha256', sha256))..add(DiagnosticsProperty('version', version))..add(DiagnosticsProperty('platform', platform))..add(DiagnosticsProperty('mandatory', mandatory))..add(DiagnosticsProperty('changes', changes));
-}
 
 @override
 bool operator ==(Object other) {
@@ -546,7 +522,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,name,sizeInBytes,sha256,version,platform,mandatory,const DeepCollectionEquality().hash(_changes));
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'UploadS3FileRequest(name: $name, sizeInBytes: $sizeInBytes, sha256: $sha256, version: $version, platform: $platform, mandatory: $mandatory, changes: $changes)';
 }
 
@@ -593,7 +569,7 @@ as List<Change>,
 
 
 /// @nodoc
-mixin _$UploadS3FileResponse implements DiagnosticableTreeMixin {
+mixin _$UploadS3FileResponse {
 
  int get id; String get url; Headers get headers;
 /// Create a copy of UploadS3FileResponse
@@ -605,12 +581,6 @@ $UploadS3FileResponseCopyWith<UploadS3FileResponse> get copyWith => _$UploadS3Fi
   /// Serializes this UploadS3FileResponse to a JSON map.
   Map<String, dynamic> toJson();
 
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'UploadS3FileResponse'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('url', url))..add(DiagnosticsProperty('headers', headers));
-}
 
 @override
 bool operator ==(Object other) {
@@ -622,7 +592,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,id,url,const DeepCollectionEquality().hash(headers));
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'UploadS3FileResponse(id: $id, url: $url, headers: $headers)';
 }
 
@@ -790,7 +760,7 @@ return $default(_that.id,_that.url,_that.headers);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _UploadS3FileResponse with DiagnosticableTreeMixin implements UploadS3FileResponse {
+class _UploadS3FileResponse implements UploadS3FileResponse {
   const _UploadS3FileResponse({required this.id, required this.url, required final  Headers headers}): _headers = headers;
   factory _UploadS3FileResponse.fromJson(Map<String, dynamic> json) => _$UploadS3FileResponseFromJson(json);
 
@@ -814,12 +784,6 @@ _$UploadS3FileResponseCopyWith<_UploadS3FileResponse> get copyWith => __$UploadS
 Map<String, dynamic> toJson() {
   return _$UploadS3FileResponseToJson(this, );
 }
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'UploadS3FileResponse'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('url', url))..add(DiagnosticsProperty('headers', headers));
-}
 
 @override
 bool operator ==(Object other) {
@@ -831,7 +795,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,id,url,const DeepCollectionEquality().hash(_headers));
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'UploadS3FileResponse(id: $id, url: $url, headers: $headers)';
 }
 

@@ -1,5 +1,4 @@
 import "package:flutter_releaser/flutter_releaser.dart";
-import "package:flutter_releaser/src/models.dart";
 
 class FlutterReleaserSettings {
   final Uri apiUri;
@@ -11,7 +10,7 @@ class FlutterReleaserSettings {
     required Uri apiUri,
     required HttpRequester requester,
     FileStorage fileStorage = FileStorage.s3,
-    Logger logger = const LoggerPrint(),
+    Logger logger = const LoggerNoop(),
   }) : this._(apiUri, requester, logger, fileStorage);
 
   void logDebug(String message) => logger.debug(message);

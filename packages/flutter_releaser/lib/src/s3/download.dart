@@ -1,11 +1,8 @@
 import "dart:io";
 
-import "package:flutter/foundation.dart";
 import "package:flutter_releaser/flutter_releaser.dart";
 import "package:flutter_releaser/src/exceptions.dart";
 import "package:flutter_releaser/src/files.dart";
-import "package:flutter_releaser/src/models.dart";
-import "package:flutter_releaser/src/progress.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:path/path.dart" as path;
 
@@ -15,7 +12,7 @@ part "download.g.dart";
 Future<File> downloadS3File(
   FlutterReleaserSettings settings,
   Version version,
-  ValueNotifier<DownloadProgress?> downloadProgressNotifier,
+  Ref<DownloadProgress?> downloadProgressNotifier,
 ) async {
   final requester = settings.requester;
   final directory = await createTemporaryDirectory(settings);

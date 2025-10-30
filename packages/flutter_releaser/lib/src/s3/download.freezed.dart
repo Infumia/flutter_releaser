@@ -13,7 +13,7 @@ part of 'download.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$DownloadS3FileResponse implements DiagnosticableTreeMixin {
+mixin _$DownloadS3FileResponse {
 
  NetworkFile get file; String get url; Headers get headers;
 /// Create a copy of DownloadS3FileResponse
@@ -25,12 +25,6 @@ $DownloadS3FileResponseCopyWith<DownloadS3FileResponse> get copyWith => _$Downlo
   /// Serializes this DownloadS3FileResponse to a JSON map.
   Map<String, dynamic> toJson();
 
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'DownloadS3FileResponse'))
-    ..add(DiagnosticsProperty('file', file))..add(DiagnosticsProperty('url', url))..add(DiagnosticsProperty('headers', headers));
-}
 
 @override
 bool operator ==(Object other) {
@@ -42,7 +36,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,file,url,const DeepCollectionEquality().hash(headers));
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'DownloadS3FileResponse(file: $file, url: $url, headers: $headers)';
 }
 
@@ -219,7 +213,7 @@ return $default(_that.file,_that.url,_that.headers);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _DownloadS3FileResponse with DiagnosticableTreeMixin implements DownloadS3FileResponse {
+class _DownloadS3FileResponse implements DownloadS3FileResponse {
   const _DownloadS3FileResponse({required this.file, required this.url, required final  Headers headers}): _headers = headers;
   factory _DownloadS3FileResponse.fromJson(Map<String, dynamic> json) => _$DownloadS3FileResponseFromJson(json);
 
@@ -243,12 +237,6 @@ _$DownloadS3FileResponseCopyWith<_DownloadS3FileResponse> get copyWith => __$Dow
 Map<String, dynamic> toJson() {
   return _$DownloadS3FileResponseToJson(this, );
 }
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'DownloadS3FileResponse'))
-    ..add(DiagnosticsProperty('file', file))..add(DiagnosticsProperty('url', url))..add(DiagnosticsProperty('headers', headers));
-}
 
 @override
 bool operator ==(Object other) {
@@ -260,7 +248,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,file,url,const DeepCollectionEquality().hash(_headers));
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'DownloadS3FileResponse(file: $file, url: $url, headers: $headers)';
 }
 

@@ -7,12 +7,13 @@ publish_to: none
 
 workspace:
   - packages/flutter_releaser
-  - packages/flutter_releaser_widgets
-  - packages/flutter_releaser_hooks
   - packages/flutter_releaser_http
   - packages/flutter_releaser_dio
+  - packages/flutter_releaser_flutter
+  - packages/flutter_releaser_widgets
+  - packages/flutter_releaser_hooks
   - applications/flutter_releaser_desktop
-  - cli/flutter_releaser_cli
+  - plugin/flutter_releaser_plugin
 
 environment:
   sdk: ^3.9.0
