@@ -9,11 +9,6 @@ environment:
   sdk: ^3.9.0
   flutter: '>=3.3.0'
 
-platforms:
-  windows:
-  macos:
-  linux:
-
 dependencies:
   flutter:
     sdk: flutter

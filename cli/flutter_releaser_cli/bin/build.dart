@@ -1,29 +1,26 @@
 import "dart:convert";
 import "dart:io";
 
-import "package:flutter/foundation.dart" hide TargetPlatform;
-import "package:flutter_releaser/src/models.dart" hide Version;
 import "package:pubspec_parse/pubspec_parse.dart";
 import "package:path/path.dart" as path;
 
+final availablePlatforms = ["windows", "linux", "macos"];
+
 Future<void> main(List<String> args) async {
-  final availablePlatforms = TargetPlatform.values
-      .map((e) => e.name)
-      .toList(growable: false);
   if (args.isEmpty) {
-    debugPrint("Platform must be specified ($availablePlatforms)");
+    _print("Platform must be specified ($availablePlatforms)");
     exit(1);
   }
 
   final platformName = args[0];
   final extraArgs = args.length > 2 ? args.sublist(2) : const <String>[];
 
-  final platform = TargetPlatform.values
-      .where((element) => element.name == platformName)
+  final platform = availablePlatforms
+      .where((name) => name == platformName)
       .firstOrNull;
 
   if (platform == null) {
-    debugPrint("Invalid platform '$platformName', ($availablePlatforms)");
+    _print("Invalid platform '$platformName', ($availablePlatforms)");
     exit(1);
   }
 
@@ -33,22 +30,22 @@ Future<void> main(List<String> args) async {
 
   final versionAsString = pubspec.version?.toString();
   if (versionAsString == null) {
-    debugPrint("Version could not found for '${pubspecFile.path}'");
+    _print("Version could not found for '${pubspecFile.path}'");
     exit(1);
   }
 
   final applicationName = pubspec.name;
 
-  debugPrint("Building $applicationName v$versionAsString for $platform");
+  _print("Building $applicationName v$versionAsString for $platform");
 
   final flutterPath = Platform.environment["FLUTTER_ROOT"];
 
   if (flutterPath == null || flutterPath.isEmpty) {
-    debugPrint("FLUTTER_ROOT environment variable is not set");
+    _print("FLUTTER_ROOT environment variable is not set");
     exit(1);
   }
 
-  debugPrint("Current working directory '${Directory.current.path}'");
+  _print("Current working directory '${Directory.current.path}'");
 
   var flutterExecutable = "flutter";
   if (Platform.isWindows) {
@@ -58,24 +55,24 @@ Future<void> main(List<String> args) async {
   final flutterBinPath = path.join(flutterPath, "bin", flutterExecutable);
 
   if (!File(flutterBinPath).existsSync()) {
-    debugPrint("Flutter executable not found at path: $flutterBinPath");
+    _print("Flutter executable not found at path: $flutterBinPath");
     exit(1);
   }
 
-  final buildCommand = <String>[flutterBinPath, "build", platform.name];
+  final buildCommand = <String>[flutterBinPath, "build", platform];
 
   if (extraArgs.isNotEmpty) {
     buildCommand.addAll(extraArgs);
   }
 
-  debugPrint("Executing build command: ${buildCommand.join(' ')}");
+  _print("Executing build command: ${buildCommand.join(' ')}");
 
   final process = await Process.start(
     buildCommand.first,
     buildCommand.sublist(1),
   );
 
-  process.stdout.transform(utf8.decoder).listen(debugPrint);
+  process.stdout.transform(utf8.decoder).listen(_print);
   process.stderr.transform(utf8.decoder).listen((data) {
     stderr.writeln(data);
   });
@@ -86,5 +83,9 @@ Future<void> main(List<String> args) async {
     exit(1);
   }
 
-  debugPrint("Build completed successfully");
+  _print("Build completed successfully");
+}
+
+void _print(String message) {
+  print(message);
 }
