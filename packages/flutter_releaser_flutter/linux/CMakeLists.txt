@@ -1,32 +1,24 @@
-# The Flutter tooling requires that developers have a version of Visual Studio
-# installed that includes CMake 3.14 or later. You should not increase this
-# version, as doing so will cause the plugin to fail to compile for some
-# customers of the plugin.
-cmake_minimum_required(VERSION 3.14)
+# The Flutter tooling requires that developers have CMake 3.10 or later
+# installed. You should not increase this version, as doing so will cause
+# the plugin to fail to compile for some customers of the plugin.
+cmake_minimum_required(VERSION 3.10)
 
 # Project-level configuration.
-set(PROJECT_NAME "flutter_releaser")
+set(PROJECT_NAME "flutter_releaser_flutter")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
-# Explicitly opt in to modern CMake behaviors to avoid warnings with recent
-# versions of CMake.
-cmake_policy(VERSION 3.14...3.25)
-
 # This value is used when generating builds using this plugin, so it must
-# not be changed
-set(PLUGIN_NAME "flutter_releaser_plugin")
+# not be changed.
+set(PLUGIN_NAME "flutter_releaser_flutter_plugin")
 
 # Any new source files that you add to the plugin should be added here.
 list(APPEND PLUGIN_SOURCES
-  "flutter_releaser_plugin.cpp"
-  "flutter_releaser_plugin.h"
+  "flutter_releaser_flutter_plugin.cc"
 )
 
 # Define the plugin library target. Its name must not be changed (see comment
 # on PLUGIN_NAME above).
 add_library(${PLUGIN_NAME} SHARED
-  "include/flutter_releaser/flutter_releaser_plugin_c_api.h"
-  "flutter_releaser_plugin_c_api.cpp"
   ${PLUGIN_SOURCES}
 )
 
@@ -46,23 +38,26 @@ target_compile_definitions(${PLUGIN_NAME} PRIVATE FLUTTER_PLUGIN_IMPL)
 # dependencies here.
 target_include_directories(${PLUGIN_NAME} INTERFACE
   "${CMAKE_CURRENT_SOURCE_DIR}/include")
-target_link_libraries(${PLUGIN_NAME} PRIVATE flutter flutter_wrapper_plugin)
+target_link_libraries(${PLUGIN_NAME} PRIVATE flutter)
+target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::GTK)
 
 # List of absolute paths to libraries that should be bundled with the plugin.
 # This list could contain prebuilt libraries, or libraries created by an
 # external build triggered from this build file.
-set(flutter_releaser_bundled_libraries
+set(flutter_releaser_flutter_bundled_libraries
   ""
   PARENT_SCOPE
 )
 
 # === Tests ===
-# These unit tests can be run from a terminal after building the example, or
-# from Visual Studio after opening the generated solution file.
+# These unit tests can be run from a terminal after building the example.
 
 # Only enable test builds when building the example (which sets this variable)
 # so that plugin clients aren't building the tests.
 if (${include_${PROJECT_NAME}_tests})
+if(${CMAKE_VERSION} VERSION_LESS "3.11.0")
+message("Unit tests require CMake 3.11.0 or later")
+else()
 set(TEST_RUNNER "${PROJECT_NAME}_test")
 enable_testing()
 
@@ -76,25 +71,24 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 # Disable install commands for gtest so it doesn't end up in the bundle.
 set(INSTALL_GTEST OFF CACHE BOOL "Disable installation of googletest" FORCE)
+
 FetchContent_MakeAvailable(googletest)
 
-# The plugin's C API is not very useful for unit testing, so build the sources
-# directly into the test binary rather than using the DLL.
+# The plugin's exported API is not very useful for unit testing, so build the
+# sources directly into the test binary rather than using the shared library.
 add_executable(${TEST_RUNNER}
-  test/flutter_releaser_plugin_test.cpp
+  test/flutter_releaser_flutter_plugin_test.cc
   ${PLUGIN_SOURCES}
 )
 apply_standard_settings(${TEST_RUNNER})
 target_include_directories(${TEST_RUNNER} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
-target_link_libraries(${TEST_RUNNER} PRIVATE flutter_wrapper_plugin)
+target_link_libraries(${TEST_RUNNER} PRIVATE flutter)
+target_link_libraries(${TEST_RUNNER} PRIVATE PkgConfig::GTK)
 target_link_libraries(${TEST_RUNNER} PRIVATE gtest_main gmock)
-# flutter_wrapper_plugin has link dependencies on the Flutter DLL.
-add_custom_command(TARGET ${TEST_RUNNER} POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy_if_different
-  "${FLUTTER_LIBRARY}" $<TARGET_FILE_DIR:${TEST_RUNNER}>
-)
 
 # Enable automatic test discovery.
 include(GoogleTest)
 gtest_discover_tests(${TEST_RUNNER})
-endif()
+
+endif()  # CMake version check
+endif()  # include_${PROJECT_NAME}_tests

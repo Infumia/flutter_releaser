@@ -1,7 +1,7 @@
 import Cocoa
 import FlutterMacOS
 
-public class FlutterReleaserPlugin: NSObject, FlutterPlugin {
+public class FlutterReleaserFlutterPlugin: NSObject, FlutterPlugin {
     func restartApp() {
         let executablePath = Bundle.main.executablePath!
         print("executablePath path: \(executablePath)")
@@ -65,8 +65,8 @@ public class FlutterReleaserPlugin: NSObject, FlutterPlugin {
     }
 
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "flutter_releaser", binaryMessenger: registrar.messenger)
-    let instance = FlutterReleaserPlugin()
+    let channel = FlutterMethodChannel(name: "flutter_releaser_flutter", binaryMessenger: registrar.messenger)
+    let instance = FlutterReleaserFlutterPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 

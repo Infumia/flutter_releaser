@@ -1,4 +1,4 @@
-#include "include/flutter_releaser/flutter_releaser_plugin.h"
+#include "include/flutter_releaser_flutter/flutter_releaser_flutter_plugin.h"
 
 #include <flutter_linux/flutter_linux.h>
 #include <gtk/gtk.h>
@@ -12,7 +12,7 @@
 #include <string>
 #include <linux/limits.h>
 
-#include "flutter_releaser_plugin_private.h"
+#include "flutter_releaser_flutter_plugin_private.h"
 
 bool copy_file(const char *source, const char *destination) {
     char buffer[4096];
@@ -79,19 +79,19 @@ void runUpdateScript() {
     }
 }
 
-#define FLUTTER_RELEASER_PLUGIN(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST((obj), flutter_releaser_plugin_get_type(), \
-                              FlutterReleaserPlugin))
+#define FLUTTER_RELEASER_FLUTTER_PLUGIN(obj) \
+  (G_TYPE_CHECK_INSTANCE_CAST((obj), flutter_releaser_flutter_plugin_get_type(), \
+                              FlutterReleaserFlutterPlugin))
 
-struct _FlutterReleaserPlugin {
+struct _FlutterReleaserFlutterPlugin {
   GObject parent_instance;
 };
 
-G_DEFINE_TYPE(FlutterReleaserPlugin, flutter_releaser_plugin, g_object_get_type())
+G_DEFINE_TYPE(FlutterReleaserFlutterPlugin, flutter_releaser_flutter_plugin, g_object_get_type())
 
 // Called when a method call is received from Flutter.
-static void flutter_releaser_plugin_handle_method_call(
-    FlutterReleaserPlugin* self,
+static void flutter_releaser_flutter_plugin_handle_method_call(
+    FlutterReleaserFlutterPlugin* self,
     FlMethodCall* method_call) {
   g_autoptr(FlMethodResponse) response = nullptr;
 
@@ -118,30 +118,30 @@ static void flutter_releaser_plugin_handle_method_call(
   fl_method_call_respond(method_call, response, nullptr);
 }
 
-static void flutter_releaser_plugin_dispose(GObject* object) {
-  G_OBJECT_CLASS(flutter_releaser_plugin_parent_class)->dispose(object);
+static void flutter_releaser_flutter_plugin_dispose(GObject* object) {
+  G_OBJECT_CLASS(flutter_releaser_flutter_plugin_parent_class)->dispose(object);
 }
 
-static void flutter_releaser_plugin_class_init(FlutterReleaserPluginClass* klass) {
-  G_OBJECT_CLASS(klass)->dispose = flutter_releaser_plugin_dispose;
+static void flutter_releaser_flutter_plugin_class_init(FlutterReleaserFlutterPluginClass* klass) {
+  G_OBJECT_CLASS(klass)->dispose = flutter_releaser_flutter_plugin_dispose;
 }
 
-static void flutter_releaser_plugin_init(FlutterReleaserPlugin* self) {}
+static void flutter_releaser_flutter_plugin_init(FlutterReleaserFlutterPlugin* self) {}
 
 static void method_call_cb(FlMethodChannel* channel, FlMethodCall* method_call,
                            gpointer user_data) {
-  FlutterReleaserPlugin* plugin = FLUTTER_RELEASER_PLUGIN(user_data);
-  flutter_releaser_plugin_handle_method_call(plugin, method_call);
+  FlutterReleaserFlutterPlugin* plugin = FLUTTER_RELEASER_FLUTTER_PLUGIN(user_data);
+  flutter_releaser_flutter_plugin_handle_method_call(plugin, method_call);
 }
 
-void flutter_releaser_plugin_register_with_registrar(FlPluginRegistrar* registrar) {
-  FlutterReleaserPlugin* plugin = FLUTTER_RELEASER_PLUGIN(
-      g_object_new(flutter_releaser_plugin_get_type(), nullptr));
+void flutter_releaser_flutter_plugin_register_with_registrar(FlPluginRegistrar* registrar) {
+  FlutterReleaserFlutterPlugin* plugin = FLUTTER_RELEASER_FLUTTER_PLUGIN(
+      g_object_new(flutter_releaser_flutter_plugin_get_type(), nullptr));
 
   g_autoptr(FlStandardMethodCodec) codec = fl_standard_method_codec_new();
   g_autoptr(FlMethodChannel) channel =
       fl_method_channel_new(fl_plugin_registrar_get_messenger(registrar),
-                            "flutter_releaser",
+                            "flutter_releaser_flutter",
                             FL_METHOD_CODEC(codec));
   fl_method_channel_set_method_call_handler(channel, method_call_cb,
                                             g_object_ref(plugin),
