@@ -12,7 +12,6 @@ workspace:
   - packages/flutter_releaser_flutter
   - packages/flutter_releaser_widgets
   - packages/flutter_releaser_hooks
-  - plugin/flutter_releaser_plugin
   - applications/flutter_releaser_desktop
   - applications/flutter_releaser_cli
 
