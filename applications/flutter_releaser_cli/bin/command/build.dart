@@ -53,7 +53,9 @@ class _PlatformCommand extends Command<void> {
 
     final applicationName = pubspec.name;
 
-    _talker.info("Building $applicationName v$versionAsString for ${_platform.name}");
+    _talker.info(
+      "Building $applicationName v$versionAsString for ${_platform.name}",
+    );
 
     final flutterPath = Platform.environment["FLUTTER_ROOT"];
 
@@ -130,6 +132,10 @@ class _PlatformCommand extends Command<void> {
   final String _name;
   final String _description;
   final TargetPlatform _platform;
-
-  _PlatformCommand._(this._talker, this._name, this._description, this._platform);
+  _PlatformCommand._(
+    this._talker,
+    this._name,
+    this._description,
+    this._platform,
+  );
 }

@@ -3,7 +3,7 @@ import "dart:io";
 import "package:args/command_runner.dart";
 import "package:talker/talker.dart";
 
-import "src/build_command.dart";
+import "command/build.dart";
 
 Future<void> main(List<String> args) async {
   final talker = Talker();

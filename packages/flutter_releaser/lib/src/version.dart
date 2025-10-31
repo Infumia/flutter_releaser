@@ -8,8 +8,10 @@ final _cache = <String, sem.Version>{};
 sem.Version parseVersion(String version) =>
     _cache.putIfAbsent(version, () => sem.Version.parse(version));
 
-Future<Version?> retrieveNewVersion(FlutterReleaserSettings settings,
-    String currentVersion) async {
+Future<Version?> retrieveNewVersion(
+  FlutterReleaserSettings settings,
+  String currentVersion,
+) async {
   final json = await settings.requester.get<Map<String, dynamic>>(
     settings,
     apiPath: "/archive",
