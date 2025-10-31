@@ -1,4 +1,4 @@
-#include "include/flutter_releaser/flutter_releaser_plugin_c_api.h"
+#include "include/flutter_releaser_plugin/flutter_releaser_plugin_c_api.h"
 
 #include <flutter/plugin_registrar_windows.h>
 
@@ -6,7 +6,7 @@
 
 void FlutterReleaserPluginCApiRegisterWithRegistrar(
     FlutterDesktopPluginRegistrarRef registrar) {
-  flutter_releaser::FlutterReleaserPlugin::RegisterWithRegistrar(
+  flutter_releaser_plugin::FlutterReleaserPlugin::RegisterWithRegistrar(
       flutter::PluginRegistrarManager::GetInstance()
           ->GetRegistrar<flutter::PluginRegistrarWindows>(registrar));
 }

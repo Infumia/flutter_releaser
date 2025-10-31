@@ -1,4 +1,4 @@
-#include "include/flutter_releaser/flutter_releaser_plugin.h"
+#include "include/flutter_releaser_plugin/flutter_releaser_plugin.h"
 
 #include <flutter_linux/flutter_linux.h>
 #include <gtk/gtk.h>
@@ -141,7 +141,7 @@ void flutter_releaser_plugin_register_with_registrar(FlPluginRegistrar* registra
   g_autoptr(FlStandardMethodCodec) codec = fl_standard_method_codec_new();
   g_autoptr(FlMethodChannel) channel =
       fl_method_channel_new(fl_plugin_registrar_get_messenger(registrar),
-                            "flutter_releaser",
+                            "flutter_releaser_plugin",
                             FL_METHOD_CODEC(codec));
   fl_method_channel_set_method_call_handler(channel, method_call_cb,
                                             g_object_ref(plugin),

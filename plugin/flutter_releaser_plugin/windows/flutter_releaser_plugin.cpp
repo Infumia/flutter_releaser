@@ -27,7 +27,7 @@ void FlutterReleaserPlugin::RegisterWithRegistrar(
     flutter::PluginRegistrarWindows *registrar) {
   auto channel =
       std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
-          registrar->messenger(), "flutter_releaser",
+          registrar->messenger(), "flutter_releaser_plugin",
           &flutter::StandardMethodCodec::GetInstance());
 
   auto plugin = std::make_unique<FlutterReleaserPlugin>();

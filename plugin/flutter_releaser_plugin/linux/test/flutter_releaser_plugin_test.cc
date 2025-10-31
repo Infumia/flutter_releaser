@@ -2,7 +2,7 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include "include/flutter_releaser/flutter_releaser_plugin.h"
+#include "include/flutter_releaser_plugin/flutter_releaser_plugin.h"
 #include "flutter_releaser_plugin_private.h"
 
 // This demonstrates a simple unit test of the C portion of this plugin's
@@ -13,8 +13,8 @@
 // built for x64 debug, run:
 // $ build/linux/x64/debug/plugins/my_plugin/my_plugin_test
 
-namespace flutter_releaser {
+namespace flutter_releaser_plugin {
 namespace test {
 
 }  // namespace test
-}  // namespace flutter_releaser
+}  // namespace flutter_releaser_plugin

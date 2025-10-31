@@ -65,7 +65,7 @@ public class FlutterReleaserPlugin: NSObject, FlutterPlugin {
     }
 
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "flutter_releaser", binaryMessenger: registrar.messenger)
+    let channel = FlutterMethodChannel(name: "flutter_releaser_plugin", binaryMessenger: registrar.messenger)
     let instance = FlutterReleaserPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }

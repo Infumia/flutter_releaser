@@ -6,7 +6,7 @@
 
 #include <memory>
 
-namespace flutter_releaser {
+namespace flutter_releaser_plugin {
 
 class FlutterReleaserPlugin : public flutter::Plugin {
  public:
@@ -26,6 +26,6 @@ class FlutterReleaserPlugin : public flutter::Plugin {
       std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
 };
 
-}  // namespace flutter_releaser
+}  // namespace flutter_releaser_plugin
 
 #endif  // FLUTTER_PLUGIN_FLUTTER_RELEASER_PLUGIN_H_

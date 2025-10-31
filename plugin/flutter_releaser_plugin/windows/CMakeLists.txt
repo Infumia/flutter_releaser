@@ -5,7 +5,7 @@
 cmake_minimum_required(VERSION 3.14)
 
 # Project-level configuration.
-set(PROJECT_NAME "flutter_releaser")
+set(PROJECT_NAME "flutter_releaser_plugin")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
@@ -25,7 +25,7 @@ list(APPEND PLUGIN_SOURCES
 # Define the plugin library target. Its name must not be changed (see comment
 # on PLUGIN_NAME above).
 add_library(${PLUGIN_NAME} SHARED
-  "include/flutter_releaser/flutter_releaser_plugin_c_api.h"
+  "include/flutter_releaser_plugin/flutter_releaser_plugin_c_api.h"
   "flutter_releaser_plugin_c_api.cpp"
   ${PLUGIN_SOURCES}
 )

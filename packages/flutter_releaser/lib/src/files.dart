@@ -24,7 +24,7 @@ Directory? retrieveExecutableDirectory(FlutterReleaserSettings settings) {
 Future<Directory> createTemporaryDirectory(
   FlutterReleaserSettings settings,
 ) async {
-  final directory = await Directory.systemTemp.createTemp("flutter_releaser");
+  final directory = await Directory.systemTemp.createTemp("flutter_releaser_plugin");
 
   if (!directory.existsSync()) {
     throw Exception("Temporary directory does not exist");

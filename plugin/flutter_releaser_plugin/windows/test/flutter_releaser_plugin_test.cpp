@@ -10,7 +10,7 @@
 
 #include "flutter_releaser_plugin.h"
 
-namespace flutter_releaser {
+namespace flutter_releaser_plugin {
 namespace test {
 
 namespace {
@@ -23,4 +23,4 @@ using flutter::MethodResultFunctions;
 }  // namespace
 
 }  // namespace test
-}  // namespace flutter_releaser
+}  // namespace flutter_releaser_plugin
