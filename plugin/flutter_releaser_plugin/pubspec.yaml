@@ -19,8 +19,8 @@ flutter:
   plugin:
     platforms:
       linux:
-        pluginClass: FlutterReleaserPlugin
+        pluginClass: FlutterReleaserFlutterPlugin
       macos:
-        pluginClass: FlutterReleaserPlugin
+        pluginClass: FlutterReleaserFlutterPlugin
       windows:
-        pluginClass: FlutterReleaserPluginCApi
+        pluginClass: FlutterReleaserFlutterPluginCApi
