@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-10-31
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_releaser` - `v0.3.1`](#flutter_releaser---v031)
+ - [`flutter_releaser_cli` - `v0.0.2`](#flutter_releaser_cli---v002)
+ - [`flutter_releaser_dio` - `v0.1.1`](#flutter_releaser_dio---v011)
+ - [`flutter_releaser_flutter` - `v0.1.1`](#flutter_releaser_flutter---v011)
+ - [`flutter_releaser_hooks` - `v0.1.1`](#flutter_releaser_hooks---v011)
+ - [`flutter_releaser_http` - `v0.1.1`](#flutter_releaser_http---v011)
+
+---
+
+#### `flutter_releaser` - `v0.3.1`
+
+ - **REFACTOR**: rename/move plugin into flutter_releaser_flutter. ([#8](https://github.com/Infumia/flutter_releaser//issues/8)).
+ - **FEAT**: separate the bin folder into cli application.
+
+#### `flutter_releaser_cli` - `v0.0.2`
+
+ - **FEAT**: separate the bin folder into cli application.
+
+#### `flutter_releaser_dio` - `v0.1.1`
+
+ - **FEAT**: separate the bin folder into cli application.
+
+#### `flutter_releaser_flutter` - `v0.1.1`
+
+ - **REFACTOR**: rename/move plugin into flutter_releaser_flutter. ([#8](https://github.com/Infumia/flutter_releaser//issues/8)).
+ - **FEAT**: separate the bin folder into cli application.
+
+#### `flutter_releaser_hooks` - `v0.1.1`
+
+ - **FEAT**: separate the bin folder into cli application.
+
+#### `flutter_releaser_http` - `v0.1.1`
+
+ - **FEAT**: separate the bin folder into cli application.
+
+
 ## 2025-10-30
 
 ### Changes

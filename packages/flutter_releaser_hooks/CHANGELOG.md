@@ -1,3 +1,7 @@
+## 0.1.1
+
+ - **FEAT**: separate the bin folder into cli application.
+
 ## 0.1.0
 
 > Note: This release has breaking changes.
