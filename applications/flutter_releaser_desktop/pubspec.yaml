@@ -14,8 +14,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_releaser: ^0.3.1
-  flutter_releaser_flutter: ^0.1.1
+  flutter_releaser: ^0.3.2
+  flutter_releaser_flutter: ^0.1.2
   package_info_plus: ^9.0.0
 
 flutter:

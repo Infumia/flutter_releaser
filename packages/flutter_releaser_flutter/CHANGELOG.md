@@ -1,3 +1,7 @@
+## 0.1.2
+
+ - **FEAT**: start wokring on upload command.
+
 ## 0.1.1
 
  - **REFACTOR**: rename/move plugin into flutter_releaser_flutter. ([#8](https://github.com/Infumia/flutter_releaser//issues/8)).
