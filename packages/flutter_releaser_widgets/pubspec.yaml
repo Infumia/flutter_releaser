@@ -13,5 +13,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   flutter_releaser: ^0.3.0
   forui: ^0.16.0

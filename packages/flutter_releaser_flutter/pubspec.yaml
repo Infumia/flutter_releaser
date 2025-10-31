@@ -14,3 +14,4 @@ dependencies:
     sdk: flutter
 
   flutter_releaser: ^0.3.0
+  package_info_plus: ^9.0.0

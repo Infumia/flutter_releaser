@@ -16,8 +16,8 @@ class UpdateController {
 
   UpdateController({required this.settings});
 
-  Future<Version?> check() =>
-      _lock.synchronized(() async => retrieveNewVersion(settings));
+  Future<Version?> check(String currentVersion) =>
+      _lock.synchronized(() async => retrieveNewVersion(settings, currentVersion));
 
   Future<File> download(
     Version version,

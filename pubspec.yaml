@@ -12,8 +12,9 @@ workspace:
   - packages/flutter_releaser_flutter
   - packages/flutter_releaser_widgets
   - packages/flutter_releaser_hooks
-  - applications/flutter_releaser_desktop
   - plugin/flutter_releaser_plugin
+  - applications/flutter_releaser_desktop
+  - applications/flutter_releaser_cli
 
 environment:
   sdk: ^3.9.0

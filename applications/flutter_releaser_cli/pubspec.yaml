@@ -1,0 +1,21 @@
+name: flutter_releaser_cli
+description: ""
+version: 0.0.1
+resolution: workspace
+homepage: https://github.com/Infumia/flutter_releaser/
+repository: https://github.com/Infumia/flutter_releaser/
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  pub_semver: ^2.2.0
+  archive: ^4.0.7
+  path: ^1.9.1
+  crypto: ^3.0.6
+  pubspec_parse: ^1.5.0
+  pub_updater: ^0.5.0
+  args: ^2.7.0
+  flutter_releaser: ^0.3.0
+  talker: ^5.0.2
+  cli_launcher: ^0.3.2+1

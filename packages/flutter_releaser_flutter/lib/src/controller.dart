@@ -3,6 +3,7 @@ import "dart:io";
 import "package:flutter/foundation.dart" hide TargetPlatform;
 import "package:flutter_releaser/flutter_releaser.dart";
 import "package:flutter_releaser_flutter/src/ref.dart";
+import "package:package_info_plus/package_info_plus.dart";
 
 class FlutterUpdateController extends ChangeNotifier {
   final FlutterReleaserSettings settings;
@@ -23,7 +24,10 @@ class FlutterUpdateController extends ChangeNotifier {
     uploadProgressRef.notifier.addListener(notifyListeners);
   }
 
-  Future<Version?> check() => _delegate.check();
+  Future<Version?> check() async {
+    final info = await PackageInfo.fromPlatform();
+    return _delegate.check(info.version);
+  }
 
   Future<File> download(Version version) =>
       _delegate.download(version, downloadProgressRef);
