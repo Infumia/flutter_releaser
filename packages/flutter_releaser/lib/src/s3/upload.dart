@@ -40,7 +40,7 @@ Future<void> uploadS3File(
       platform: request.platform,
       mandatory: request.mandatory,
       changes: request.changes,
-    ).toJson(),
+    ).toJson().toString(),
   );
   final uploadResponse = UploadS3FileResponse.fromJson(response);
 

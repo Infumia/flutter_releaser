@@ -7,7 +7,6 @@ publish_to: none
 
 workspace:
   - packages/flutter_releaser
-  - packages/flutter_releaser_http
   - packages/flutter_releaser_dio
   - packages/flutter_releaser_flutter
   - packages/flutter_releaser_widgets
