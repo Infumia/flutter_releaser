@@ -42,7 +42,12 @@ CREATE
             id SERIAL PRIMARY KEY,
             file INT NOT NULL,
             bucket_id TEXT NOT NULL,
-            path_key TEXT NOT NULL
+            path_key TEXT NOT NULL,
+            CONSTRAINT fk_s3_files_file__id FOREIGN KEY(file) REFERENCES files(id) ON
+            DELETE
+                CASCADE ON
+                UPDATE
+                    RESTRICT
         );
 
 ALTER TABLE
@@ -50,13 +55,6 @@ ALTER TABLE
         bucket_id,
         path_key
     );
-
-ALTER TABLE
-    s3_files ADD CONSTRAINT fk_s3_files_file__id FOREIGN KEY(file) REFERENCES s3_files(id) ON
-    DELETE
-        CASCADE ON
-        UPDATE
-            RESTRICT;
 
 CREATE
     SEQUENCE IF NOT EXISTS files_id_seq
