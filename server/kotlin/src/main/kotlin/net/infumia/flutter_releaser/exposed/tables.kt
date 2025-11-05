@@ -33,7 +33,7 @@ object VersionsTable : IntIdTable("versions") {
 }
 
 object S3FilesTable : IntIdTable("s3_files") {
-    val file = reference("file", S3FilesTable, onDelete = ReferenceOption.CASCADE)
+    val file = reference("file", FilesTable, onDelete = ReferenceOption.CASCADE)
     val bucketId = text("bucket_id")
     val pathKey = text("path_key")
 
