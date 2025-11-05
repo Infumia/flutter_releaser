@@ -7,16 +7,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable data class StatusResponse(val message: String, val errorType: String)
 
-class InternalServerException(message: String) :
-    StatusException(message, HttpStatusCode.InternalServerError)
-
-class ApplicationArchiveCouldNotFoundException(message: String) :
-    StatusException(message, HttpStatusCode.NotFound)
-
 class UnknownUploadTechnologyException(message: String) :
-    StatusException(message, HttpStatusCode.BadRequest)
-
-class UnknownDownloadTechnologyException(message: String) :
     StatusException(message, HttpStatusCode.BadRequest)
 
 class InvalidSha256Exception(message: String) : StatusException(message, HttpStatusCode.BadRequest)
@@ -32,6 +23,9 @@ class FileNotUploadedException(message: String) :
     StatusException(message, HttpStatusCode.BadRequest)
 
 class FileAlreadyUploadedException(message: String) :
+    StatusException(message, HttpStatusCode.Conflict)
+
+class VersionPlatformAlreadyExistsException(message: String) :
     StatusException(message, HttpStatusCode.Conflict)
 
 open class StatusException(message: String, val code: HttpStatusCode) : Throwable(message) {

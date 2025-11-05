@@ -13,6 +13,7 @@ import net.infumia.flutter_releaser.InvalidSha256Exception
 import net.infumia.flutter_releaser.Platform
 import net.infumia.flutter_releaser.S3File
 import net.infumia.flutter_releaser.Version
+import net.infumia.flutter_releaser.VersionPlatformAlreadyExistsException
 import net.infumia.flutter_releaser.env
 import net.infumia.flutter_releaser.envOrNull
 import net.infumia.flutter_releaser.isValidSha256Base64
@@ -52,6 +53,10 @@ object S3FileUploadService : KoinComponent {
 
         if (fileSizeInBytes <= 0) {
             throw InvalidFileSizeException("File size must be greater than zero")
+        }
+
+        if (versionRepository.findByVersionAndPlatform(version, platform) != null) {
+            throw VersionPlatformAlreadyExistsException("Version '$version' for '$platform' platform already exists")
         }
 
         val now = localDateTimeNow
