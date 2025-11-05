@@ -25,7 +25,7 @@ Future<void> uploadS3File(
   final name = path.basename(archivePath);
   final sha256 = await file.retrieveSha256();
 
-  final response = await requester.put<UploadS3FileResponse>(
+  final response = await requester.put<Map<String, dynamic>>(
     settings,
     apiPath: "/archive?s3=true",
     headers: {
@@ -42,12 +42,13 @@ Future<void> uploadS3File(
       changes: request.changes,
     ).toJson(),
   );
+  final uploadResponse = UploadS3FileResponse.fromJson(response);
 
   await requester.upload(
     settings,
     archivePath,
-    uri: Uri.parse(response.url),
-    headers: response.headers,
+    uri: Uri.parse(uploadResponse.url),
+    headers: uploadResponse.headers,
     progress: (sent, total) {
       final currentProgress =
           uploadProgressRef.value ??
@@ -60,7 +61,11 @@ Future<void> uploadS3File(
     },
   );
 
-  await requester.put<void>(settings, apiPath: "/archive/${response.id}");
+  await requester.put<void>(
+    settings,
+    apiPath: "/archive/${uploadResponse.id}",
+    headers: settings.apiRequestHeadersProvider(),
+  );
 }
 
 @freezed
