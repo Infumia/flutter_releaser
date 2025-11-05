@@ -3,15 +3,23 @@ import "package:flutter_releaser/flutter_releaser.dart";
 class FlutterReleaserSettings {
   final Uri apiUri;
   final HttpRequester requester;
+  final Map<String, String> Function() apiRequestHeadersProvider;
   final Logger logger;
   final FileStorage fileStorage;
 
   const FlutterReleaserSettings({
     required Uri apiUri,
     required HttpRequester requester,
+    required Map<String, String> Function() apiRequestHeadersProvider,
     FileStorage fileStorage = FileStorage.s3,
     Logger logger = const LoggerNoop(),
-  }) : this._(apiUri, requester, logger, fileStorage);
+  }) : this._(
+         apiUri,
+         requester,
+         apiRequestHeadersProvider,
+         logger,
+         fileStorage,
+       );
 
   void logDebug(String message) => logger.debug(message);
 
@@ -21,6 +29,7 @@ class FlutterReleaserSettings {
   const FlutterReleaserSettings._(
     this.apiUri,
     this.requester,
+    this.apiRequestHeadersProvider,
     this.logger,
     this.fileStorage,
   );

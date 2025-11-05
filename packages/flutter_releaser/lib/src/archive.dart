@@ -2,7 +2,6 @@ import "dart:io";
 
 import "package:archive/archive_io.dart";
 import "package:flutter_releaser/flutter_releaser.dart";
-import "package:flutter_releaser/src/exceptions.dart";
 
 Future<File> archiveDirectory(
   FlutterReleaserSettings settings,
@@ -10,7 +9,7 @@ Future<File> archiveDirectory(
   File outputFile,
 ) async {
   if (!directory.existsSync()) {
-    throw FileNotFoundException("Directory '$directory' not found");
+    throw Exception("Directory '$directory' not found");
   }
   final encoder = ZipFileEncoder();
   await encoder.zipDirectory(
@@ -19,7 +18,7 @@ Future<File> archiveDirectory(
     followLinks: false,
   );
   if (!outputFile.existsSync()) {
-    throw FileNotFoundException("Archive file '$outputFile.path' not found");
+    throw Exception("Archive file '$outputFile.path' not found");
   }
   return outputFile;
 }

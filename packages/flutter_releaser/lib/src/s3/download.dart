@@ -1,7 +1,6 @@
 import "dart:io";
 
 import "package:flutter_releaser/flutter_releaser.dart";
-import "package:flutter_releaser/src/exceptions.dart";
 import "package:flutter_releaser/src/files.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:path/path.dart" as path;
@@ -46,9 +45,7 @@ Future<File> downloadS3File(
 
   final file = File(downloadPath);
   if (!file.existsSync()) {
-    throw CouldNotDownloadFileException(
-      "Could not download version '$version'",
-    );
+    throw Exception("Could not download version '$version'");
   }
 
   return file;

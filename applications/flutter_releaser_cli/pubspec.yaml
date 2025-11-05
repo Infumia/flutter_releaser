@@ -19,3 +19,5 @@ dependencies:
   flutter_releaser: ^0.3.2
   talker: ^5.0.2
   cli_launcher: ^0.3.2+1
+  flutter_releaser_dio: ^0.1.1+1
+  dio: ^5.9.0

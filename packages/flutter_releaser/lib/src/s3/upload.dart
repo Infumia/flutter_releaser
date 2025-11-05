@@ -2,7 +2,6 @@ import "dart:convert";
 import "dart:io";
 
 import "package:flutter_releaser/flutter_releaser.dart";
-import "package:flutter_releaser/src/exceptions.dart";
 import "package:flutter_releaser/src/extensions.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:path/path.dart" as path;
@@ -19,7 +18,7 @@ Future<void> uploadS3File(
   final archivePath = request.archivePath;
   final file = File(archivePath);
   if (!file.existsSync()) {
-    throw FileNotFoundException("File '$archivePath' could not found");
+    throw Exception("File '$archivePath' could not found");
   }
 
   final sizeInBytes = await file.length();
@@ -29,6 +28,10 @@ Future<void> uploadS3File(
   final response = await requester.put<UploadS3FileResponse>(
     settings,
     apiPath: "/archive?s3=true",
+    headers: {
+      "Content-Type": "application/json",
+      ...settings.apiRequestHeadersProvider(),
+    },
     data: UploadS3FileRequest(
       name: name,
       sizeInBytes: sizeInBytes,

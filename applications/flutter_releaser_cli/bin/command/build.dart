@@ -44,17 +44,11 @@ class _PlatformCommand extends Command<void> {
     final pubspecFile = File("pubspec.yaml");
     final pubspecAsString = await pubspecFile.readAsString();
     final pubspec = Pubspec.parse(pubspecAsString);
-
     final versionAsString = pubspec.version?.toString();
-    if (versionAsString == null) {
-      _talker.error("Version could not found for '${pubspecFile.path}'");
-      return;
-    }
-
     final applicationName = pubspec.name;
 
     _talker.info(
-      "Building $applicationName v$versionAsString for ${_platform.name}",
+      "Building $applicationName ${versionAsString == null ? "" : "v$versionAsString"} for ${_platform.name}",
     );
 
     final flutterPath = Platform.environment["FLUTTER_ROOT"];
@@ -101,31 +95,6 @@ class _PlatformCommand extends Command<void> {
     }
 
     _talker.info("Build completed successfully");
-
-    final buildPath = switch (_platform) {
-      TargetPlatform.macos => path.join(
-        "build",
-        "macos",
-        "Build",
-        "Products",
-        "Release",
-        "$applicationName.app",
-      ),
-      TargetPlatform.linux => path.join(
-        "build",
-        "linux",
-        "x64",
-        "release",
-        "bundle",
-      ),
-      TargetPlatform.windows => path.join(
-        "build",
-        "windows",
-        "x64",
-        "runner",
-        "Release",
-      ),
-    };
   }
 
   final Talker _talker;
