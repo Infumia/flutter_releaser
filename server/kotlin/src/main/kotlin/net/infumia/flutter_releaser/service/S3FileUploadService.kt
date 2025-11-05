@@ -65,11 +65,11 @@ object S3FileUploadService : KoinComponent {
                 )
             )
 
-        val pathKey = bucketPath?.trim()?.replace(" ", "")
+        val pathKeyPrefix = bucketPath?.trim()?.replace(" ", "")
+        val uniquePath = Uuid.random().toString()
+        val pathKey = if (pathKeyPrefix == null) uniquePath else "$pathKeyPrefix/$uniquePath"
         val s3File =
-            s3FileRepository.create(
-                S3File(file = file, bucketId = bucketId, pathKey = "$pathKey/${Uuid.random()}")
-            )
+            s3FileRepository.create(S3File(file = file, bucketId = bucketId, pathKey = pathKey))
 
         val signedRequest =
             s3Client.presignPutObject(

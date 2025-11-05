@@ -2,6 +2,7 @@ import "dart:async";
 import "dart:io";
 
 import "package:flutter_releaser/flutter_releaser.dart";
+import "package:flutter_releaser/src/archive.dart";
 import "package:flutter_releaser/src/download.dart";
 import "package:flutter_releaser/src/extract.dart";
 import "package:flutter_releaser/src/s3/upload.dart";
@@ -29,6 +30,9 @@ class UpdateController {
 
   Future<void> extract(File file) =>
       _lock.synchronized(() => extractToUpdate(settings, file));
+
+  Future<File> archive(Directory directory, File outputFile) => _lock
+      .synchronized(() => archiveDirectory(settings, directory, outputFile));
 
   Future<void> upload(
     String version,

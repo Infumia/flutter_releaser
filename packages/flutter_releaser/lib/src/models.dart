@@ -45,16 +45,7 @@ sealed class Version with _$Version implements Comparable<Version> {
   sem.Version parsedVersion() => parseVersion(version);
 }
 
-enum ChangeType {
-  feat({"feature", "features", "feats"}),
-  fix({"fixes", "fix"}),
-  chore({"chores"}),
-  doc({"docs", "document", "documents", "documentation", "documentations"});
-
-  final Set<String> aliases;
-
-  const ChangeType(this.aliases);
-}
+enum ChangeType { feat, fix, chore, doc }
 
 @freezed
 sealed class Change with _$Change {
