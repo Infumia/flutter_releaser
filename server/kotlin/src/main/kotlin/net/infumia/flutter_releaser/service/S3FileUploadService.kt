@@ -56,7 +56,9 @@ object S3FileUploadService : KoinComponent {
         }
 
         if (versionRepository.findByVersionAndPlatform(version, platform) != null) {
-            throw VersionPlatformAlreadyExistsException("Version '$version' for '$platform' platform already exists")
+            throw VersionPlatformAlreadyExistsException(
+                "Version '$version' for '$platform' platform already exists"
+            )
         }
 
         val now = localDateTimeNow
@@ -70,11 +72,12 @@ object S3FileUploadService : KoinComponent {
                 )
             )
 
-        val pathKeyPrefix = bucketPath?.trim()?.replace(" ", "")
+        val pathKeyPrefix = if (bucketPath == null) "" else "$bucketPath/"
         val uniquePath = Uuid.random().toString()
-        val pathKey = if (pathKeyPrefix == null) uniquePath else "$pathKeyPrefix/$uniquePath"
         val s3File =
-            s3FileRepository.create(S3File(file = file, bucketId = bucketId, pathKey = pathKey))
+            s3FileRepository.create(
+                S3File(file = file, bucketId = bucketId, pathKey = pathKeyPrefix + uniquePath)
+            )
 
         val signedRequest =
             s3Client.presignPutObject(

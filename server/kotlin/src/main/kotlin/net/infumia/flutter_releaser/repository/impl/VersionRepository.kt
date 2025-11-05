@@ -20,7 +20,9 @@ object VersionRepository : IntIdRepository<Version> by IntIdRepositorySql(Versio
 
     fun findByVersionAndPlatform(version: String, platform: Platform): Version? = transaction {
         VersionEntity.find {
-            (VersionsTable.version eq version) and (VersionsTable.platform eq platform)
-        }.firstOrNull()?.toModel()
+                (VersionsTable.version eq version) and (VersionsTable.platform eq platform)
+            }
+            .firstOrNull()
+            ?.toModel()
     }
 }
