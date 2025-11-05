@@ -17,7 +17,7 @@ class VersionEntity(id: EntityID<Int>) : IntEntity(id) {
         override fun VersionEntity.toModel(): Version =
             Version(
                 id = id.value,
-                file = file.file.toModel(),
+                file = file.toModel(),
                 version = version,
                 platform = platform,
                 sizeInBytes = sizeInBytes,
@@ -37,7 +37,7 @@ class VersionEntity(id: EntityID<Int>) : IntEntity(id) {
         }
     }
 
-    var file by S3FileEntity referencedOn VersionsTable.file
+    var file by FileEntity referencedOn VersionsTable.file
     var version by VersionsTable.version
     var platform by VersionsTable.platform
     var sizeInBytes by VersionsTable.sizeInBytes
