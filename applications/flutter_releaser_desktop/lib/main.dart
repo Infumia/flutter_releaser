@@ -16,15 +16,16 @@ class _Root extends StatelessWidget {
 }
 
 class _MainPage extends StatelessWidget {
-  final _controller = FlutterUpdateController(settings: FlutterReleaserSettings(
+  final _controller = FlutterUpdateController(
+    settings: FlutterReleaserSettings(
       apiUri: Uri.parse("http://localhost:8080/"),
-      requester: HttpRequester, apiRequestHeadersProvider: apiRequestHeadersProvider
-  ));
+      requester: HttpRequester,
+      apiRequestHeadersProvider: apiRequestHeadersProvider,
+    ),
+  );
 
   const _MainPage();
 
   @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
+  Widget build(BuildContext context) => const Placeholder();
 }
