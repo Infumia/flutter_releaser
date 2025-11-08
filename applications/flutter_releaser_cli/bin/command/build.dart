@@ -51,7 +51,17 @@ class _PlatformCommand extends Command<void> {
     );
 
     try {
-      final exitCode = await runFlutterCommand(
+      exitCode = await runFlutterCommand(
+          commandAndArguments: ["clean"],
+          talker: _talker
+      );
+
+      if (exitCode != 0) {
+        _talker.error("Cleaning failed with exit code $exitCode");
+        return;
+      }
+
+      exitCode = await runFlutterCommand(
           commandAndArguments: ["build", _platform.name, ...extraArgs],
           talker: _talker
       );
@@ -63,7 +73,7 @@ class _PlatformCommand extends Command<void> {
 
       _talker.info("Build completed successfully");
     } on Exception catch (e, s) {
-      _talker.handle(e, s, "An error occurred while running flutter build command");
+      _talker.handle(e, s, "An error occurred while running flutter command");
     }
   }
 
