@@ -1,12 +1,11 @@
 import "dart:async";
-import "dart:convert";
 import "dart:io";
 
 import "package:args/command_runner.dart";
-import "package:path/path.dart" as path;
 import "package:flutter_releaser/flutter_releaser.dart";
 import "package:pubspec_parse/pubspec_parse.dart";
 import "package:talker/talker.dart";
+import "util.dart";
 
 class BuildCommand extends Command<void> {
   @override
@@ -51,50 +50,21 @@ class _PlatformCommand extends Command<void> {
       "Building $applicationName ${versionAsString == null ? "" : "v$versionAsString"} for ${_platform.name}",
     );
 
-    final flutterPath = Platform.environment["FLUTTER_ROOT"];
+    try {
+      final exitCode = await runFlutterCommand(
+          commandAndArguments: ["build", _platform.name, ...extraArgs],
+          talker: _talker
+      );
 
-    if (flutterPath == null || flutterPath.isEmpty) {
-      _talker.error("FLUTTER_ROOT environment variable is not set");
-      return;
+      if (exitCode != 0) {
+        _talker.error("Build failed with exit code $exitCode");
+        return;
+      }
+
+      _talker.info("Build completed successfully");
+    } on Exception catch (e, s) {
+      _talker.handle(e, s, "An error occurred while running flutter build command");
     }
-
-    _talker.info("Current working directory '${Directory.current.path}'");
-
-    var flutterExecutable = "flutter";
-    if (Platform.isWindows) {
-      flutterExecutable += ".bat";
-    }
-
-    final flutterBinPath = path.join(flutterPath, "bin", flutterExecutable);
-
-    if (!File(flutterBinPath).existsSync()) {
-      _talker.error("Flutter executable not found at path: $flutterBinPath");
-      return;
-    }
-
-    final buildCommand = <String>[flutterBinPath, "build", _platform.name];
-
-    if (extraArgs.isNotEmpty) {
-      buildCommand.addAll(extraArgs);
-    }
-
-    _talker.info("Executing build command: ${buildCommand.join(' ')}");
-
-    final process = await Process.start(
-      buildCommand.first,
-      buildCommand.sublist(1),
-    );
-
-    process.stdout.transform(utf8.decoder).listen(stdout.write);
-    process.stderr.transform(utf8.decoder).listen(stderr.write);
-
-    final exitCode = await process.exitCode;
-    if (exitCode != 0) {
-      _talker.error("Build failed with exit code $exitCode");
-      return;
-    }
-
-    _talker.info("Build completed successfully");
   }
 
   final Talker _talker;
