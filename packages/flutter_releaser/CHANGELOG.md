@@ -1,3 +1,14 @@
+## 0.3.3
+
+ - **REFACTOR**: rename extract method to prepare for update.
+ - **FIX**: use api request headers provider to send request to server.
+ - **FIX**: upload.
+ - **FIX**: remove http package for now.
+ - **FIX**: http response.
+ - **FIX**: convert to json.
+ - **FEAT**: implement upload command for cli.
+ - **FEAT**: add archive as well.
+
 ## 0.3.2
 
  - **FEAT**: start wokring on upload command.

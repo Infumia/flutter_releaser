@@ -1,3 +1,9 @@
+## 0.0.4
+
+ - **FIX**: delete recursively.
+ - **FIX**: upload.
+ - **FEAT**: implement upload command for cli.
+
 ## 0.0.3
 
  - **FIX**: str interpolation.

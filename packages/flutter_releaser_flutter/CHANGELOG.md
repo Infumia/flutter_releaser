@@ -1,3 +1,7 @@
+## 0.1.2+1
+
+ - **REFACTOR**: rename extract method to prepare for update.
+
 ## 0.1.2
 
  - **FEAT**: start wokring on upload command.
