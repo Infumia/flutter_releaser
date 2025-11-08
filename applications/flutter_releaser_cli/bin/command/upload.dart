@@ -8,6 +8,7 @@ import "package:flutter_releaser_dio/flutter_releaser_dio.dart";
 import "package:path/path.dart" as path;
 import "package:pubspec_parse/pubspec_parse.dart";
 import "package:talker/talker.dart";
+import "package:flutter_releaser/src/files.dart";
 
 class UploadCommand extends Command<void> {
   @override
@@ -48,8 +49,6 @@ class _PlatformCommand extends Command<void> {
     final api = args.option("api")!;
     final authorizationHeader = args.option("api-authorization-header")!;
 
-    final overwriteVersion = args.option("version");
-    final overwriteOutput = args.option("output");
     final mandatory = args.flag("mandatory");
     final changesFix = args.multiOption("add-changes-fix");
     final changesChore = args.multiOption("add-changes-chore");
@@ -60,7 +59,7 @@ class _PlatformCommand extends Command<void> {
     final pubspecAsString = await pubspecFile.readAsString();
     final pubspec = Pubspec.parse(pubspecAsString);
 
-    final versionAsString = pubspec.version?.toString() ?? overwriteVersion;
+    final versionAsString = pubspec.version?.toString();
     if (versionAsString == null) {
       _talker.error("Version could not found for '${pubspecFile.path}'");
       return;
@@ -106,13 +105,18 @@ class _PlatformCommand extends Command<void> {
       ),
     );
 
-    final outputFile = File(
-      overwriteOutput ?? "${path.basename(buildDirectory.path)}.zip",
+    final outputDirectory = await createTemporaryDirectory(controller.settings);
+    final outputFilePath = path.join(
+      outputDirectory.path,
+      "$applicationName-v$versionAsString.zip",
     );
 
-    _talker.info("Directory '$buildPath' archiving into '${outputFile.path}'");
+    _talker.info("Directory '$buildPath' archiving into '$outputFilePath'");
 
-    final archiveFile = await controller.archive(buildDirectory, outputFile);
+    final archiveFile = await controller.archive(
+      buildDirectory,
+      outputFilePath,
+    );
 
     _talker.info(
       "Archived file '${archiveFile.path} uploading to ${controller.settings.apiUri}'",
@@ -133,6 +137,8 @@ class _PlatformCommand extends Command<void> {
     );
 
     _talker.info("Archive upload is done");
+
+    await outputDirectory.delete();
   }
 
   final Talker _talker;
@@ -159,18 +165,6 @@ class _PlatformCommand extends Command<void> {
         help:
             "Header value for 'Authorization' header while sending request to your api",
         valueHelp: "Basic cm9vdDpsb2NhbA==",
-      )
-      ..addOption(
-        "version",
-        help:
-            "Optional version overwrite, pubspec.yaml#version will be used if not specified.",
-        valueHelp: "1.0.0",
-      )
-      ..addOption(
-        "output",
-        help:
-            "Optional output file path for the archive file, directory_name.zip will be used if not specified.",
-        valueHelp: "update-v1.0.0.zip",
       )
       ..addFlag(
         "mandatory",

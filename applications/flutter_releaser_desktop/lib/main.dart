@@ -1,27 +1,30 @@
-import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:package_info_plus/package_info_plus.dart";
+import "package:flutter_releaser/flutter_releaser.dart";
+import "package:flutter_releaser_flutter/flutter_releaser_flutter.dart";
 
 Future<void> main() async {
-  final info = await PackageInfo.fromPlatform();
-  runApp(MyApp(info: info));
+  runApp(_Root());
 }
 
-class MyApp extends StatelessWidget {
-  final PackageInfo info;
-
-  const MyApp({required this.info, super.key});
-
+class _Root extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => MaterialApp(
+  Widget build(BuildContext context) => const MaterialApp(
     title: "Flutter Releaser",
     debugShowCheckedModeBanner: false,
-    home: Scaffold(body: Text("$info")),
+    home: Scaffold(body: _MainPage()),
   );
+}
+
+class _MainPage extends StatelessWidget {
+  final _controller = FlutterUpdateController(settings: FlutterReleaserSettings(
+      apiUri: Uri.parse("http://localhost:8080/"),
+      requester: HttpRequester, apiRequestHeadersProvider: apiRequestHeadersProvider
+  ));
+
+  const _MainPage();
 
   @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<PackageInfo>("info", info));
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }

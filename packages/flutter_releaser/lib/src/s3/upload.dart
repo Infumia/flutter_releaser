@@ -61,7 +61,7 @@ Future<void> uploadS3File(
     },
   );
 
-  await requester.put<void>(
+  await requester.put<dynamic>(
     settings,
     apiPath: "/archive/${uploadResponse.id}",
     headers: settings.apiRequestHeadersProvider(),

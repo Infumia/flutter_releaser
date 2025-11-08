@@ -31,8 +31,10 @@ class UpdateController {
   Future<void> extract(File file) =>
       _lock.synchronized(() => extractToUpdate(settings, file));
 
-  Future<File> archive(Directory directory, File outputFile) => _lock
-      .synchronized(() => archiveDirectory(settings, directory, outputFile));
+  Future<File> archive(Directory directory, String outputFilePath) =>
+      _lock.synchronized(
+        () => archiveDirectory(settings, directory, outputFilePath),
+      );
 
   Future<void> upload(
     String version,
