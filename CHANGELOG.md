@@ -15,6 +15,42 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_releaser_desktop` - `v1.1.0`](#flutter_releaser_desktop---v110)
+ - [`flutter_releaser_widgets` - `v0.0.2`](#flutter_releaser_widgets---v002)
+
+---
+
+#### `flutter_releaser_desktop` - `v1.1.0`
+
+ - Bumb version to test check, download, prepareForUpdate and restartApplication functionality.
+
+ - **REFACTOR**: rename/move plugin into flutter_releaser_flutter. ([#8](https://github.com/Infumia/flutter_releaser//issues/8)).
+ - **FIX**: formatting.
+ - **FIX**: upload.
+ - **FIX**: environment for desktop app.
+ - **FEAT**: flutter desktop application for testing.
+ - **FEAT**: add dio and talker to the desktop application.
+ - **FEAT**: add flutter_releaser_plugin.
+ - **FEAT**: flutter_releaser_desktop show version using package info plus.
+ - **FEAT**: add flutter_releaser_desktop application for uploading/downloading flutter appliaction versions.
+
+#### `flutter_releaser_widgets` - `v0.0.2`
+
+ - **FEAT**: separate the bin folder into cli application.
+
+
+## 2025-11-08
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_releaser` - `v0.3.3`](#flutter_releaser---v033)
  - [`flutter_releaser_cli` - `v0.0.4`](#flutter_releaser_cli---v004)
  - [`flutter_releaser_flutter` - `v0.1.2+1`](#flutter_releaser_flutter---v0121)

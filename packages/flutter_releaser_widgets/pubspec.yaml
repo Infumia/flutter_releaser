@@ -1,6 +1,6 @@
 name: flutter_releaser_widgets
 description: "Custom Flutter widgets for displaying update dialogs, notifications, and other UI components related to application updates using flutter_releaser."
-version: 0.0.1+2
+version: 0.0.2
 resolution: workspace
 homepage: https://github.com/Infumia/flutter_releaser/
 repository: https://github.com/Infumia/flutter_releaser/
