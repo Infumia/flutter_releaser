@@ -138,7 +138,7 @@ class _PlatformCommand extends Command<void> {
 
     _talker.info("Archive upload is done");
 
-    await outputDirectory.delete();
+    await outputDirectory.delete(recursive: true);
   }
 
   final Talker _talker;
