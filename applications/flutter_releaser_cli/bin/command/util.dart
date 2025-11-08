@@ -6,7 +6,7 @@ import "package:path/path.dart" as path;
 import "package:talker/talker.dart";
 
 Future<int> runFlutterCommand({
-  required List<String> commandAndArguments,
+  required List<String> arguments,
   required Talker talker,
 }) async {
   final flutterPath = Platform.environment["FLUTTER_ROOT"];
@@ -26,7 +26,7 @@ Future<int> runFlutterCommand({
     throw Exception("Flutter executable not found at path: $flutterBinPath");
   }
 
-  final command = <String>[flutterBinPath, ...commandAndArguments];
+  final command = <String>[flutterBinPath, ...arguments];
 
   talker.info("Executing build command: ${command.join(' ')}");
 
