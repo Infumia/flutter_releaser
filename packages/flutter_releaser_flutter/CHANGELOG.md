@@ -1,3 +1,7 @@
+## 0.1.2+2
+
+ - **FIX**: readd windows files.
+
 ## 0.1.2+1
 
  - **REFACTOR**: rename extract method to prepare for update.

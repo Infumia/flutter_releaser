@@ -1,3 +1,11 @@
+## 0.0.5
+
+ - **REFACTOR**: rename commandAndArguments to arguments.
+ - **REFACTOR**: simplify flutter_releaser_cli build command.
+ - **FIX**: formatting.
+ - **FIX**: put var.
+ - **FEAT**: clean first.
+
 ## 0.0.4
 
  - **FIX**: delete recursively.

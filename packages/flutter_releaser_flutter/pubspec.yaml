@@ -1,6 +1,6 @@
 name: flutter_releaser_flutter
 description: Flutter-friendly interface for the flutter_releaser package with reactive state management for desktop application updates
-version: 0.1.2+1
+version: 0.1.2+2
 resolution: workspace
 homepage: https://github.com/Infumia/flutter_releaser/
 repository: https://github.com/Infumia/flutter_releaser/
@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_releaser: ^0.3.3
+  flutter_releaser: ^0.3.4
   package_info_plus: ^9.0.0
 
   plugin_platform_interface: ^2.1.8

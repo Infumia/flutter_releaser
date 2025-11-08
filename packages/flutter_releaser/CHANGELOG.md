@@ -1,3 +1,10 @@
+## 0.3.4
+
+ - **REFACTOR**: use the id as version id instead of file id.
+ - **FIX**: reverse the version list.
+ - **FIX**: remove unused property.
+ - **FEAT**: add talker dio logger.
+
 ## 0.3.3
 
  - **REFACTOR**: rename extract method to prepare for update.

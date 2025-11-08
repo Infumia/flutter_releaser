@@ -15,6 +15,53 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_releaser` - `v0.3.4`](#flutter_releaser---v034)
+ - [`flutter_releaser_cli` - `v0.0.5`](#flutter_releaser_cli---v005)
+ - [`flutter_releaser_flutter` - `v0.1.2+2`](#flutter_releaser_flutter---v0122)
+ - [`flutter_releaser_dio` - `v0.1.1+3`](#flutter_releaser_dio---v0113)
+ - [`flutter_releaser_hooks` - `v0.1.1+3`](#flutter_releaser_hooks---v0113)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_releaser_dio` - `v0.1.1+3`
+ - `flutter_releaser_hooks` - `v0.1.1+3`
+
+---
+
+#### `flutter_releaser` - `v0.3.4`
+
+ - **REFACTOR**: use the id as version id instead of file id.
+ - **FIX**: reverse the version list.
+ - **FIX**: remove unused property.
+ - **FEAT**: add talker dio logger.
+
+#### `flutter_releaser_cli` - `v0.0.5`
+
+ - **REFACTOR**: rename commandAndArguments to arguments.
+ - **REFACTOR**: simplify flutter_releaser_cli build command.
+ - **FIX**: formatting.
+ - **FIX**: put var.
+ - **FEAT**: clean first.
+
+#### `flutter_releaser_flutter` - `v0.1.2+2`
+
+ - **FIX**: readd windows files.
+
+
+## 2025-11-08
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_releaser_desktop` - `v1.1.0`](#flutter_releaser_desktop---v110)
  - [`flutter_releaser_widgets` - `v0.0.2`](#flutter_releaser_widgets---v002)
 

@@ -1,6 +1,6 @@
 name: flutter_releaser_hooks
 description: "A collection of helpful Flutter hooks that provide easy integration with flutter_releaser's UpdateController for managing application updates in a reactive way."
-version: 0.1.1+2
+version: 0.1.1+3
 resolution: workspace
 homepage: https://github.com/Infumia/flutter_releaser/
 repository: https://github.com/Infumia/flutter_releaser/
@@ -14,5 +14,5 @@ dependencies:
     sdk: flutter
 
   flutter_hooks: ^0.21.3
-  flutter_releaser: ^0.3.3
-  flutter_releaser_flutter: ^0.1.2+1
+  flutter_releaser: ^0.3.4
+  flutter_releaser_flutter: ^0.1.2+2
