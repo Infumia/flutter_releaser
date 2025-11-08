@@ -28,7 +28,7 @@ class UpdateController {
     () => downloadVersion(settings, version, downloadProgressRef),
   );
 
-  Future<void> extract(File file) =>
+  Future<void> prepareForUpdate(File file) =>
       _lock.synchronized(() => extractToUpdate(settings, file));
 
   Future<File> archive(Directory directory, String outputFilePath) =>

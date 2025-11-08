@@ -32,7 +32,7 @@ class FlutterUpdateController extends ChangeNotifier {
   Future<File> download(Version version) =>
       _delegate.download(version, downloadProgressRef);
 
-  Future<void> extract(File file) => _delegate.extract(file);
+  Future<void> prepareForUpdate(File file) => _delegate.prepareForUpdate(file);
 
   Future<void> upload(
     String version,
