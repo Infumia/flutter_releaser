@@ -15,6 +15,7 @@ Future<Version?> retrieveNewVersion(
   final json = await settings.requester.get<Map<String, dynamic>>(
     settings,
     apiPath: "/archive",
+    headers: settings.apiRequestHeadersProvider(),
   );
   final archive = ApplicationArchive.fromJson(json);
 

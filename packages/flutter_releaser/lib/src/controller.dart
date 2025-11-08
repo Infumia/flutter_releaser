@@ -17,9 +17,8 @@ class UpdateController {
 
   UpdateController({required this.settings});
 
-  Future<Version?> check(String currentVersion) => _lock.synchronized(
-    () async => retrieveNewVersion(settings, currentVersion),
-  );
+  Future<Version?> check(String currentVersion) =>
+      _lock.synchronized(() => retrieveNewVersion(settings, currentVersion));
 
   Future<File> download(
     Version version,
@@ -43,7 +42,7 @@ class UpdateController {
     Ref<UploadProgress?> uploadProgressRef, {
     bool mandatory = true,
     List<Change>? changes,
-  }) async => _lock.synchronized(
+  }) => _lock.synchronized(
     () => uploadVersion(
       settings,
       UploadVersionRequest(

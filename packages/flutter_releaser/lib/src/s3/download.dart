@@ -19,6 +19,7 @@ Future<File> downloadS3File(
   final response = await requester.get<DownloadS3FileResponse>(
     settings,
     apiPath: "/archive/${version.id}?s3=true",
+    headers: settings.apiRequestHeadersProvider(),
   );
 
   final preSignedUri = Uri.parse(response.url);
