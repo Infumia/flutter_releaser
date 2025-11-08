@@ -12,7 +12,6 @@ import io.ktor.server.util.*
 import kotlinx.serialization.Serializable
 import net.infumia.flutter_releaser.ApplicationArchive
 import net.infumia.flutter_releaser.Change
-import net.infumia.flutter_releaser.File
 import net.infumia.flutter_releaser.Headers
 import net.infumia.flutter_releaser.Platform
 import net.infumia.flutter_releaser.StatusResponse
@@ -27,8 +26,8 @@ import org.koin.ktor.ext.inject
 internal fun Application.routeArchive() {
     val archiveService by inject<ArchiveService>()
     val fileUploadConfirmationService by inject<FileUploadConfirmationService>()
-    val s3FileUploadService = inject<S3FileUploadService>()
-    val s3FileDownloadService = inject<S3FileDownloadService>()
+    val s3FileUploadService by inject<S3FileUploadService>()
+    val s3FileDownloadService by inject<S3FileDownloadService>()
     routing {
         authenticate {
             route("archive") {
@@ -78,7 +77,7 @@ internal fun Application.routeArchive() {
                     call.respond(
                         if (s3) {
                             val (preSignedUrl, headers, fileId) =
-                                s3FileUploadService.value.createPresignedUrl(
+                                s3FileUploadService.createPresignedUrl(
                                     fileName = request.name,
                                     fileSizeInBytes = request.sizeInBytes,
                                     fileSha256 = request.sha256,
@@ -136,14 +135,10 @@ internal fun Application.routeArchive() {
 
                         call.respond(
                             if (s3) {
-                                val (file, downloadUrl, headers) =
-                                    s3FileDownloadService.value.createPresignedUrl(id)
+                                val (downloadUrl, headers) =
+                                    s3FileDownloadService.createPresignedUrl(id)
 
-                                DownloadS3FileResponse(
-                                    file = file.file,
-                                    url = downloadUrl,
-                                    headers = headers,
-                                )
+                                DownloadS3FileResponse(url = downloadUrl, headers = headers)
                             } else {
                                 throw UnknownUploadTechnologyException(
                                     "Unknown upload technology '${call.queryParameters}'"
@@ -189,8 +184,7 @@ internal fun Application.routeArchive() {
     }
 }
 
-@Serializable
-private data class DownloadS3FileResponse(val file: File, val url: String, val headers: Headers)
+@Serializable private data class DownloadS3FileResponse(val url: String, val headers: Headers)
 
 @Serializable
 private data class UploadVersionRequest(

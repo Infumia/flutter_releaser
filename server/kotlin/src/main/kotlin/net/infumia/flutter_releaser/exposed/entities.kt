@@ -12,6 +12,34 @@ import org.jetbrains.exposed.v1.core.dao.id.IdTable
 import org.jetbrains.exposed.v1.dao.IntEntity
 import org.jetbrains.exposed.v1.dao.IntEntityClass
 
+class FileEntity(id: EntityID<Int>) : IntEntity(id) {
+    companion object : IntEntityClassTransformed<FileEntity, File>(FilesTable) {
+        override fun FileEntity.toModel(): File =
+            File(
+                id = id.value,
+                name = name,
+                size = size,
+                sha256 = sha256,
+                requestDate = requestDate,
+                uploadDate = uploadDate,
+            )
+
+        override fun File.inject(entity: FileEntity) {
+            entity.name = name
+            entity.size = size
+            entity.sha256 = sha256
+            entity.requestDate = requestDate
+            entity.uploadDate = uploadDate
+        }
+    }
+
+    var name by FilesTable.name
+    var size by FilesTable.size
+    var sha256 by FilesTable.sha256
+    var requestDate by FilesTable.requestDate
+    var uploadDate by FilesTable.uploadDate
+}
+
 class VersionEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClassTransformed<VersionEntity, Version>(VersionsTable) {
         override fun VersionEntity.toModel(): Version =
@@ -44,34 +72,6 @@ class VersionEntity(id: EntityID<Int>) : IntEntity(id) {
     var mandatory by VersionsTable.mandatory
     var timestamp by VersionsTable.timestamp
     var changes by VersionsTable.changes
-}
-
-class FileEntity(id: EntityID<Int>) : IntEntity(id) {
-    companion object : IntEntityClassTransformed<FileEntity, File>(FilesTable) {
-        override fun FileEntity.toModel(): File =
-            File(
-                id = id.value,
-                name = name,
-                size = size,
-                sha256 = sha256,
-                requestDate = requestDate,
-                uploadDate = uploadDate,
-            )
-
-        override fun File.inject(entity: FileEntity) {
-            entity.name = name
-            entity.size = size
-            entity.sha256 = sha256
-            entity.requestDate = requestDate
-            entity.uploadDate = uploadDate
-        }
-    }
-
-    var name by FilesTable.name
-    var size by FilesTable.size
-    var sha256 by FilesTable.sha256
-    var requestDate by FilesTable.requestDate
-    var uploadDate by FilesTable.uploadDate
 }
 
 class S3FileEntity(id: EntityID<Int>) : IntEntity(id) {

@@ -16,14 +16,15 @@ Future<File> downloadS3File(
   final requester = settings.requester;
   final directory = await createTemporaryDirectory(settings);
   final downloadPath = path.join(directory.path, "download.zip");
-  final response = await requester.get<DownloadS3FileResponse>(
+  final response = await requester.get<Map<String, dynamic>>(
     settings,
     apiPath: "/archive/${version.id}?s3=true",
     headers: settings.apiRequestHeadersProvider(),
   );
+  final downloadResponse = DownloadS3FileResponse.fromJson(response);
 
-  final preSignedUri = Uri.parse(response.url);
-  final headers = response.headers;
+  final preSignedUri = Uri.parse(downloadResponse.url);
+  final headers = downloadResponse.headers;
 
   await requester.download(
     settings,

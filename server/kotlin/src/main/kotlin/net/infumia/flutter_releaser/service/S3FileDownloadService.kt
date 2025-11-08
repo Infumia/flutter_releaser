@@ -6,25 +6,26 @@ import kotlin.time.Duration.Companion.days
 import net.infumia.flutter_releaser.FileNotFoundException
 import net.infumia.flutter_releaser.FileNotUploadedException
 import net.infumia.flutter_releaser.Headers
-import net.infumia.flutter_releaser.S3File
 import net.infumia.flutter_releaser.presignGetObject
-import net.infumia.flutter_releaser.repository.impl.FileRepository
 import net.infumia.flutter_releaser.repository.impl.S3FileRepository
+import net.infumia.flutter_releaser.repository.impl.VersionRepository
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 object S3FileDownloadService : KoinComponent {
     private val s3Client by inject<S3Client>()
-    private val fileRepository by inject<FileRepository>()
+    private val versionRepository by inject<VersionRepository>()
     private val s3FileRepository by inject<S3FileRepository>()
 
-    suspend fun createPresignedUrl(id: Int): Triple<S3File, String, Headers> {
-        val file = fileRepository.findById(id) ?: throw FileNotFoundException("File not found")
+    suspend fun createPresignedUrl(versionId: Int): Pair<String, Headers> {
+        val version =
+            versionRepository.findById(versionId)
+                ?: throw FileNotFoundException("Version not found")
         val s3File =
-            s3FileRepository.findByFileId(file.id())
-                ?: throw FileNotFoundException("S3File not found")
+            s3FileRepository.findByFileId(version.file.id())
+                ?: throw FileNotFoundException("File not found")
 
-        if (file.uploadDate == null) {
+        if (version.file.uploadDate == null) {
             throw FileNotUploadedException("File not uploaded")
         }
 
@@ -35,8 +36,7 @@ object S3FileDownloadService : KoinComponent {
                 expire = 1.days,
             )
 
-        return Triple(
-            s3File,
+        return Pair(
             signedRequest.url.toString(),
             signedRequest.headers.entries().associate { it.key to it.value.joinToString(", ") },
         )

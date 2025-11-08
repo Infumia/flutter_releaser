@@ -27,7 +27,7 @@ Future<Version?> _extractNewVersion(
   ApplicationArchive archive,
   String currentVersion,
 ) async {
-  final latestVersion = _extractLatestVersion(settings, archive);
+  final latestVersion = _extractLatestVersion(archive);
   final parsedVersion = parseVersion(currentVersion);
 
   if (parsedVersion >= latestVersion.parsedVersion()) {
@@ -39,10 +39,7 @@ Future<Version?> _extractNewVersion(
   return latestVersion;
 }
 
-Version _extractLatestVersion(
-  FlutterReleaserSettings settings,
-  ApplicationArchive archive,
-) {
+Version _extractLatestVersion(ApplicationArchive archive) {
   final versions =
       archive.versions
           .where((element) => element.platform.name == Platform.operatingSystem)
@@ -56,8 +53,5 @@ Version _extractLatestVersion(
     );
   }
 
-  settings.logDebug(
-    "Latest version for '${archive.name}' found '${latestVersion.version}'",
-  );
   return latestVersion;
 }
