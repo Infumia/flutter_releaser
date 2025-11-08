@@ -5,16 +5,21 @@ import "package:flutter_releaser_dio/flutter_releaser_dio.dart";
 import "package:flutter_releaser_flutter/flutter_releaser_flutter.dart";
 import "package:package_info_plus/package_info_plus.dart";
 import "package:talker/talker.dart";
+import "package:talker_dio_logger/talker_dio_logger.dart";
+
+final _talker = Talker();
+
+final _dio = Dio()..interceptors.add(TalkerDioLogger(talker: _talker));
 
 final _controller = FlutterUpdateController(
   settings: FlutterReleaserSettings(
     apiUri: Uri.parse("http://localhost:8080/"),
-    requester: HttpRequesterDio(Dio()),
+    requester: HttpRequesterDio(_dio),
     apiRequestHeadersProvider: () => {
       // root->local
       "Authorization": "Basic cm9vdDpsb2NhbA==",
     },
-    logger: _TalkerLogger(),
+    logger: const _TalkerLogger(),
   ),
 );
 
@@ -56,15 +61,12 @@ class _MainPage extends StatelessWidget {
       });
     });
 
-    return Text(
-      "Application version: v${_info.version}",
-      style: const TextStyle(color: Colors.redAccent),
-    );
+    return Text("Application version: v${_info.version}");
   }
 }
 
 class _TalkerLogger implements Logger {
-  final _talker = Talker();
+  const _TalkerLogger();
 
   @override
   void debug(String message) {

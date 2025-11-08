@@ -31,7 +31,7 @@ Future<Directory> createTemporaryDirectory(
   }
 
   settings.logDebug(
-    "Temporary directory '$directory' will be used for flutter_releaser",
+    "Temporary directory '${directory.path}' will be used for flutter_releaser",
   );
 
   return directory;
