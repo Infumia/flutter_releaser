@@ -45,7 +45,7 @@ Version _extractLatestVersion(ApplicationArchive archive) {
           .where((element) => element.platform.name == Platform.operatingSystem)
           .toList()
         ..sort();
-  final latestVersion = versions.firstOrNull;
+  final latestVersion = versions.reversed.firstOrNull;
 
   if (latestVersion == null) {
     throw Exception(
