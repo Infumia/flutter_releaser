@@ -51,7 +51,7 @@ class _PlatformCommand extends Command<void> {
     );
 
     try {
-      exitCode = await runFlutterCommand(
+      var exitCode = await runFlutterCommand(
           commandAndArguments: ["clean"],
           talker: _talker
       );
