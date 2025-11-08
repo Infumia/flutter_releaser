@@ -18,6 +18,8 @@ dependencies:
   flutter_releaser_dio: ^0.1.1+1
   flutter_releaser_flutter: ^0.1.2
   package_info_plus: ^9.0.0
+  dio: ^5.9.0
+  talker: ^5.0.2
 
 flutter:
   uses-material-design: true
