@@ -56,7 +56,6 @@ Future<File> downloadS3File(
 @freezed
 sealed class DownloadS3FileResponse with _$DownloadS3FileResponse {
   const factory DownloadS3FileResponse({
-    required NetworkFile file,
     required String url,
     required Headers headers,
   }) = _DownloadS3FileResponse;
