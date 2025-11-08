@@ -52,8 +52,8 @@ class _PlatformCommand extends Command<void> {
 
     try {
       var exitCode = await runFlutterCommand(
-          arguments: ["clean"],
-          talker: _talker
+        arguments: ["clean"],
+        talker: _talker,
       );
 
       if (exitCode != 0) {
@@ -62,8 +62,8 @@ class _PlatformCommand extends Command<void> {
       }
 
       exitCode = await runFlutterCommand(
-          arguments: ["build", _platform.name, ...extraArgs],
-          talker: _talker
+        arguments: ["build", _platform.name, ...extraArgs],
+        talker: _talker,
       );
 
       if (exitCode != 0) {

@@ -1,4 +1,3 @@
-
 import "dart:convert";
 import "dart:io";
 
@@ -30,10 +29,7 @@ Future<int> runFlutterCommand({
 
   talker.info("Executing build command: ${command.join(' ')}");
 
-  final process = await Process.start(
-    command.first,
-    command.sublist(1),
-  );
+  final process = await Process.start(command.first, command.sublist(1));
 
   process.stdout.transform(utf8.decoder).listen(stdout.write);
   process.stderr.transform(utf8.decoder).listen(stderr.write);
