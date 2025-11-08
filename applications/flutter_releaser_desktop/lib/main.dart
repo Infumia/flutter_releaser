@@ -56,7 +56,10 @@ class _MainPage extends StatelessWidget {
       });
     });
 
-    return Text("Application version: v${_info.version}");
+    return Text(
+      "Application version: v${_info.version}",
+      style: const TextStyle(color: Colors.redAccent),
+    );
   }
 }
 
