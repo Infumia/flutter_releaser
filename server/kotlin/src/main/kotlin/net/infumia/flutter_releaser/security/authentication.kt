@@ -13,9 +13,9 @@ internal fun Application.configureAuthentication() {
     authentication {
         basic {
             realm = "Access to flutter_releaser routes"
-            validate { credentials ->
-                if (credentials.name == accessKey && credentials.password == secretKey) {
-                    UserIdPrincipal(credentials.name)
+            validate {
+                if (it.name == accessKey && it.password == secretKey) {
+                    UserIdPrincipal(it.name)
                 } else {
                     null
                 }
