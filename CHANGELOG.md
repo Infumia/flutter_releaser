@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-11-09
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_releaser` - `v0.3.4+1`](#flutter_releaser---v0341)
+ - [`flutter_releaser_dio` - `v0.1.1+4`](#flutter_releaser_dio---v0114)
+ - [`flutter_releaser_flutter` - `v0.1.2+3`](#flutter_releaser_flutter---v0123)
+ - [`flutter_releaser_hooks` - `v0.1.1+4`](#flutter_releaser_hooks---v0114)
+ - [`flutter_releaser_cli` - `v0.0.5+1`](#flutter_releaser_cli---v0051)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_releaser_dio` - `v0.1.1+4`
+ - `flutter_releaser_flutter` - `v0.1.2+3`
+ - `flutter_releaser_hooks` - `v0.1.1+4`
+ - `flutter_releaser_cli` - `v0.0.5+1`
+
+---
+
+#### `flutter_releaser` - `v0.3.4+1`
+
+ - **REFACTOR**: remove archive prefix from the api path.
+
+
 ## 2025-11-08
 
 ### Changes

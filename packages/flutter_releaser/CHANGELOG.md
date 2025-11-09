@@ -1,3 +1,7 @@
+## 0.3.4+1
+
+ - **REFACTOR**: remove archive prefix from the api path.
+
 ## 0.3.4
 
  - **REFACTOR**: use the id as version id instead of file id.
