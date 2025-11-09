@@ -123,6 +123,7 @@ spotless {
             "prettier-plugin-toml" to "2.0.6",
             "@prettier/plugin-xml" to "3.4.2",
             "prettier-plugin-properties" to "0.3.0",
+            "prettier-plugin-sql" to "0.19.2",
         )
 
     isEnforceCheck = false
@@ -155,8 +156,8 @@ spotless {
     }
 
     sql {
-        target("**/*.sql")
-        dbeaver()
+        target("src/main/resources/db/migrations/*.sql")
+        prettier(prettierConfig).config(mapOf("plugins" to listOf("prettier-plugin-sql")))
     }
 
     format("toml") {
