@@ -18,7 +18,7 @@ Future<File> downloadS3File(
   final downloadPath = path.join(directory.path, "download.zip");
   final response = await requester.get<Map<String, dynamic>>(
     settings,
-    apiPath: "/archive/${version.id}?s3=true",
+    apiPath: "/${version.id}?s3=true",
     headers: settings.apiRequestHeadersProvider(),
   );
   final downloadResponse = DownloadS3FileResponse.fromJson(response);

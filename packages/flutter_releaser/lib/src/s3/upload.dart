@@ -27,7 +27,7 @@ Future<void> uploadS3File(
 
   final response = await requester.put<Map<String, dynamic>>(
     settings,
-    apiPath: "/archive?s3=true",
+    apiPath: "/?s3=true",
     headers: {
       "Content-Type": "application/json",
       ...settings.apiRequestHeadersProvider(),
@@ -63,7 +63,7 @@ Future<void> uploadS3File(
 
   await requester.put<dynamic>(
     settings,
-    apiPath: "/archive/${uploadResponse.id}",
+    apiPath: "/${uploadResponse.id}",
     headers: settings.apiRequestHeadersProvider(),
   );
 }
