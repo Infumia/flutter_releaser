@@ -10,14 +10,12 @@ class HttpRequesterDio implements HttpRequester {
 
   @override
   Future<T> get<T>(
-    FlutterReleaserSettings settings, {
-    Uri? uri,
-    String? apiPath,
+    FlutterReleaserSettings settings,
+    Uri uri, {
     Headers? headers,
   }) async {
-    final Uri location = toUri(settings, uri: uri, apiPath: apiPath);
     final response = await _dio.getUri<T>(
-      location,
+      uri,
       options: Options(headers: headers),
     );
     if (response.statusCode == 200) {
@@ -34,15 +32,13 @@ class HttpRequesterDio implements HttpRequester {
 
   @override
   Future<T> put<T>(
-    FlutterReleaserSettings settings, {
+    FlutterReleaserSettings settings,
+    Uri uri, {
     Object? data,
-    Uri? uri,
-    String? apiPath,
     Headers? headers,
   }) async {
-    final Uri location = toUri(settings, uri: uri, apiPath: apiPath);
     final response = await _dio.putUri<T>(
-      location,
+      uri,
       data: data,
       options: Options(headers: headers),
     );
@@ -61,15 +57,13 @@ class HttpRequesterDio implements HttpRequester {
   @override
   Future<void> download(
     FlutterReleaserSettings settings,
-    String path, {
-    Uri? uri,
-    String? apiPath,
+    String path,
+    Uri uri, {
     Headers? headers,
     ProgressCallback? progress,
   }) async {
-    final Uri location = toUri(settings, uri: uri, apiPath: apiPath);
     await _dio.downloadUri(
-      location,
+      uri,
       path,
       options: Options(responseType: ResponseType.stream, headers: headers),
       onReceiveProgress: progress,
@@ -79,15 +73,13 @@ class HttpRequesterDio implements HttpRequester {
   @override
   Future<void> upload(
     FlutterReleaserSettings settings,
-    String path, {
-    Uri? uri,
-    String? apiPath,
+    String path,
+    Uri uri, {
     Headers? headers,
     ProgressCallback? progress,
   }) async {
-    final Uri location = toUri(settings, uri: uri, apiPath: apiPath);
     await _dio.putUri<dynamic>(
-      location,
+      uri,
       data: File(path).openRead(),
       options: Options(headers: headers),
       onSendProgress: progress,

@@ -27,7 +27,7 @@ Future<void> uploadS3File(
 
   final response = await requester.put<Map<String, dynamic>>(
     settings,
-    apiPath: "/?s3=true",
+    settings.apiUri.resolve("?s3=true"),
     headers: {
       "Content-Type": "application/json",
       ...settings.apiRequestHeadersProvider(),
@@ -43,12 +43,14 @@ Future<void> uploadS3File(
     ).toJson().toString(),
   );
   final uploadResponse = UploadS3FileResponse.fromJson(response);
+  final preSignedUrl = Uri.parse(uploadResponse.url);
+  final headers = uploadResponse.headers;
 
   await requester.upload(
     settings,
     archivePath,
-    uri: Uri.parse(uploadResponse.url),
-    headers: uploadResponse.headers,
+    preSignedUrl,
+    headers: headers,
     progress: (sent, total) {
       final currentProgress =
           uploadProgressRef.value ??
@@ -63,7 +65,7 @@ Future<void> uploadS3File(
 
   await requester.put<dynamic>(
     settings,
-    apiPath: "/${uploadResponse.id}",
+    settings.apiUri.resolve(uploadResponse.id.toString()),
     headers: settings.apiRequestHeadersProvider(),
   );
 }

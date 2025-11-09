@@ -18,18 +18,17 @@ Future<File> downloadS3File(
   final downloadPath = path.join(directory.path, "download.zip");
   final response = await requester.get<Map<String, dynamic>>(
     settings,
-    apiPath: "/${version.id}?s3=true",
+    settings.apiUri.resolve(version.id.toString()).resolve("?s3=true"),
     headers: settings.apiRequestHeadersProvider(),
   );
   final downloadResponse = DownloadS3FileResponse.fromJson(response);
-
   final preSignedUri = Uri.parse(downloadResponse.url);
   final headers = downloadResponse.headers;
 
   await requester.download(
     settings,
     downloadPath,
-    uri: preSignedUri,
+    preSignedUri,
     headers: headers,
     progress: (received, total) {
       final currentProgress =
