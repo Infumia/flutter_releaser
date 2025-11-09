@@ -1,3 +1,7 @@
+## 0.3.4+2
+
+ - **FIX**: url resolving.
+
 ## 0.3.4+1
 
  - **REFACTOR**: remove archive prefix from the api path.

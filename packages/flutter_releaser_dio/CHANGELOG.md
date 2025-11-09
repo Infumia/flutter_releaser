@@ -1,3 +1,7 @@
+## 0.1.1+5
+
+ - **FIX**: url resolving.
+
 ## 0.1.1+4
 
  - Update a dependency to the latest release.

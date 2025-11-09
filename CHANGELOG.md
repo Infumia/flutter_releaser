@@ -15,6 +15,43 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_releaser` - `v0.3.4+2`](#flutter_releaser---v0342)
+ - [`flutter_releaser_dio` - `v0.1.1+5`](#flutter_releaser_dio---v0115)
+ - [`flutter_releaser_flutter` - `v0.1.2+4`](#flutter_releaser_flutter---v0124)
+ - [`flutter_releaser_hooks` - `v0.1.1+5`](#flutter_releaser_hooks---v0115)
+ - [`flutter_releaser_cli` - `v0.0.5+2`](#flutter_releaser_cli---v0052)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_releaser_flutter` - `v0.1.2+4`
+ - `flutter_releaser_hooks` - `v0.1.1+5`
+ - `flutter_releaser_cli` - `v0.0.5+2`
+
+---
+
+#### `flutter_releaser` - `v0.3.4+2`
+
+ - **FIX**: url resolving.
+
+#### `flutter_releaser_dio` - `v0.1.1+5`
+
+ - **FIX**: url resolving.
+
+
+## 2025-11-09
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_releaser` - `v0.3.4+1`](#flutter_releaser---v0341)
  - [`flutter_releaser_dio` - `v0.1.1+4`](#flutter_releaser_dio---v0114)
  - [`flutter_releaser_flutter` - `v0.1.2+3`](#flutter_releaser_flutter---v0123)
