@@ -11,7 +11,7 @@ s3 = "1.5.78"
 hikari = "7.0.2"
 koin = "4.1.1"
 openapi = "5.4.0"
-schema = "2.4.0"
+schema = "2.5.0"
 ktfmt = "0.58"
 
 [libraries]
