@@ -160,10 +160,24 @@ class _PlatformCommand extends Command<void> {
         valueHelp: "http://localhost:8080",
       )
       ..addOption(
-        "api-authorization-header",
-        mandatory: true,
+        "api-authorization",
+        mandatory: false,
         help:
-            "Header value for 'Authorization' header while sending request to your api",
+        "Header value for 'Authorization' header while sending request to your api",
+        valueHelp: "Basic cm9vdDpsb2NhbA==",
+      )
+      ..addOption(
+        "api-login-username",
+        mandatory: false,
+        help:
+        "Header value for 'Authorization' header while sending request to your api",
+        valueHelp: "Basic cm9vdDpsb2NhbA==",
+      )
+      ..addOption(
+        "api-login-password",
+        mandatory: false,
+        help:
+        "Header value for 'Authorization' header while sending request to your api",
         valueHelp: "Basic cm9vdDpsb2NhbA==",
       )
       ..addFlag(
