@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_releaser_cli` - `v0.0.6+1`](#flutter_releaser_cli---v0061)
+
+---
+
+#### `flutter_releaser_cli` - `v0.0.6+1`
+
+ - **FIX**: header argument.
+
+
+## 2025-11-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_releaser_cli` - `v0.0.6`](#flutter_releaser_cli---v006)
 
 ---

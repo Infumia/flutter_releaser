@@ -1,6 +1,6 @@
 name: flutter_releaser_cli
 description: A command-line interface for Flutter Releaser, providing tools for managing and automating Flutter app releases.
-version: 0.0.6
+version: 0.0.6+1
 resolution: workspace
 homepage: https://github.com/Infumia/flutter_releaser/
 repository: https://github.com/Infumia/flutter_releaser/

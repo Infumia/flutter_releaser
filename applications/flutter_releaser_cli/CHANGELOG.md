@@ -1,3 +1,7 @@
+## 0.0.6+1
+
+ - **FIX**: header argument.
+
 ## 0.0.6
 
  - **FEAT**: add talker dio.
