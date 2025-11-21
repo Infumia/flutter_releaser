@@ -17,8 +17,9 @@ dependencies:
   pub_updater: ^0.5.0
   args: ^2.7.0
   flutter_releaser: ^0.3.4+2
-  talker: ^5.0.2
+  talker: ^5.1.0
+  talker_logger: ^5.1.0
+  talker_dio_logger: ^5.1.0
+  dio: ^5.9.0
   cli_launcher: ^0.3.2+1
   flutter_releaser_dio: ^0.1.1+5
-  dio: ^5.9.0
-  talker_dio_logger: ^5.1.0
