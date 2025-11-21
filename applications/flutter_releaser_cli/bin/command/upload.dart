@@ -98,8 +98,10 @@ class _PlatformCommand extends Command<void> {
       );
       return;
     }
+
     final dio = Dio();
     dio.interceptors.add(TalkerDioLogger(talker: _talker));
+
     final controller = UpdateController(
       settings: FlutterReleaserSettings(
         apiUri: Uri.parse(api),
