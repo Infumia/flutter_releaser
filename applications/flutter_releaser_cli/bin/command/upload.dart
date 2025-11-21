@@ -47,7 +47,10 @@ class _PlatformCommand extends Command<void> {
       return;
     }
 
-    final api = args.option("api")!;
+    var api = args.option("api")!;
+    if (!api.endsWith("/")) {
+      api = "$api/";
+    }
     final authorizationHeader = args.option("api-authorization")!;
 
     final mandatory = args.flag("mandatory");
@@ -162,7 +165,7 @@ class _PlatformCommand extends Command<void> {
         "api",
         mandatory: true,
         help: "Url for the flutter_releaser server.",
-        valueHelp: "http://localhost:8080",
+        valueHelp: "http://localhost:8080/archive",
       )
       ..addOption(
         "api-authorization",
