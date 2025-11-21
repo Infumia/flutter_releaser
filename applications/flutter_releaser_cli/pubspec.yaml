@@ -21,3 +21,4 @@ dependencies:
   cli_launcher: ^0.3.2+1
   flutter_releaser_dio: ^0.1.1+5
   dio: ^5.9.0
+  talker_dio_logger: ^5.1.0

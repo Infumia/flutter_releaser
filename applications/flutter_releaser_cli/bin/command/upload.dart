@@ -9,6 +9,7 @@ import "package:path/path.dart" as path;
 import "package:pubspec_parse/pubspec_parse.dart";
 import "package:talker/talker.dart";
 import "package:flutter_releaser/src/files.dart";
+import "package:talker_dio_logger/talker_dio_logger.dart";
 
 class UploadCommand extends Command<void> {
   @override
@@ -97,10 +98,12 @@ class _PlatformCommand extends Command<void> {
       );
       return;
     }
+    final dio = Dio();
+    dio.interceptors.add(TalkerDioLogger(talker: _talker));
     final controller = UpdateController(
       settings: FlutterReleaserSettings(
         apiUri: Uri.parse(api),
-        requester: HttpRequesterDio(Dio()),
+        requester: HttpRequesterDio(dio),
         apiRequestHeadersProvider: () => {"Authorization": authorizationHeader},
       ),
     );
