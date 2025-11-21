@@ -48,7 +48,7 @@ class _PlatformCommand extends Command<void> {
     }
 
     final api = args.option("api")!;
-    final authorizationHeader = args.option("api-authorization-header")!;
+    final authorizationHeader = args.option("api-authorization")!;
 
     final mandatory = args.flag("mandatory");
     final changesFix = args.multiOption("add-changes-fix");
