@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-11-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_releaser_cli` - `v0.0.6`](#flutter_releaser_cli---v006)
+
+---
+
+#### `flutter_releaser_cli` - `v0.0.6`
+
+ - **FEAT**: add talker dio.
+
+
 ## 2025-11-09
 
 ### Changes
