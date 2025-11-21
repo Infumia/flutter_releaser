@@ -1,3 +1,7 @@
+## 0.0.6+2
+
+ - **FIX**: api url.
+
 ## 0.0.6+1
 
  - **FIX**: header argument.
