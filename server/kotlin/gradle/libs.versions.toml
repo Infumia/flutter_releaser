@@ -1,6 +1,6 @@
 [versions]
 spotless = "8.1.0"
-ktor = "3.3.2"
+ktor = "3.3.3"
 ktor-plugin = "3.3.3"
 kotlin = "2.2.21"
 logback = "1.5.21"
