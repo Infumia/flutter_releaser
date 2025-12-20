@@ -15,4 +15,4 @@ dependencies:
     sdk: flutter
 
   flutter_releaser: ^0.3.3
-  forui: ^0.16.0
+  forui: 0.17.0
