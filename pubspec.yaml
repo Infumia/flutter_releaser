@@ -17,8 +17,8 @@ environment:
   sdk: ^3.9.0
 
 dev_dependencies:
-  flint: ^2.14.0
-  melos: ^7.3.0
+  flint: ^2.15.0
+  melos: ^7.7.0
 
 melos:
   scripts:

@@ -10,4 +10,4 @@ environment:
 
 dependencies:
   flutter_releaser: ^0.3.4+2
-  dio: ^5.9.0
+  dio: ^5.9.2

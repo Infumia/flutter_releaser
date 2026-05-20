@@ -10,16 +10,16 @@ environment:
 
 dependencies:
   pub_semver: ^2.2.0
-  archive: ^4.0.7
+  archive: ^4.0.9
   path: ^1.9.1
-  crypto: ^3.0.6
+  crypto: ^3.0.7
   pubspec_parse: ^1.5.0
   pub_updater: ^0.5.0
   args: ^2.7.0
   flutter_releaser: ^0.3.4+2
-  talker: ^5.1.0
-  talker_logger: ^5.1.0
-  talker_dio_logger: ^5.1.0
-  dio: ^5.9.0
-  cli_launcher: ^0.3.2+1
+  talker: ^5.1.17
+  talker_logger: ^5.1.17
+  talker_dio_logger: ^5.1.17
+  dio: ^5.9.2
+  cli_launcher: ^0.3.3+1
   flutter_releaser_dio: ^0.1.1+5
