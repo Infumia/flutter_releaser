@@ -1,3 +1,44 @@
+## 0.4.0
+
+> Note: This release has breaking changes.
+
+ - **REFACTOR**: rename/move plugin into flutter_releaser_flutter. ([#8](https://github.com/Infumia/flutter_releaser//issues/8)).
+ - **REFACTOR**: remove archive prefix from the api path.
+ - **REFACTOR**: use the id as version id instead of file id.
+ - **REFACTOR**: rename platform to targetplatform.
+ - **REFACTOR**: rename extract method to prepare for update.
+ - **FIX**: convert to json.
+ - **FIX**: remove unused property.
+ - **FIX**: reverse the version list.
+ - **FIX**: upload.
+ - **FIX**: remove http package for now.
+ - **FIX**: http response.
+ - **FIX**: url resolving.
+ - **FIX**: use api request headers provider to send request to server.
+ - **FIX**: remove unused variable.
+ - **FIX**: add listener to upload progress notifier as well.
+ - **FIX**: macos plugin.
+ - **FIX**: give archive path.
+ - **FEAT**: implement upload command for cli.
+ - **FEAT**: add archive as well.
+ - **FEAT**: start wokring on upload command.
+ - **FEAT**: add talker dio logger.
+ - **FEAT**: separate the bin folder into cli application.
+ - **FEAT**: move to flutter_releaser_cli.
+ - **FEAT**: platforms.
+ - **FEAT**: add flutter_releaser:build cli.
+ - **FEAT**: add pubspec parser for the cli.
+ - **FEAT**: test.
+ - **FEAT**: upload with new parameters.
+ - **FEAT**: implement upload system.
+ - **FEAT**: initial version. ([#1](https://github.com/Infumia/flutter_releaser//issues/1)).
+ - **FEAT**: add update function.
+ - **FEAT**: abstraction layer for http requests. ([#2](https://github.com/Infumia/flutter_releaser//issues/2)).
+ - **FEAT**: const.
+ - **BREAKING** **FEAT**: start working on upload system.
+ - **BREAKING** **FEAT**: create flutter_releaser_flutter  and plugin/flutter_releaser_plugin.
+ - **BREAKING** **CHANGE**: implementing the new api specifications. ([#3](https://github.com/Infumia/flutter_releaser//issues/3)).
+
 ## 0.3.4+2
 
  - **FIX**: url resolving.

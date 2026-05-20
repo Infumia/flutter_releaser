@@ -1,3 +1,12 @@
+## 0.2.0
+
+> Note: This release has breaking changes.
+
+ - **FEAT**: separate the bin folder into cli application.
+ - **FEAT**: implement flutter_releaser_hooks.
+ - **FEAT**: initial version. ([#1](https://github.com/Infumia/flutter_releaser//issues/1)).
+ - **BREAKING** **FEAT**: create flutter_releaser_flutter  and plugin/flutter_releaser_plugin.
+
 ## 0.1.1+5
 
  - Update a dependency to the latest release.

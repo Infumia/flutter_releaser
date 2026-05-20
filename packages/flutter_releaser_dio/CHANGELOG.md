@@ -1,3 +1,13 @@
+## 0.2.0
+
+> Note: This release has breaking changes.
+
+ - **FIX**: url resolving.
+ - **FEAT**: separate the bin folder into cli application.
+ - **FEAT**: implement upload system.
+ - **FEAT**: abstraction layer for http requests. ([#2](https://github.com/Infumia/flutter_releaser//issues/2)).
+ - **BREAKING** **CHANGE**: implementing the new api specifications. ([#3](https://github.com/Infumia/flutter_releaser//issues/3)).
+
 ## 0.1.1+5
 
  - **FIX**: url resolving.

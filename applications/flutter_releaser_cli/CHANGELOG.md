@@ -1,3 +1,20 @@
+## 0.0.7
+
+ - **REFACTOR**: rename commandAndArguments to arguments.
+ - **REFACTOR**: simplify flutter_releaser_cli build command.
+ - **FIX**: api url.
+ - **FIX**: header argument.
+ - **FIX**: formatting.
+ - **FIX**: put var.
+ - **FIX**: delete recursively.
+ - **FIX**: upload.
+ - **FIX**: str interpolation.
+ - **FEAT**: add talker dio.
+ - **FEAT**: clean first.
+ - **FEAT**: implement upload command for cli.
+ - **FEAT**: start wokring on upload command.
+ - **FEAT**: separate the bin folder into cli application.
+
 ## 0.0.6+2
 
  - **FIX**: api url.

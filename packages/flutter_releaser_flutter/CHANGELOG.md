@@ -1,3 +1,14 @@
+## 0.2.0
+
+> Note: This release has breaking changes.
+
+ - **REFACTOR**: rename extract method to prepare for update.
+ - **REFACTOR**: rename/move plugin into flutter_releaser_flutter. ([#8](https://github.com/Infumia/flutter_releaser//issues/8)).
+ - **FIX**: readd windows files.
+ - **FEAT**: start wokring on upload command.
+ - **FEAT**: separate the bin folder into cli application.
+ - **BREAKING** **FEAT**: create flutter_releaser_flutter  and plugin/flutter_releaser_plugin.
+
 ## 0.1.2+4
 
  - Update a dependency to the latest release.

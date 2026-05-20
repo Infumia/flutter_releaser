@@ -1,7 +1,7 @@
 name: flutter_releaser_desktop
 description: "Flutter Releaser desktop application to download/upload/test your flutter applications' updates."
 publish_to: 'none'
-version: 1.1.0
+version: 1.2.0
 resolution: workspace
 homepage: https://github.com/Infumia/flutter_releaser/
 repository: https://github.com/Infumia/flutter_releaser/
@@ -14,9 +14,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_releaser: ^0.3.4+2
-  flutter_releaser_dio: ^0.1.1+5
-  flutter_releaser_flutter: ^0.1.2+4
+  flutter_releaser: ^0.4.0
+  flutter_releaser_dio: ^0.2.0
+  flutter_releaser_flutter: ^0.2.0
   package_info_plus: ^10.1.0
   dio: ^5.9.2
   talker: ^5.1.17

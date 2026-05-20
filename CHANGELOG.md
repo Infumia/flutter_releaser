@@ -3,6 +3,123 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-05-20
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`flutter_releaser` - `v0.4.0`](#flutter_releaser---v040)
+ - [`flutter_releaser_dio` - `v0.2.0`](#flutter_releaser_dio---v020)
+ - [`flutter_releaser_flutter` - `v0.2.0`](#flutter_releaser_flutter---v020)
+ - [`flutter_releaser_hooks` - `v0.2.0`](#flutter_releaser_hooks---v020)
+
+Packages with other changes:
+
+ - [`flutter_releaser_cli` - `v0.0.7`](#flutter_releaser_cli---v007)
+ - [`flutter_releaser_desktop` - `v1.2.0`](#flutter_releaser_desktop---v120)
+
+---
+
+#### `flutter_releaser` - `v0.4.0`
+
+ - **REFACTOR**: rename/move plugin into flutter_releaser_flutter. ([#8](https://github.com/Infumia/flutter_releaser//issues/8)).
+ - **REFACTOR**: remove archive prefix from the api path.
+ - **REFACTOR**: use the id as version id instead of file id.
+ - **REFACTOR**: rename platform to targetplatform.
+ - **REFACTOR**: rename extract method to prepare for update.
+ - **FIX**: convert to json.
+ - **FIX**: remove unused property.
+ - **FIX**: reverse the version list.
+ - **FIX**: upload.
+ - **FIX**: remove http package for now.
+ - **FIX**: http response.
+ - **FIX**: url resolving.
+ - **FIX**: use api request headers provider to send request to server.
+ - **FIX**: remove unused variable.
+ - **FIX**: add listener to upload progress notifier as well.
+ - **FIX**: macos plugin.
+ - **FIX**: give archive path.
+ - **FEAT**: implement upload command for cli.
+ - **FEAT**: add archive as well.
+ - **FEAT**: start wokring on upload command.
+ - **FEAT**: add talker dio logger.
+ - **FEAT**: separate the bin folder into cli application.
+ - **FEAT**: move to flutter_releaser_cli.
+ - **FEAT**: platforms.
+ - **FEAT**: add flutter_releaser:build cli.
+ - **FEAT**: add pubspec parser for the cli.
+ - **FEAT**: test.
+ - **FEAT**: upload with new parameters.
+ - **FEAT**: implement upload system.
+ - **FEAT**: initial version. ([#1](https://github.com/Infumia/flutter_releaser//issues/1)).
+ - **FEAT**: add update function.
+ - **FEAT**: abstraction layer for http requests. ([#2](https://github.com/Infumia/flutter_releaser//issues/2)).
+ - **FEAT**: const.
+ - **BREAKING** **FEAT**: start working on upload system.
+ - **BREAKING** **FEAT**: create flutter_releaser_flutter  and plugin/flutter_releaser_plugin.
+ - **BREAKING** **CHANGE**: implementing the new api specifications. ([#3](https://github.com/Infumia/flutter_releaser//issues/3)).
+
+#### `flutter_releaser_dio` - `v0.2.0`
+
+ - **FIX**: url resolving.
+ - **FEAT**: separate the bin folder into cli application.
+ - **FEAT**: implement upload system.
+ - **FEAT**: abstraction layer for http requests. ([#2](https://github.com/Infumia/flutter_releaser//issues/2)).
+ - **BREAKING** **CHANGE**: implementing the new api specifications. ([#3](https://github.com/Infumia/flutter_releaser//issues/3)).
+
+#### `flutter_releaser_flutter` - `v0.2.0`
+
+ - **REFACTOR**: rename extract method to prepare for update.
+ - **REFACTOR**: rename/move plugin into flutter_releaser_flutter. ([#8](https://github.com/Infumia/flutter_releaser//issues/8)).
+ - **FIX**: readd windows files.
+ - **FEAT**: start wokring on upload command.
+ - **FEAT**: separate the bin folder into cli application.
+ - **BREAKING** **FEAT**: create flutter_releaser_flutter  and plugin/flutter_releaser_plugin.
+
+#### `flutter_releaser_hooks` - `v0.2.0`
+
+ - **FEAT**: separate the bin folder into cli application.
+ - **FEAT**: implement flutter_releaser_hooks.
+ - **FEAT**: initial version. ([#1](https://github.com/Infumia/flutter_releaser//issues/1)).
+ - **BREAKING** **FEAT**: create flutter_releaser_flutter  and plugin/flutter_releaser_plugin.
+
+#### `flutter_releaser_cli` - `v0.0.7`
+
+ - **REFACTOR**: rename commandAndArguments to arguments.
+ - **REFACTOR**: simplify flutter_releaser_cli build command.
+ - **FIX**: api url.
+ - **FIX**: header argument.
+ - **FIX**: formatting.
+ - **FIX**: put var.
+ - **FIX**: delete recursively.
+ - **FIX**: upload.
+ - **FIX**: str interpolation.
+ - **FEAT**: add talker dio.
+ - **FEAT**: clean first.
+ - **FEAT**: implement upload command for cli.
+ - **FEAT**: start wokring on upload command.
+ - **FEAT**: separate the bin folder into cli application.
+
+#### `flutter_releaser_desktop` - `v1.2.0`
+
+ - **REFACTOR**: rename/move plugin into flutter_releaser_flutter. ([#8](https://github.com/Infumia/flutter_releaser//issues/8)).
+ - **FIX**: set the version to the latest.
+ - **FIX**: formatting.
+ - **FIX**: upload.
+ - **FIX**: environment for desktop app.
+ - **FEAT**: add inno compiler configuration to build windows applications.
+ - **FEAT**: add talker dio logger.
+ - **FEAT**: add text style.
+ - **FEAT**: flutter desktop application for testing.
+ - **FEAT**: add dio and talker to the desktop application.
+ - **FEAT**: add flutter_releaser_plugin.
+ - **FEAT**: flutter_releaser_desktop show version using package info plus.
+ - **FEAT**: add flutter_releaser_desktop application for uploading/downloading flutter appliaction versions.
+
+
 ## 2025-11-21
 
 ### Changes
