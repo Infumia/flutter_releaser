@@ -1,3 +1,7 @@
+## 0.0.9
+
+ - fail fast.
+
 ## 0.0.8
 
  - **REFACTOR**: rename commandAndArguments to arguments.

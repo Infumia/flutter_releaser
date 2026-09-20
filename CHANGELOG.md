@@ -11,6 +11,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 Packages with breaking changes:
 
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_releaser_cli` - `v0.0.9`](#flutter_releaser_cli---v009)
+
+---
+
+#### `flutter_releaser_cli` - `v0.0.9`
+
+ - fail fast.
+
+
+## 2026-09-20
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
  - [`flutter_releaser` - `v0.5.0`](#flutter_releaser---v050)
  - [`flutter_releaser_dio` - `v0.3.0`](#flutter_releaser_dio---v030)
  - [`flutter_releaser_flutter` - `v0.3.0`](#flutter_releaser_flutter---v030)
