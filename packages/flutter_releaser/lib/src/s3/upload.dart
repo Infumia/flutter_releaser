@@ -55,6 +55,47 @@ Future<int> uploadS3File(
 
   return uploadResponse.id;
 }
+
+Future<void> uploadS3Installer(
+  FlutterReleaserSettings settings,
+  int versionId,
+  String installerPath,
+  Ref<UploadProgress?> uploadProgressRef,
+) async {
+  final requester = settings.requester;
+  final file = File(installerPath);
+  if (!file.existsSync()) {
+    throw Exception("File '$installerPath' could not found");
+  }
+
+  final sizeInBytes = await file.length();
+  final name = path.basename(installerPath);
+  final sha256 = await file.retrieveSha256();
+
+  final response = await requester.put<Map<String, dynamic>>(
+    settings,
+    settings.apiUri.resolve("$versionId/installer/?s3=true"),
+    headers: {
+      "Content-Type": "application/json",
+      ...settings.apiRequestHeadersProvider(),
+    },
+    data: UploadS3InstallerRequest(
+      name: name,
+      sizeInBytes: sizeInBytes,
+      sha256: base64Encode(sha256.bytes),
+    ).toJson(),
+  );
+  final uploadResponse = UploadS3InstallerResponse.fromJson(response);
+
+  await _uploadToPresignedUrl(
+    settings,
+    installerPath,
+    sizeInBytes,
+    Uri.parse(uploadResponse.url),
+    uploadResponse.headers,
+    uploadProgressRef,
+  );
+}
 Future<void> _uploadToPresignedUrl(
   FlutterReleaserSettings settings,
   String filePath,
