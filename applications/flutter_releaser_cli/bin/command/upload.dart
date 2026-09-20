@@ -130,7 +130,14 @@ class _PlatformCommand extends Command<void> {
       "Archived file '${archiveFile.path} uploading to ${controller.settings.apiUri}'",
     );
 
-    await controller.upload(
+    final installerPath = args.option("installer")!;
+    final installerFile = File(installerPath);
+    if (!installerFile.existsSync()) {
+      _talker.error("Installer '$installerPath' not found");
+      return;
+    }
+
+    final versionId = await controller.upload(
       versionAsString,
       archiveFile.path,
       _platform,
@@ -144,7 +151,17 @@ class _PlatformCommand extends Command<void> {
       ],
     );
 
-    _talker.info("Archive upload is done");
+    _talker.info(
+      "Archive upload is done, uploading installer '$installerPath'",
+    );
+
+    await controller.uploadInstaller(versionId, installerPath, ValueRef(null));
+
+    _talker.info("Installer upload is done, confirming version '$versionId'");
+
+    await controller.confirm(versionId);
+
+    _talker.info("Version '$versionId' confirmed");
 
     await outputDirectory.delete(recursive: true);
   }
