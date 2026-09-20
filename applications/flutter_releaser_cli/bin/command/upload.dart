@@ -8,7 +8,6 @@ import "package:flutter_releaser_dio/flutter_releaser_dio.dart";
 import "package:path/path.dart" as path;
 import "package:pubspec_parse/pubspec_parse.dart";
 import "package:talker/talker.dart";
-import "package:flutter_releaser/src/files.dart";
 import "package:talker_dio_logger/talker_dio_logger.dart";
 
 class UploadCommand extends Command<void> {
@@ -188,22 +187,28 @@ class _PlatformCommand extends Command<void> {
         "api-authorization",
         mandatory: false,
         help:
-        "Header value for 'Authorization' header while sending request to your api",
+            "Header value for 'Authorization' header while sending request to your api",
         valueHelp: "Basic cm9vdDpsb2NhbA==",
       )
       ..addOption(
         "api-login-username",
         mandatory: false,
         help:
-        "Header value for 'Authorization' header while sending request to your api",
+            "Header value for 'Authorization' header while sending request to your api",
         valueHelp: "Basic cm9vdDpsb2NhbA==",
       )
       ..addOption(
         "api-login-password",
         mandatory: false,
         help:
-        "Header value for 'Authorization' header while sending request to your api",
+            "Header value for 'Authorization' header while sending request to your api",
         valueHelp: "Basic cm9vdDpsb2NhbA==",
+      )
+      ..addOption(
+        "installer",
+        mandatory: true,
+        help: "Path to the installer file to upload alongside the archive.",
+        valueHelp: "installer.exe",
       )
       ..addFlag(
         "mandatory",
