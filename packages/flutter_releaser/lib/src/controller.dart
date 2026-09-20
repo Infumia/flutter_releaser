@@ -35,7 +35,7 @@ class UpdateController {
         () => archiveDirectory(settings, directory, outputFilePath),
       );
 
-  Future<void> upload(
+  Future<int> upload(
     String version,
     String archivePath,
     TargetPlatform platform,
@@ -55,4 +55,20 @@ class UpdateController {
       uploadProgressRef,
     ),
   );
+
+  Future<void> uploadInstaller(
+    int versionId,
+    String installerPath,
+    Ref<UploadProgress?> uploadProgressRef,
+  ) => _lock.synchronized(
+    () => uploadInstallerFile(
+      settings,
+      versionId,
+      installerPath,
+      uploadProgressRef,
+    ),
+  );
+
+  Future<void> confirm(int versionId) =>
+      _lock.synchronized(() => confirmVersion(settings, versionId));
 }
