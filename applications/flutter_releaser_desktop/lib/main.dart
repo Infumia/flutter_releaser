@@ -1,8 +1,8 @@
 import "package:dio/dio.dart";
-import "package:flutter/material.dart";
 import "package:flutter_releaser/flutter_releaser.dart";
 import "package:flutter_releaser_dio/flutter_releaser_dio.dart";
 import "package:flutter_releaser_flutter/flutter_releaser_flutter.dart";
+import "package:material_ui/material_ui.dart";
 import "package:package_info_plus/package_info_plus.dart";
 import "package:talker/talker.dart";
 import "package:talker_dio_logger/talker_dio_logger.dart";
