@@ -111,3 +111,26 @@ sealed class UploadS3FileResponse with _$UploadS3FileResponse {
   factory UploadS3FileResponse.fromJson(Map<String, dynamic> json) =>
       _$UploadS3FileResponseFromJson(json);
 }
+
+@freezed
+sealed class UploadS3InstallerRequest with _$UploadS3InstallerRequest {
+  const factory UploadS3InstallerRequest({
+    required String name,
+    required int sizeInBytes,
+    required String sha256,
+  }) = _UploadS3InstallerRequest;
+
+  factory UploadS3InstallerRequest.fromJson(Map<String, dynamic> json) =>
+      _$UploadS3InstallerRequestFromJson(json);
+}
+
+@freezed
+sealed class UploadS3InstallerResponse with _$UploadS3InstallerResponse {
+  const factory UploadS3InstallerResponse({
+    required String url,
+    required Headers headers,
+  }) = _UploadS3InstallerResponse;
+
+  factory UploadS3InstallerResponse.fromJson(Map<String, dynamic> json) =>
+      _$UploadS3InstallerResponseFromJson(json);
+}

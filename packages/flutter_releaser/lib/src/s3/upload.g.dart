@@ -74,3 +74,30 @@ Map<String, dynamic> _$UploadS3FileResponseToJson(
   'url': instance.url,
   'headers': instance.headers,
 };
+
+_UploadS3InstallerRequest _$UploadS3InstallerRequestFromJson(
+  Map<String, dynamic> json,
+) => _UploadS3InstallerRequest(
+  name: json['name'] as String,
+  sizeInBytes: (json['sizeInBytes'] as num).toInt(),
+  sha256: json['sha256'] as String,
+);
+
+Map<String, dynamic> _$UploadS3InstallerRequestToJson(
+  _UploadS3InstallerRequest instance,
+) => <String, dynamic>{
+  'name': instance.name,
+  'sizeInBytes': instance.sizeInBytes,
+  'sha256': instance.sha256,
+};
+
+_UploadS3InstallerResponse _$UploadS3InstallerResponseFromJson(
+  Map<String, dynamic> json,
+) => _UploadS3InstallerResponse(
+  url: json['url'] as String,
+  headers: Map<String, String>.from(json['headers'] as Map),
+);
+
+Map<String, dynamic> _$UploadS3InstallerResponseToJson(
+  _UploadS3InstallerResponse instance,
+) => <String, dynamic>{'url': instance.url, 'headers': instance.headers};

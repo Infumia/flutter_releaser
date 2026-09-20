@@ -858,4 +858,547 @@ as Headers,
 
 }
 
+
+/// @nodoc
+mixin _$UploadS3InstallerRequest {
+
+ String get name; int get sizeInBytes; String get sha256;
+/// Create a copy of UploadS3InstallerRequest
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UploadS3InstallerRequestCopyWith<UploadS3InstallerRequest> get copyWith => _$UploadS3InstallerRequestCopyWithImpl<UploadS3InstallerRequest>(this as UploadS3InstallerRequest, _$identity);
+
+  /// Serializes this UploadS3InstallerRequest to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  final _this = this as UploadS3InstallerRequest;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UploadS3InstallerRequest&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.sizeInBytes, _this.sizeInBytes) || other.sizeInBytes == _this.sizeInBytes)&&(identical(other.sha256, _this.sha256) || other.sha256 == _this.sha256));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+  final _this = this as UploadS3InstallerRequest;
+  return Object.hash(runtimeType,_this.name,_this.sizeInBytes,_this.sha256);
+}
+
+@override
+String toString() {
+  final _this = this as UploadS3InstallerRequest;
+  return 'UploadS3InstallerRequest(name: ${_this.name}, sizeInBytes: ${_this.sizeInBytes}, sha256: ${_this.sha256})';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UploadS3InstallerRequestCopyWith<$Res>  {
+  factory $UploadS3InstallerRequestCopyWith(UploadS3InstallerRequest value, $Res Function(UploadS3InstallerRequest) _then) = _$UploadS3InstallerRequestCopyWithImpl;
+@useResult
+$Res call({
+ String name, int sizeInBytes, String sha256
+});
+
+
+
+
+}
+/// @nodoc
+class _$UploadS3InstallerRequestCopyWithImpl<$Res>
+    implements $UploadS3InstallerRequestCopyWith<$Res> {
+  _$UploadS3InstallerRequestCopyWithImpl(this._self, this._then);
+
+  final UploadS3InstallerRequest _self;
+  final $Res Function(UploadS3InstallerRequest) _then;
+
+/// Create a copy of UploadS3InstallerRequest
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? sizeInBytes = null,Object? sha256 = null,}) {
+  return _then(UploadS3InstallerRequest(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
+as int,sha256: null == sha256 ? _self.sha256 : sha256 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [UploadS3InstallerRequest].
+extension UploadS3InstallerRequestPatterns on UploadS3InstallerRequest {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _UploadS3InstallerRequest value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _UploadS3InstallerRequest() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _UploadS3InstallerRequest value)  $default,){
+final _that = this;
+switch (_that) {
+case _UploadS3InstallerRequest():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _UploadS3InstallerRequest value)?  $default,){
+final _that = this;
+switch (_that) {
+case _UploadS3InstallerRequest() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  int sizeInBytes,  String sha256)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _UploadS3InstallerRequest() when $default != null:
+return $default(_that.name,_that.sizeInBytes,_that.sha256);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  int sizeInBytes,  String sha256)  $default,) {final _that = this;
+switch (_that) {
+case _UploadS3InstallerRequest():
+return $default(_that.name,_that.sizeInBytes,_that.sha256);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  int sizeInBytes,  String sha256)?  $default,) {final _that = this;
+switch (_that) {
+case _UploadS3InstallerRequest() when $default != null:
+return $default(_that.name,_that.sizeInBytes,_that.sha256);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _UploadS3InstallerRequest implements UploadS3InstallerRequest {
+  const _UploadS3InstallerRequest({required this.name, required this.sizeInBytes, required this.sha256});
+  factory _UploadS3InstallerRequest.fromJson(Map<String, dynamic> json) => _$UploadS3InstallerRequestFromJson(json);
+
+@override final  String name;
+@override final  int sizeInBytes;
+@override final  String sha256;
+
+/// Create a copy of UploadS3InstallerRequest
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$UploadS3InstallerRequestCopyWith<_UploadS3InstallerRequest> get copyWith => __$UploadS3InstallerRequestCopyWithImpl<_UploadS3InstallerRequest>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$UploadS3InstallerRequestToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UploadS3InstallerRequest&&(identical(other.name, name) || other.name == name)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.sha256, sha256) || other.sha256 == sha256));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+    return Object.hash(runtimeType,name,sizeInBytes,sha256);
+}
+
+@override
+String toString() {
+    return 'UploadS3InstallerRequest(name: $name, sizeInBytes: $sizeInBytes, sha256: $sha256)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$UploadS3InstallerRequestCopyWith<$Res> implements $UploadS3InstallerRequestCopyWith<$Res> {
+  factory _$UploadS3InstallerRequestCopyWith(_UploadS3InstallerRequest value, $Res Function(_UploadS3InstallerRequest) _then) = __$UploadS3InstallerRequestCopyWithImpl;
+@override @useResult
+$Res call({
+ String name, int sizeInBytes, String sha256
+});
+
+
+
+
+}
+/// @nodoc
+class __$UploadS3InstallerRequestCopyWithImpl<$Res>
+    implements _$UploadS3InstallerRequestCopyWith<$Res> {
+  __$UploadS3InstallerRequestCopyWithImpl(this._self, this._then);
+
+  final _UploadS3InstallerRequest _self;
+  final $Res Function(_UploadS3InstallerRequest) _then;
+
+/// Create a copy of UploadS3InstallerRequest
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? sizeInBytes = null,Object? sha256 = null,}) {
+  return _then(_UploadS3InstallerRequest(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
+as int,sha256: null == sha256 ? _self.sha256 : sha256 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$UploadS3InstallerResponse {
+
+ String get url; Headers get headers;
+/// Create a copy of UploadS3InstallerResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UploadS3InstallerResponseCopyWith<UploadS3InstallerResponse> get copyWith => _$UploadS3InstallerResponseCopyWithImpl<UploadS3InstallerResponse>(this as UploadS3InstallerResponse, _$identity);
+
+  /// Serializes this UploadS3InstallerResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  final _this = this as UploadS3InstallerResponse;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UploadS3InstallerResponse&&(identical(other.url, _this.url) || other.url == _this.url)&&const DeepCollectionEquality().equals(other.headers, _this.headers));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+  final _this = this as UploadS3InstallerResponse;
+  return Object.hash(runtimeType,_this.url,const DeepCollectionEquality().hash(_this.headers));
+}
+
+@override
+String toString() {
+  final _this = this as UploadS3InstallerResponse;
+  return 'UploadS3InstallerResponse(url: ${_this.url}, headers: ${_this.headers})';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UploadS3InstallerResponseCopyWith<$Res>  {
+  factory $UploadS3InstallerResponseCopyWith(UploadS3InstallerResponse value, $Res Function(UploadS3InstallerResponse) _then) = _$UploadS3InstallerResponseCopyWithImpl;
+@useResult
+$Res call({
+ String url, Headers headers
+});
+
+
+
+
+}
+/// @nodoc
+class _$UploadS3InstallerResponseCopyWithImpl<$Res>
+    implements $UploadS3InstallerResponseCopyWith<$Res> {
+  _$UploadS3InstallerResponseCopyWithImpl(this._self, this._then);
+
+  final UploadS3InstallerResponse _self;
+  final $Res Function(UploadS3InstallerResponse) _then;
+
+/// Create a copy of UploadS3InstallerResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? url = null,Object? headers = null,}) {
+  return _then(UploadS3InstallerResponse(
+url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,headers: null == headers ? _self.headers : headers // ignore: cast_nullable_to_non_nullable
+as Headers,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [UploadS3InstallerResponse].
+extension UploadS3InstallerResponsePatterns on UploadS3InstallerResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _UploadS3InstallerResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _UploadS3InstallerResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _UploadS3InstallerResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _UploadS3InstallerResponse():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _UploadS3InstallerResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _UploadS3InstallerResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String url,  Headers headers)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _UploadS3InstallerResponse() when $default != null:
+return $default(_that.url,_that.headers);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String url,  Headers headers)  $default,) {final _that = this;
+switch (_that) {
+case _UploadS3InstallerResponse():
+return $default(_that.url,_that.headers);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String url,  Headers headers)?  $default,) {final _that = this;
+switch (_that) {
+case _UploadS3InstallerResponse() when $default != null:
+return $default(_that.url,_that.headers);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _UploadS3InstallerResponse implements UploadS3InstallerResponse {
+  const _UploadS3InstallerResponse({required this.url, required  Headers headers}): _headers = headers;
+  factory _UploadS3InstallerResponse.fromJson(Map<String, dynamic> json) => _$UploadS3InstallerResponseFromJson(json);
+
+@override final  String url;
+ final  Headers _headers;
+@override Headers get headers {
+  if (_headers is EqualUnmodifiableMapView) return _headers;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(_headers);
+}
+
+
+/// Create a copy of UploadS3InstallerResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$UploadS3InstallerResponseCopyWith<_UploadS3InstallerResponse> get copyWith => __$UploadS3InstallerResponseCopyWithImpl<_UploadS3InstallerResponse>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$UploadS3InstallerResponseToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UploadS3InstallerResponse&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other.headers, _headers));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode {
+    return Object.hash(runtimeType,url,const DeepCollectionEquality().hash(_headers));
+}
+
+@override
+String toString() {
+    return 'UploadS3InstallerResponse(url: $url, headers: $headers)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$UploadS3InstallerResponseCopyWith<$Res> implements $UploadS3InstallerResponseCopyWith<$Res> {
+  factory _$UploadS3InstallerResponseCopyWith(_UploadS3InstallerResponse value, $Res Function(_UploadS3InstallerResponse) _then) = __$UploadS3InstallerResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ String url, Headers headers
+});
+
+
+
+
+}
+/// @nodoc
+class __$UploadS3InstallerResponseCopyWithImpl<$Res>
+    implements _$UploadS3InstallerResponseCopyWith<$Res> {
+  __$UploadS3InstallerResponseCopyWithImpl(this._self, this._then);
+
+  final _UploadS3InstallerResponse _self;
+  final $Res Function(_UploadS3InstallerResponse) _then;
+
+/// Create a copy of UploadS3InstallerResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? url = null,Object? headers = null,}) {
+  return _then(_UploadS3InstallerResponse(
+url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,headers: null == headers ? _self._headers : headers // ignore: cast_nullable_to_non_nullable
+as Headers,
+  ));
+}
+
+
+}
+
 // dart format on
