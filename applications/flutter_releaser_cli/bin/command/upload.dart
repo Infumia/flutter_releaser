@@ -63,6 +63,13 @@ class _PlatformCommand extends Command<void> {
     final pubspecAsString = await pubspecFile.readAsString();
     final pubspec = Pubspec.parse(pubspecAsString);
 
+    final installerPath = args.option("installer")!;
+    final installerFile = File(installerPath);
+    if (!installerFile.existsSync()) {
+      _talker.error("Installer '$installerPath' not found");
+      return;
+    }
+
     final versionAsString = pubspec.version?.toString();
     if (versionAsString == null) {
       _talker.error("Version could not found for '${pubspecFile.path}'");
@@ -129,13 +136,6 @@ class _PlatformCommand extends Command<void> {
     _talker.info(
       "Archived file '${archiveFile.path} uploading to ${controller.settings.apiUri}'",
     );
-
-    final installerPath = args.option("installer")!;
-    final installerFile = File(installerPath);
-    if (!installerFile.existsSync()) {
-      _talker.error("Installer '$installerPath' not found");
-      return;
-    }
 
     final versionId = await controller.upload(
       versionAsString,
