@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'upload.dart';
@@ -9,6 +9,7 @@ part of 'upload.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $UploadVersionRequestCopyWith<UploadVersionRequest> get copyWith => _$UploadVers
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UploadVersionRequest&&(identical(other.version, version) || other.version == version)&&(identical(other.archivePath, archivePath) || other.archivePath == archivePath)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&const DeepCollectionEquality().equals(other.changes, changes));
+  final _this = this as UploadVersionRequest;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UploadVersionRequest&&(identical(other.version, _this.version) || other.version == _this.version)&&(identical(other.archivePath, _this.archivePath) || other.archivePath == _this.archivePath)&&(identical(other.platform, _this.platform) || other.platform == _this.platform)&&(identical(other.mandatory, _this.mandatory) || other.mandatory == _this.mandatory)&&const DeepCollectionEquality().equals(other.changes, _this.changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,version,archivePath,platform,mandatory,const DeepCollectionEquality().hash(changes));
+int get hashCode {
+  final _this = this as UploadVersionRequest;
+  return Object.hash(runtimeType,_this.version,_this.archivePath,_this.platform,_this.mandatory,const DeepCollectionEquality().hash(_this.changes));
+}
 
 @override
 String toString() {
-  return 'UploadVersionRequest(version: $version, archivePath: $archivePath, platform: $platform, mandatory: $mandatory, changes: $changes)';
+  final _this = this as UploadVersionRequest;
+  return 'UploadVersionRequest(version: ${_this.version}, archivePath: ${_this.archivePath}, platform: ${_this.platform}, mandatory: ${_this.mandatory}, changes: ${_this.changes})';
 }
 
 
@@ -66,7 +72,7 @@ class _$UploadVersionRequestCopyWithImpl<$Res>
 /// Create a copy of UploadVersionRequest
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? version = null,Object? archivePath = null,Object? platform = null,Object? mandatory = null,Object? changes = null,}) {
-  return _then(_self.copyWith(
+  return _then(UploadVersionRequest(
 version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String,archivePath: null == archivePath ? _self.archivePath : archivePath // ignore: cast_nullable_to_non_nullable
 as String,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
@@ -207,7 +213,7 @@ return $default(_that.version,_that.archivePath,_that.platform,_that.mandatory,_
 @JsonSerializable()
 
 class _UploadVersionRequest implements UploadVersionRequest {
-  const _UploadVersionRequest({required this.version, required this.archivePath, required this.platform, required this.mandatory, required final  List<Change> changes}): _changes = changes;
+  const _UploadVersionRequest({required this.version, required this.archivePath, required this.platform, required this.mandatory, required  List<Change> changes}): _changes = changes;
   factory _UploadVersionRequest.fromJson(Map<String, dynamic> json) => _$UploadVersionRequestFromJson(json);
 
 @override final  String version;
@@ -235,16 +241,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UploadVersionRequest&&(identical(other.version, version) || other.version == version)&&(identical(other.archivePath, archivePath) || other.archivePath == archivePath)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&const DeepCollectionEquality().equals(other._changes, _changes));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UploadVersionRequest&&(identical(other.version, version) || other.version == version)&&(identical(other.archivePath, archivePath) || other.archivePath == archivePath)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&const DeepCollectionEquality().equals(other.changes, _changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,version,archivePath,platform,mandatory,const DeepCollectionEquality().hash(_changes));
+int get hashCode {
+    return Object.hash(runtimeType,version,archivePath,platform,mandatory,const DeepCollectionEquality().hash(_changes));
+}
 
 @override
 String toString() {
-  return 'UploadVersionRequest(version: $version, archivePath: $archivePath, platform: $platform, mandatory: $mandatory, changes: $changes)';
+    return 'UploadVersionRequest(version: $version, archivePath: $archivePath, platform: $platform, mandatory: $mandatory, changes: $changes)';
 }
 
 
@@ -303,16 +311,21 @@ $UploadS3FileRequestCopyWith<UploadS3FileRequest> get copyWith => _$UploadS3File
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UploadS3FileRequest&&(identical(other.name, name) || other.name == name)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.sha256, sha256) || other.sha256 == sha256)&&(identical(other.version, version) || other.version == version)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&const DeepCollectionEquality().equals(other.changes, changes));
+  final _this = this as UploadS3FileRequest;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UploadS3FileRequest&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.sizeInBytes, _this.sizeInBytes) || other.sizeInBytes == _this.sizeInBytes)&&(identical(other.sha256, _this.sha256) || other.sha256 == _this.sha256)&&(identical(other.version, _this.version) || other.version == _this.version)&&(identical(other.platform, _this.platform) || other.platform == _this.platform)&&(identical(other.mandatory, _this.mandatory) || other.mandatory == _this.mandatory)&&const DeepCollectionEquality().equals(other.changes, _this.changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,sizeInBytes,sha256,version,platform,mandatory,const DeepCollectionEquality().hash(changes));
+int get hashCode {
+  final _this = this as UploadS3FileRequest;
+  return Object.hash(runtimeType,_this.name,_this.sizeInBytes,_this.sha256,_this.version,_this.platform,_this.mandatory,const DeepCollectionEquality().hash(_this.changes));
+}
 
 @override
 String toString() {
-  return 'UploadS3FileRequest(name: $name, sizeInBytes: $sizeInBytes, sha256: $sha256, version: $version, platform: $platform, mandatory: $mandatory, changes: $changes)';
+  final _this = this as UploadS3FileRequest;
+  return 'UploadS3FileRequest(name: ${_this.name}, sizeInBytes: ${_this.sizeInBytes}, sha256: ${_this.sha256}, version: ${_this.version}, platform: ${_this.platform}, mandatory: ${_this.mandatory}, changes: ${_this.changes})';
 }
 
 
@@ -341,7 +354,7 @@ class _$UploadS3FileRequestCopyWithImpl<$Res>
 /// Create a copy of UploadS3FileRequest
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? sizeInBytes = null,Object? sha256 = null,Object? version = null,Object? platform = null,Object? mandatory = null,Object? changes = null,}) {
-  return _then(_self.copyWith(
+  return _then(UploadS3FileRequest(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
 as int,sha256: null == sha256 ? _self.sha256 : sha256 // ignore: cast_nullable_to_non_nullable
@@ -484,7 +497,7 @@ return $default(_that.name,_that.sizeInBytes,_that.sha256,_that.version,_that.pl
 @JsonSerializable()
 
 class _UploadS3FileRequest implements UploadS3FileRequest {
-  const _UploadS3FileRequest({required this.name, required this.sizeInBytes, required this.sha256, required this.version, required this.platform, required this.mandatory, required final  List<Change> changes}): _changes = changes;
+  const _UploadS3FileRequest({required this.name, required this.sizeInBytes, required this.sha256, required this.version, required this.platform, required this.mandatory, required  List<Change> changes}): _changes = changes;
   factory _UploadS3FileRequest.fromJson(Map<String, dynamic> json) => _$UploadS3FileRequestFromJson(json);
 
 @override final  String name;
@@ -514,16 +527,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UploadS3FileRequest&&(identical(other.name, name) || other.name == name)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.sha256, sha256) || other.sha256 == sha256)&&(identical(other.version, version) || other.version == version)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&const DeepCollectionEquality().equals(other._changes, _changes));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UploadS3FileRequest&&(identical(other.name, name) || other.name == name)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.sha256, sha256) || other.sha256 == sha256)&&(identical(other.version, version) || other.version == version)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&const DeepCollectionEquality().equals(other.changes, _changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,sizeInBytes,sha256,version,platform,mandatory,const DeepCollectionEquality().hash(_changes));
+int get hashCode {
+    return Object.hash(runtimeType,name,sizeInBytes,sha256,version,platform,mandatory,const DeepCollectionEquality().hash(_changes));
+}
 
 @override
 String toString() {
-  return 'UploadS3FileRequest(name: $name, sizeInBytes: $sizeInBytes, sha256: $sha256, version: $version, platform: $platform, mandatory: $mandatory, changes: $changes)';
+    return 'UploadS3FileRequest(name: $name, sizeInBytes: $sizeInBytes, sha256: $sha256, version: $version, platform: $platform, mandatory: $mandatory, changes: $changes)';
 }
 
 
@@ -584,16 +599,21 @@ $UploadS3FileResponseCopyWith<UploadS3FileResponse> get copyWith => _$UploadS3Fi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UploadS3FileResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other.headers, headers));
+  final _this = this as UploadS3FileResponse;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UploadS3FileResponse&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.url, _this.url) || other.url == _this.url)&&const DeepCollectionEquality().equals(other.headers, _this.headers));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,url,const DeepCollectionEquality().hash(headers));
+int get hashCode {
+  final _this = this as UploadS3FileResponse;
+  return Object.hash(runtimeType,_this.id,_this.url,const DeepCollectionEquality().hash(_this.headers));
+}
 
 @override
 String toString() {
-  return 'UploadS3FileResponse(id: $id, url: $url, headers: $headers)';
+  final _this = this as UploadS3FileResponse;
+  return 'UploadS3FileResponse(id: ${_this.id}, url: ${_this.url}, headers: ${_this.headers})';
 }
 
 
@@ -622,7 +642,7 @@ class _$UploadS3FileResponseCopyWithImpl<$Res>
 /// Create a copy of UploadS3FileResponse
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? url = null,Object? headers = null,}) {
-  return _then(_self.copyWith(
+  return _then(UploadS3FileResponse(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String,headers: null == headers ? _self.headers : headers // ignore: cast_nullable_to_non_nullable
@@ -761,7 +781,7 @@ return $default(_that.id,_that.url,_that.headers);case _:
 @JsonSerializable()
 
 class _UploadS3FileResponse implements UploadS3FileResponse {
-  const _UploadS3FileResponse({required this.id, required this.url, required final  Headers headers}): _headers = headers;
+  const _UploadS3FileResponse({required this.id, required this.url, required  Headers headers}): _headers = headers;
   factory _UploadS3FileResponse.fromJson(Map<String, dynamic> json) => _$UploadS3FileResponseFromJson(json);
 
 @override final  int id;
@@ -787,16 +807,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UploadS3FileResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other._headers, _headers));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UploadS3FileResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other.headers, _headers));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,url,const DeepCollectionEquality().hash(_headers));
+int get hashCode {
+    return Object.hash(runtimeType,id,url,const DeepCollectionEquality().hash(_headers));
+}
 
 @override
 String toString() {
-  return 'UploadS3FileResponse(id: $id, url: $url, headers: $headers)';
+    return 'UploadS3FileResponse(id: $id, url: $url, headers: $headers)';
 }
 
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'progress.dart';
@@ -9,6 +9,7 @@ part of 'progress.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $DownloadProgressCopyWith<DownloadProgress> get copyWith => _$DownloadProgressCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DownloadProgress&&(identical(other.totalBytes, totalBytes) || other.totalBytes == totalBytes)&&(identical(other.receivedBytes, receivedBytes) || other.receivedBytes == receivedBytes)&&(identical(other.finished, finished) || other.finished == finished));
+  final _this = this as DownloadProgress;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DownloadProgress&&(identical(other.totalBytes, _this.totalBytes) || other.totalBytes == _this.totalBytes)&&(identical(other.receivedBytes, _this.receivedBytes) || other.receivedBytes == _this.receivedBytes)&&(identical(other.finished, _this.finished) || other.finished == _this.finished));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,totalBytes,receivedBytes,finished);
+int get hashCode {
+  final _this = this as DownloadProgress;
+  return Object.hash(runtimeType,_this.totalBytes,_this.receivedBytes,_this.finished);
+}
 
 @override
 String toString() {
-  return 'DownloadProgress(totalBytes: $totalBytes, receivedBytes: $receivedBytes, finished: $finished)';
+  final _this = this as DownloadProgress;
+  return 'DownloadProgress(totalBytes: ${_this.totalBytes}, receivedBytes: ${_this.receivedBytes}, finished: ${_this.finished})';
 }
 
 
@@ -63,7 +69,7 @@ class _$DownloadProgressCopyWithImpl<$Res>
 /// Create a copy of DownloadProgress
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? totalBytes = null,Object? receivedBytes = null,Object? finished = null,}) {
-  return _then(_self.copyWith(
+  return _then(DownloadProgress(
 totalBytes: null == totalBytes ? _self.totalBytes : totalBytes // ignore: cast_nullable_to_non_nullable
 as int,receivedBytes: null == receivedBytes ? _self.receivedBytes : receivedBytes // ignore: cast_nullable_to_non_nullable
 as int,finished: null == finished ? _self.finished : finished // ignore: cast_nullable_to_non_nullable
@@ -219,16 +225,18 @@ _$DownloadProgressCopyWith<_DownloadProgress> get copyWith => __$DownloadProgres
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DownloadProgress&&(identical(other.totalBytes, totalBytes) || other.totalBytes == totalBytes)&&(identical(other.receivedBytes, receivedBytes) || other.receivedBytes == receivedBytes)&&(identical(other.finished, finished) || other.finished == finished));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DownloadProgress&&(identical(other.totalBytes, totalBytes) || other.totalBytes == totalBytes)&&(identical(other.receivedBytes, receivedBytes) || other.receivedBytes == receivedBytes)&&(identical(other.finished, finished) || other.finished == finished));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,totalBytes,receivedBytes,finished);
+int get hashCode {
+    return Object.hash(runtimeType,totalBytes,receivedBytes,finished);
+}
 
 @override
 String toString() {
-  return 'DownloadProgress(totalBytes: $totalBytes, receivedBytes: $receivedBytes, finished: $finished)';
+    return 'DownloadProgress(totalBytes: $totalBytes, receivedBytes: $receivedBytes, finished: $finished)';
 }
 
 
@@ -282,16 +290,21 @@ $UploadProgressCopyWith<UploadProgress> get copyWith => _$UploadProgressCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UploadProgress&&(identical(other.totalBytes, totalBytes) || other.totalBytes == totalBytes)&&(identical(other.sentBytes, sentBytes) || other.sentBytes == sentBytes)&&(identical(other.finished, finished) || other.finished == finished));
+  final _this = this as UploadProgress;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UploadProgress&&(identical(other.totalBytes, _this.totalBytes) || other.totalBytes == _this.totalBytes)&&(identical(other.sentBytes, _this.sentBytes) || other.sentBytes == _this.sentBytes)&&(identical(other.finished, _this.finished) || other.finished == _this.finished));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,totalBytes,sentBytes,finished);
+int get hashCode {
+  final _this = this as UploadProgress;
+  return Object.hash(runtimeType,_this.totalBytes,_this.sentBytes,_this.finished);
+}
 
 @override
 String toString() {
-  return 'UploadProgress(totalBytes: $totalBytes, sentBytes: $sentBytes, finished: $finished)';
+  final _this = this as UploadProgress;
+  return 'UploadProgress(totalBytes: ${_this.totalBytes}, sentBytes: ${_this.sentBytes}, finished: ${_this.finished})';
 }
 
 
@@ -320,7 +333,7 @@ class _$UploadProgressCopyWithImpl<$Res>
 /// Create a copy of UploadProgress
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? totalBytes = null,Object? sentBytes = null,Object? finished = null,}) {
-  return _then(_self.copyWith(
+  return _then(UploadProgress(
 totalBytes: null == totalBytes ? _self.totalBytes : totalBytes // ignore: cast_nullable_to_non_nullable
 as int,sentBytes: null == sentBytes ? _self.sentBytes : sentBytes // ignore: cast_nullable_to_non_nullable
 as int,finished: null == finished ? _self.finished : finished // ignore: cast_nullable_to_non_nullable
@@ -476,16 +489,18 @@ _$UploadProgressCopyWith<_UploadProgress> get copyWith => __$UploadProgressCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UploadProgress&&(identical(other.totalBytes, totalBytes) || other.totalBytes == totalBytes)&&(identical(other.sentBytes, sentBytes) || other.sentBytes == sentBytes)&&(identical(other.finished, finished) || other.finished == finished));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UploadProgress&&(identical(other.totalBytes, totalBytes) || other.totalBytes == totalBytes)&&(identical(other.sentBytes, sentBytes) || other.sentBytes == sentBytes)&&(identical(other.finished, finished) || other.finished == finished));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,totalBytes,sentBytes,finished);
+int get hashCode {
+    return Object.hash(runtimeType,totalBytes,sentBytes,finished);
+}
 
 @override
 String toString() {
-  return 'UploadProgress(totalBytes: $totalBytes, sentBytes: $sentBytes, finished: $finished)';
+    return 'UploadProgress(totalBytes: $totalBytes, sentBytes: $sentBytes, finished: $finished)';
 }
 
 

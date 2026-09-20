@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'download.dart';
@@ -9,6 +9,7 @@ part of 'download.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $DownloadS3FileResponseCopyWith<DownloadS3FileResponse> get copyWith => _$Downlo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DownloadS3FileResponse&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other.headers, headers));
+  final _this = this as DownloadS3FileResponse;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DownloadS3FileResponse&&(identical(other.url, _this.url) || other.url == _this.url)&&const DeepCollectionEquality().equals(other.headers, _this.headers));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,url,const DeepCollectionEquality().hash(headers));
+int get hashCode {
+  final _this = this as DownloadS3FileResponse;
+  return Object.hash(runtimeType,_this.url,const DeepCollectionEquality().hash(_this.headers));
+}
 
 @override
 String toString() {
-  return 'DownloadS3FileResponse(url: $url, headers: $headers)';
+  final _this = this as DownloadS3FileResponse;
+  return 'DownloadS3FileResponse(url: ${_this.url}, headers: ${_this.headers})';
 }
 
 
@@ -66,7 +72,7 @@ class _$DownloadS3FileResponseCopyWithImpl<$Res>
 /// Create a copy of DownloadS3FileResponse
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? url = null,Object? headers = null,}) {
-  return _then(_self.copyWith(
+  return _then(DownloadS3FileResponse(
 url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String,headers: null == headers ? _self.headers : headers // ignore: cast_nullable_to_non_nullable
 as Headers,
@@ -204,7 +210,7 @@ return $default(_that.url,_that.headers);case _:
 @JsonSerializable()
 
 class _DownloadS3FileResponse implements DownloadS3FileResponse {
-  const _DownloadS3FileResponse({required this.url, required final  Headers headers}): _headers = headers;
+  const _DownloadS3FileResponse({required this.url, required  Headers headers}): _headers = headers;
   factory _DownloadS3FileResponse.fromJson(Map<String, dynamic> json) => _$DownloadS3FileResponseFromJson(json);
 
 @override final  String url;
@@ -229,16 +235,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DownloadS3FileResponse&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other._headers, _headers));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DownloadS3FileResponse&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other.headers, _headers));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,url,const DeepCollectionEquality().hash(_headers));
+int get hashCode {
+    return Object.hash(runtimeType,url,const DeepCollectionEquality().hash(_headers));
+}
 
 @override
 String toString() {
-  return 'DownloadS3FileResponse(url: $url, headers: $headers)';
+    return 'DownloadS3FileResponse(url: $url, headers: $headers)';
 }
 
 

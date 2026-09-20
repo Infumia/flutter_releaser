@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'models.dart';
@@ -9,6 +9,7 @@ part of 'models.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $ApplicationArchiveCopyWith<ApplicationArchive> get copyWith => _$ApplicationArc
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApplicationArchive&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other.versions, versions));
+  final _this = this as ApplicationArchive;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ApplicationArchive&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.description, _this.description) || other.description == _this.description)&&const DeepCollectionEquality().equals(other.versions, _this.versions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,description,const DeepCollectionEquality().hash(versions));
+int get hashCode {
+  final _this = this as ApplicationArchive;
+  return Object.hash(runtimeType,_this.name,_this.description,const DeepCollectionEquality().hash(_this.versions));
+}
 
 @override
 String toString() {
-  return 'ApplicationArchive(name: $name, description: $description, versions: $versions)';
+  final _this = this as ApplicationArchive;
+  return 'ApplicationArchive(name: ${_this.name}, description: ${_this.description}, versions: ${_this.versions})';
 }
 
 
@@ -66,7 +72,7 @@ class _$ApplicationArchiveCopyWithImpl<$Res>
 /// Create a copy of ApplicationArchive
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? description = null,Object? versions = null,}) {
-  return _then(_self.copyWith(
+  return _then(ApplicationArchive(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,versions: null == versions ? _self.versions : versions // ignore: cast_nullable_to_non_nullable
@@ -205,7 +211,7 @@ return $default(_that.name,_that.description,_that.versions);case _:
 @JsonSerializable()
 
 class _ApplicationArchive implements ApplicationArchive {
-  const _ApplicationArchive({required this.name, required this.description, required final  List<Version> versions}): _versions = versions;
+  const _ApplicationArchive({required this.name, required this.description, required  List<Version> versions}): _versions = versions;
   factory _ApplicationArchive.fromJson(Map<String, dynamic> json) => _$ApplicationArchiveFromJson(json);
 
 @override final  String name;
@@ -231,16 +237,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApplicationArchive&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other._versions, _versions));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ApplicationArchive&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other.versions, _versions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,description,const DeepCollectionEquality().hash(_versions));
+int get hashCode {
+    return Object.hash(runtimeType,name,description,const DeepCollectionEquality().hash(_versions));
+}
 
 @override
 String toString() {
-  return 'ApplicationArchive(name: $name, description: $description, versions: $versions)';
+    return 'ApplicationArchive(name: $name, description: $description, versions: $versions)';
 }
 
 
@@ -297,16 +305,21 @@ $VersionCopyWith<Version> get copyWith => _$VersionCopyWithImpl<Version>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Version&&(identical(other.id, id) || other.id == id)&&(identical(other.file, file) || other.file == file)&&(identical(other.version, version) || other.version == version)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp)&&const DeepCollectionEquality().equals(other.changes, changes));
+  final _this = this as Version;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Version&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.file, _this.file) || other.file == _this.file)&&(identical(other.version, _this.version) || other.version == _this.version)&&(identical(other.platform, _this.platform) || other.platform == _this.platform)&&(identical(other.sizeInBytes, _this.sizeInBytes) || other.sizeInBytes == _this.sizeInBytes)&&(identical(other.mandatory, _this.mandatory) || other.mandatory == _this.mandatory)&&(identical(other.timestamp, _this.timestamp) || other.timestamp == _this.timestamp)&&const DeepCollectionEquality().equals(other.changes, _this.changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,file,version,platform,sizeInBytes,mandatory,timestamp,const DeepCollectionEquality().hash(changes));
+int get hashCode {
+  final _this = this as Version;
+  return Object.hash(runtimeType,_this.id,_this.file,_this.version,_this.platform,_this.sizeInBytes,_this.mandatory,_this.timestamp,const DeepCollectionEquality().hash(_this.changes));
+}
 
 @override
 String toString() {
-  return 'Version(id: $id, file: $file, version: $version, platform: $platform, sizeInBytes: $sizeInBytes, mandatory: $mandatory, timestamp: $timestamp, changes: $changes)';
+  final _this = this as Version;
+  return 'Version(id: ${_this.id}, file: ${_this.file}, version: ${_this.version}, platform: ${_this.platform}, sizeInBytes: ${_this.sizeInBytes}, mandatory: ${_this.mandatory}, timestamp: ${_this.timestamp}, changes: ${_this.changes})';
 }
 
 
@@ -335,7 +348,7 @@ class _$VersionCopyWithImpl<$Res>
 /// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? file = null,Object? version = null,Object? platform = null,Object? sizeInBytes = null,Object? mandatory = null,Object? timestamp = null,Object? changes = null,}) {
-  return _then(_self.copyWith(
+  return _then(Version(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
 as NetworkFile,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
@@ -488,7 +501,7 @@ return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInByt
 @JsonSerializable()
 
 class _Version extends Version {
-  const _Version({required this.id, required this.file, required this.version, required this.platform, required this.sizeInBytes, required this.mandatory, required this.timestamp, required final  List<Change> changes}): _changes = changes,super._();
+  const _Version({required this.id, required this.file, required this.version, required this.platform, required this.sizeInBytes, required this.mandatory, required this.timestamp, required  List<Change> changes}): _changes = changes,super._();
   factory _Version.fromJson(Map<String, dynamic> json) => _$VersionFromJson(json);
 
 @override final  int id;
@@ -519,16 +532,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Version&&(identical(other.id, id) || other.id == id)&&(identical(other.file, file) || other.file == file)&&(identical(other.version, version) || other.version == version)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp)&&const DeepCollectionEquality().equals(other._changes, _changes));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Version&&(identical(other.id, id) || other.id == id)&&(identical(other.file, file) || other.file == file)&&(identical(other.version, version) || other.version == version)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp)&&const DeepCollectionEquality().equals(other.changes, _changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,file,version,platform,sizeInBytes,mandatory,timestamp,const DeepCollectionEquality().hash(_changes));
+int get hashCode {
+    return Object.hash(runtimeType,id,file,version,platform,sizeInBytes,mandatory,timestamp,const DeepCollectionEquality().hash(_changes));
+}
 
 @override
 String toString() {
-  return 'Version(id: $id, file: $file, version: $version, platform: $platform, sizeInBytes: $sizeInBytes, mandatory: $mandatory, timestamp: $timestamp, changes: $changes)';
+    return 'Version(id: $id, file: $file, version: $version, platform: $platform, sizeInBytes: $sizeInBytes, mandatory: $mandatory, timestamp: $timestamp, changes: $changes)';
 }
 
 
@@ -599,16 +614,21 @@ $ChangeCopyWith<Change> get copyWith => _$ChangeCopyWithImpl<Change>(this as Cha
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Change&&(identical(other.type, type) || other.type == type)&&(identical(other.message, message) || other.message == message));
+  final _this = this as Change;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Change&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.message, _this.message) || other.message == _this.message));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,message);
+int get hashCode {
+  final _this = this as Change;
+  return Object.hash(runtimeType,_this.type,_this.message);
+}
 
 @override
 String toString() {
-  return 'Change(type: $type, message: $message)';
+  final _this = this as Change;
+  return 'Change(type: ${_this.type}, message: ${_this.message})';
 }
 
 
@@ -637,7 +657,7 @@ class _$ChangeCopyWithImpl<$Res>
 /// Create a copy of Change
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? type = freezed,Object? message = null,}) {
-  return _then(_self.copyWith(
+  return _then(Change(
 type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as ChangeType?,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
@@ -794,16 +814,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Change&&(identical(other.type, type) || other.type == type)&&(identical(other.message, message) || other.message == message));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Change&&(identical(other.type, type) || other.type == type)&&(identical(other.message, message) || other.message == message));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,message);
+int get hashCode {
+    return Object.hash(runtimeType,type,message);
+}
 
 @override
 String toString() {
-  return 'Change(type: $type, message: $message)';
+    return 'Change(type: $type, message: $message)';
 }
 
 
@@ -859,16 +881,21 @@ $NetworkFileCopyWith<NetworkFile> get copyWith => _$NetworkFileCopyWithImpl<Netw
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NetworkFile&&(identical(other.name, name) || other.name == name)&&(identical(other.size, size) || other.size == size)&&(identical(other.sha256, sha256) || other.sha256 == sha256)&&(identical(other.requestDate, requestDate) || other.requestDate == requestDate)&&(identical(other.uploadDate, uploadDate) || other.uploadDate == uploadDate));
+  final _this = this as NetworkFile;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NetworkFile&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.size, _this.size) || other.size == _this.size)&&(identical(other.sha256, _this.sha256) || other.sha256 == _this.sha256)&&(identical(other.requestDate, _this.requestDate) || other.requestDate == _this.requestDate)&&(identical(other.uploadDate, _this.uploadDate) || other.uploadDate == _this.uploadDate));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,size,sha256,requestDate,uploadDate);
+int get hashCode {
+  final _this = this as NetworkFile;
+  return Object.hash(runtimeType,_this.name,_this.size,_this.sha256,_this.requestDate,_this.uploadDate);
+}
 
 @override
 String toString() {
-  return 'NetworkFile(name: $name, size: $size, sha256: $sha256, requestDate: $requestDate, uploadDate: $uploadDate)';
+  final _this = this as NetworkFile;
+  return 'NetworkFile(name: ${_this.name}, size: ${_this.size}, sha256: ${_this.sha256}, requestDate: ${_this.requestDate}, uploadDate: ${_this.uploadDate})';
 }
 
 
@@ -897,7 +924,7 @@ class _$NetworkFileCopyWithImpl<$Res>
 /// Create a copy of NetworkFile
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? size = null,Object? sha256 = null,Object? requestDate = null,Object? uploadDate = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(NetworkFile(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,size: null == size ? _self.size : size // ignore: cast_nullable_to_non_nullable
 as int,sha256: null == sha256 ? _self.sha256 : sha256 // ignore: cast_nullable_to_non_nullable
@@ -1060,16 +1087,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NetworkFile&&(identical(other.name, name) || other.name == name)&&(identical(other.size, size) || other.size == size)&&(identical(other.sha256, sha256) || other.sha256 == sha256)&&(identical(other.requestDate, requestDate) || other.requestDate == requestDate)&&(identical(other.uploadDate, uploadDate) || other.uploadDate == uploadDate));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NetworkFile&&(identical(other.name, name) || other.name == name)&&(identical(other.size, size) || other.size == size)&&(identical(other.sha256, sha256) || other.sha256 == sha256)&&(identical(other.requestDate, requestDate) || other.requestDate == requestDate)&&(identical(other.uploadDate, uploadDate) || other.uploadDate == uploadDate));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,size,sha256,requestDate,uploadDate);
+int get hashCode {
+    return Object.hash(runtimeType,name,size,sha256,requestDate,uploadDate);
+}
 
 @override
 String toString() {
-  return 'NetworkFile(name: $name, size: $size, sha256: $sha256, requestDate: $requestDate, uploadDate: $uploadDate)';
+    return 'NetworkFile(name: $name, size: $size, sha256: $sha256, requestDate: $requestDate, uploadDate: $uploadDate)';
 }
 
 
