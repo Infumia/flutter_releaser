@@ -96,6 +96,18 @@ Future<void> uploadS3Installer(
     uploadProgressRef,
   );
 }
+
+Future<void> confirmS3Upload(
+  FlutterReleaserSettings settings,
+  int versionId,
+) async {
+  await settings.requester.put<dynamic>(
+    settings,
+    settings.apiUri.resolve(versionId.toString()),
+    headers: settings.apiRequestHeadersProvider(),
+  );
+}
+
 Future<void> _uploadToPresignedUrl(
   FlutterReleaserSettings settings,
   String filePath,
