@@ -22,38 +22,23 @@ dev_dependencies:
 
 melos:
   scripts:
-    watch:
-      run: dart run build_runner watch -d
-      packageFilters:
-        dependsOn: build_runner
-      exec:
-        concurrency: 4
-    build:
-      run: dart run build_runner build -d
-      packageFilters:
-        dependsOn: build_runner
-      exec:
-        concurrency: 4
-        orderDependents: true
-    fix:
-      run: dart fix --apply && dart format .
-      exec:
-        concurrency: 4
-    format:
-      run: dart format .
-      exec:
-        concurrency: 4
-    upgrade:
-      run: dart pub upgrade --major-versions
-      exec:
-        concurrency: 4
-    get:
-      run: flutter pub get
-      exec:
-        concurrency: 4
     flutter_clean:
-      run: flutter clean
       exec:
+        command: flutter clean
         concurrency: 4
-    cache_repair:
-      run: flutter pub cache repair
+    watch:
+      packageFilters:
+        dependsOn: build_runner
+      exec:
+        command: dart run build_runner watch
+        concurrency: 5
+    build:
+      packageFilters:
+        dependsOn: build_runner
+      exec:
+        command: dart run build_runner build
+        orderDependents: true
+    get:
+      exec:
+        command: flutter pub get
+        concurrency: 4
