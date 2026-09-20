@@ -28,13 +28,13 @@ sealed class Version with _$Version implements Comparable<Version> {
   const factory Version({
     required int id,
     required NetworkFile file,
-    NetworkFile? installer,
     required String version,
     required TargetPlatform platform,
     required int sizeInBytes,
     required bool mandatory,
     required DateTime timestamp,
     required List<Change> changes,
+    NetworkFile? installer,
   }) = _Version;
 
   factory Version.fromJson(Map<String, dynamic> json) =>

@@ -25,9 +25,6 @@ Map<String, dynamic> _$ApplicationArchiveToJson(_ApplicationArchive instance) =>
 _Version _$VersionFromJson(Map<String, dynamic> json) => _Version(
   id: (json['id'] as num).toInt(),
   file: NetworkFile.fromJson(json['file'] as Map<String, dynamic>),
-  installer: json['installer'] == null
-      ? null
-      : NetworkFile.fromJson(json['installer'] as Map<String, dynamic>),
   version: json['version'] as String,
   platform: $enumDecode(_$TargetPlatformEnumMap, json['platform']),
   sizeInBytes: (json['sizeInBytes'] as num).toInt(),
@@ -36,18 +33,21 @@ _Version _$VersionFromJson(Map<String, dynamic> json) => _Version(
   changes: (json['changes'] as List<dynamic>)
       .map((e) => Change.fromJson(e as Map<String, dynamic>))
       .toList(),
+  installer: json['installer'] == null
+      ? null
+      : NetworkFile.fromJson(json['installer'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$VersionToJson(_Version instance) => <String, dynamic>{
   'id': instance.id,
   'file': instance.file,
-  'installer': instance.installer,
   'version': instance.version,
   'platform': _$TargetPlatformEnumMap[instance.platform]!,
   'sizeInBytes': instance.sizeInBytes,
   'mandatory': instance.mandatory,
   'timestamp': instance.timestamp.toIso8601String(),
   'changes': instance.changes,
+  'installer': instance.installer,
 };
 
 const _$TargetPlatformEnumMap = {
