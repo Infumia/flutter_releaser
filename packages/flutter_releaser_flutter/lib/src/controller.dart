@@ -34,12 +34,27 @@ class FlutterUpdateController extends ChangeNotifier {
 
   Future<void> prepareForUpdate(File file) => _delegate.prepareForUpdate(file);
 
-  Future<void> upload(
+  Future<int> upload(
     String version,
     String archivePath,
     TargetPlatform platform,
     Ref<UploadProgress?> uploadProgressRef, {
     bool mandatory = true,
     List<Change>? changes,
-  }) => _delegate.upload(version, archivePath, platform, uploadProgressRef);
+  }) => _delegate.upload(
+    version,
+    archivePath,
+    platform,
+    uploadProgressRef,
+    mandatory: mandatory,
+    changes: changes,
+  );
+
+  Future<void> uploadInstaller(
+    int versionId,
+    String installerPath,
+    Ref<UploadProgress?> uploadProgressRef,
+  ) => _delegate.uploadInstaller(versionId, installerPath, uploadProgressRef);
+
+  Future<void> confirm(int versionId) => _delegate.confirm(versionId);
 }
