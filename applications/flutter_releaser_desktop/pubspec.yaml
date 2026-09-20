@@ -17,10 +17,10 @@ dependencies:
   flutter_releaser: ^0.4.0
   flutter_releaser_dio: ^0.2.0
   flutter_releaser_flutter: ^0.2.0
-  package_info_plus: ^10.1.0
-  dio: ^5.9.2
-  talker: ^5.1.17
-  talker_dio_logger: ^5.1.17
+  package_info_plus: ^10.2.1
+  dio: ^5.11.1
+  talker: ^5.1.20
+  talker_dio_logger: ^5.1.20
 
 flutter:
   uses-material-design: true
