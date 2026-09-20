@@ -28,6 +28,7 @@ sealed class Version with _$Version implements Comparable<Version> {
   const factory Version({
     required int id,
     required NetworkFile file,
+    NetworkFile? installer,
     required String version,
     required TargetPlatform platform,
     required int sizeInBytes,

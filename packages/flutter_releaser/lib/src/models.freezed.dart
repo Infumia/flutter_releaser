@@ -292,7 +292,7 @@ as List<Version>,
 /// @nodoc
 mixin _$Version {
 
- int get id; NetworkFile get file; String get version; TargetPlatform get platform; int get sizeInBytes; bool get mandatory; DateTime get timestamp; List<Change> get changes;
+ int get id; NetworkFile get file; NetworkFile? get installer; String get version; TargetPlatform get platform; int get sizeInBytes; bool get mandatory; DateTime get timestamp; List<Change> get changes;
 /// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -306,20 +306,20 @@ $VersionCopyWith<Version> get copyWith => _$VersionCopyWithImpl<Version>(this as
 @override
 bool operator ==(Object other) {
   final _this = this as Version;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Version&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.file, _this.file) || other.file == _this.file)&&(identical(other.version, _this.version) || other.version == _this.version)&&(identical(other.platform, _this.platform) || other.platform == _this.platform)&&(identical(other.sizeInBytes, _this.sizeInBytes) || other.sizeInBytes == _this.sizeInBytes)&&(identical(other.mandatory, _this.mandatory) || other.mandatory == _this.mandatory)&&(identical(other.timestamp, _this.timestamp) || other.timestamp == _this.timestamp)&&const DeepCollectionEquality().equals(other.changes, _this.changes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Version&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.file, _this.file) || other.file == _this.file)&&(identical(other.installer, _this.installer) || other.installer == _this.installer)&&(identical(other.version, _this.version) || other.version == _this.version)&&(identical(other.platform, _this.platform) || other.platform == _this.platform)&&(identical(other.sizeInBytes, _this.sizeInBytes) || other.sizeInBytes == _this.sizeInBytes)&&(identical(other.mandatory, _this.mandatory) || other.mandatory == _this.mandatory)&&(identical(other.timestamp, _this.timestamp) || other.timestamp == _this.timestamp)&&const DeepCollectionEquality().equals(other.changes, _this.changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Version;
-  return Object.hash(runtimeType,_this.id,_this.file,_this.version,_this.platform,_this.sizeInBytes,_this.mandatory,_this.timestamp,const DeepCollectionEquality().hash(_this.changes));
+  return Object.hash(runtimeType,_this.id,_this.file,_this.installer,_this.version,_this.platform,_this.sizeInBytes,_this.mandatory,_this.timestamp,const DeepCollectionEquality().hash(_this.changes));
 }
 
 @override
 String toString() {
   final _this = this as Version;
-  return 'Version(id: ${_this.id}, file: ${_this.file}, version: ${_this.version}, platform: ${_this.platform}, sizeInBytes: ${_this.sizeInBytes}, mandatory: ${_this.mandatory}, timestamp: ${_this.timestamp}, changes: ${_this.changes})';
+  return 'Version(id: ${_this.id}, file: ${_this.file}, installer: ${_this.installer}, version: ${_this.version}, platform: ${_this.platform}, sizeInBytes: ${_this.sizeInBytes}, mandatory: ${_this.mandatory}, timestamp: ${_this.timestamp}, changes: ${_this.changes})';
 }
 
 
@@ -330,11 +330,11 @@ abstract mixin class $VersionCopyWith<$Res>  {
   factory $VersionCopyWith(Version value, $Res Function(Version) _then) = _$VersionCopyWithImpl;
 @useResult
 $Res call({
- int id, NetworkFile file, String version, TargetPlatform platform, int sizeInBytes, bool mandatory, DateTime timestamp, List<Change> changes
+ int id, NetworkFile file, NetworkFile? installer, String version, TargetPlatform platform, int sizeInBytes, bool mandatory, DateTime timestamp, List<Change> changes
 });
 
 
-$NetworkFileCopyWith<$Res> get file;
+$NetworkFileCopyWith<$Res> get file;$NetworkFileCopyWith<$Res>? get installer;
 
 }
 /// @nodoc
@@ -347,11 +347,12 @@ class _$VersionCopyWithImpl<$Res>
 
 /// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? file = null,Object? version = null,Object? platform = null,Object? sizeInBytes = null,Object? mandatory = null,Object? timestamp = null,Object? changes = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? file = null,Object? installer = freezed,Object? version = null,Object? platform = null,Object? sizeInBytes = null,Object? mandatory = null,Object? timestamp = null,Object? changes = null,}) {
   return _then(Version(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
-as NetworkFile,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+as NetworkFile,installer: freezed == installer ? _self.installer : installer // ignore: cast_nullable_to_non_nullable
+as NetworkFile?,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
 as TargetPlatform,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
 as int,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
@@ -368,6 +369,18 @@ $NetworkFileCopyWith<$Res> get file {
   
   return $NetworkFileCopyWith<$Res>(_self.file, (value) {
     return _then(_self.copyWith(file: value));
+  });
+}/// Create a copy of Version
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$NetworkFileCopyWith<$Res>? get installer {
+    if (_self.installer == null) {
+    return null;
+  }
+
+  return $NetworkFileCopyWith<$Res>(_self.installer!, (value) {
+    return _then(_self.copyWith(installer: value));
   });
 }
 }
@@ -448,10 +461,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  NetworkFile file,  String version,  TargetPlatform platform,  int sizeInBytes,  bool mandatory,  DateTime timestamp,  List<Change> changes)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  NetworkFile file,  NetworkFile? installer,  String version,  TargetPlatform platform,  int sizeInBytes,  bool mandatory,  DateTime timestamp,  List<Change> changes)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Version() when $default != null:
-return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInBytes,_that.mandatory,_that.timestamp,_that.changes);case _:
+return $default(_that.id,_that.file,_that.installer,_that.version,_that.platform,_that.sizeInBytes,_that.mandatory,_that.timestamp,_that.changes);case _:
   return orElse();
 
 }
@@ -469,10 +482,10 @@ return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInByt
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  NetworkFile file,  String version,  TargetPlatform platform,  int sizeInBytes,  bool mandatory,  DateTime timestamp,  List<Change> changes)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  NetworkFile file,  NetworkFile? installer,  String version,  TargetPlatform platform,  int sizeInBytes,  bool mandatory,  DateTime timestamp,  List<Change> changes)  $default,) {final _that = this;
 switch (_that) {
 case _Version():
-return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInBytes,_that.mandatory,_that.timestamp,_that.changes);}
+return $default(_that.id,_that.file,_that.installer,_that.version,_that.platform,_that.sizeInBytes,_that.mandatory,_that.timestamp,_that.changes);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -486,10 +499,10 @@ return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInByt
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  NetworkFile file,  String version,  TargetPlatform platform,  int sizeInBytes,  bool mandatory,  DateTime timestamp,  List<Change> changes)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  NetworkFile file,  NetworkFile? installer,  String version,  TargetPlatform platform,  int sizeInBytes,  bool mandatory,  DateTime timestamp,  List<Change> changes)?  $default,) {final _that = this;
 switch (_that) {
 case _Version() when $default != null:
-return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInBytes,_that.mandatory,_that.timestamp,_that.changes);case _:
+return $default(_that.id,_that.file,_that.installer,_that.version,_that.platform,_that.sizeInBytes,_that.mandatory,_that.timestamp,_that.changes);case _:
   return null;
 
 }
@@ -501,11 +514,12 @@ return $default(_that.id,_that.file,_that.version,_that.platform,_that.sizeInByt
 @JsonSerializable()
 
 class _Version extends Version {
-  const _Version({required this.id, required this.file, required this.version, required this.platform, required this.sizeInBytes, required this.mandatory, required this.timestamp, required  List<Change> changes}): _changes = changes,super._();
+  const _Version({required this.id, required this.file, this.installer, required this.version, required this.platform, required this.sizeInBytes, required this.mandatory, required this.timestamp, required  List<Change> changes}): _changes = changes,super._();
   factory _Version.fromJson(Map<String, dynamic> json) => _$VersionFromJson(json);
 
 @override final  int id;
 @override final  NetworkFile file;
+@override final  NetworkFile? installer;
 @override final  String version;
 @override final  TargetPlatform platform;
 @override final  int sizeInBytes;
@@ -532,18 +546,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Version&&(identical(other.id, id) || other.id == id)&&(identical(other.file, file) || other.file == file)&&(identical(other.version, version) || other.version == version)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp)&&const DeepCollectionEquality().equals(other.changes, _changes));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Version&&(identical(other.id, id) || other.id == id)&&(identical(other.file, file) || other.file == file)&&(identical(other.installer, installer) || other.installer == installer)&&(identical(other.version, version) || other.version == version)&&(identical(other.platform, platform) || other.platform == platform)&&(identical(other.sizeInBytes, sizeInBytes) || other.sizeInBytes == sizeInBytes)&&(identical(other.mandatory, mandatory) || other.mandatory == mandatory)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp)&&const DeepCollectionEquality().equals(other.changes, _changes));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,file,version,platform,sizeInBytes,mandatory,timestamp,const DeepCollectionEquality().hash(_changes));
+    return Object.hash(runtimeType,id,file,installer,version,platform,sizeInBytes,mandatory,timestamp,const DeepCollectionEquality().hash(_changes));
 }
 
 @override
 String toString() {
-    return 'Version(id: $id, file: $file, version: $version, platform: $platform, sizeInBytes: $sizeInBytes, mandatory: $mandatory, timestamp: $timestamp, changes: $changes)';
+    return 'Version(id: $id, file: $file, installer: $installer, version: $version, platform: $platform, sizeInBytes: $sizeInBytes, mandatory: $mandatory, timestamp: $timestamp, changes: $changes)';
 }
 
 
@@ -554,11 +568,11 @@ abstract mixin class _$VersionCopyWith<$Res> implements $VersionCopyWith<$Res> {
   factory _$VersionCopyWith(_Version value, $Res Function(_Version) _then) = __$VersionCopyWithImpl;
 @override @useResult
 $Res call({
- int id, NetworkFile file, String version, TargetPlatform platform, int sizeInBytes, bool mandatory, DateTime timestamp, List<Change> changes
+ int id, NetworkFile file, NetworkFile? installer, String version, TargetPlatform platform, int sizeInBytes, bool mandatory, DateTime timestamp, List<Change> changes
 });
 
 
-@override $NetworkFileCopyWith<$Res> get file;
+@override $NetworkFileCopyWith<$Res> get file;@override $NetworkFileCopyWith<$Res>? get installer;
 
 }
 /// @nodoc
@@ -571,11 +585,12 @@ class __$VersionCopyWithImpl<$Res>
 
 /// Create a copy of Version
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? file = null,Object? version = null,Object? platform = null,Object? sizeInBytes = null,Object? mandatory = null,Object? timestamp = null,Object? changes = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? file = null,Object? installer = freezed,Object? version = null,Object? platform = null,Object? sizeInBytes = null,Object? mandatory = null,Object? timestamp = null,Object? changes = null,}) {
   return _then(_Version(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
-as NetworkFile,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+as NetworkFile,installer: freezed == installer ? _self.installer : installer // ignore: cast_nullable_to_non_nullable
+as NetworkFile?,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String,platform: null == platform ? _self.platform : platform // ignore: cast_nullable_to_non_nullable
 as TargetPlatform,sizeInBytes: null == sizeInBytes ? _self.sizeInBytes : sizeInBytes // ignore: cast_nullable_to_non_nullable
 as int,mandatory: null == mandatory ? _self.mandatory : mandatory // ignore: cast_nullable_to_non_nullable
@@ -593,6 +608,18 @@ $NetworkFileCopyWith<$Res> get file {
   
   return $NetworkFileCopyWith<$Res>(_self.file, (value) {
     return _then(_self.copyWith(file: value));
+  });
+}/// Create a copy of Version
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$NetworkFileCopyWith<$Res>? get installer {
+    if (_self.installer == null) {
+    return null;
+  }
+
+  return $NetworkFileCopyWith<$Res>(_self.installer!, (value) {
+    return _then(_self.copyWith(installer: value));
   });
 }
 }
