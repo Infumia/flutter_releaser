@@ -9,7 +9,7 @@ import "package:path/path.dart" as path;
 part "upload.freezed.dart";
 part "upload.g.dart";
 
-Future<void> uploadS3File(
+Future<int> uploadS3File(
   FlutterReleaserSettings settings,
   UploadVersionRequest request,
   Ref<UploadProgress?> uploadProgressRef,
@@ -40,15 +40,32 @@ Future<void> uploadS3File(
       platform: request.platform,
       mandatory: request.mandatory,
       changes: request.changes,
-    ).toJson().toString(),
+    ).toJson(),
   );
   final uploadResponse = UploadS3FileResponse.fromJson(response);
-  final preSignedUrl = Uri.parse(uploadResponse.url);
-  final headers = uploadResponse.headers;
 
-  await requester.upload(
+  await _uploadToPresignedUrl(
     settings,
     archivePath,
+    sizeInBytes,
+    Uri.parse(uploadResponse.url),
+    uploadResponse.headers,
+    uploadProgressRef,
+  );
+
+  return uploadResponse.id;
+}
+Future<void> _uploadToPresignedUrl(
+  FlutterReleaserSettings settings,
+  String filePath,
+  int sizeInBytes,
+  Uri preSignedUrl,
+  Headers headers,
+  Ref<UploadProgress?> uploadProgressRef,
+) async {
+  await settings.requester.upload(
+    settings,
+    filePath,
     preSignedUrl,
     headers: headers,
     progress: (sent, total) {
@@ -61,12 +78,6 @@ Future<void> uploadS3File(
           );
       uploadProgressRef.value = currentProgress.copyWith(sentBytes: sent);
     },
-  );
-
-  await requester.put<dynamic>(
-    settings,
-    settings.apiUri.resolve(uploadResponse.id.toString()),
-    headers: settings.apiRequestHeadersProvider(),
   );
 }
 
