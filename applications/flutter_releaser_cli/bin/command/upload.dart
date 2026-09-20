@@ -4,6 +4,7 @@ import "dart:io";
 import "package:args/command_runner.dart";
 import "package:dio/dio.dart";
 import "package:flutter_releaser/flutter_releaser.dart";
+import "package:flutter_releaser/src/files.dart";
 import "package:flutter_releaser_dio/flutter_releaser_dio.dart";
 import "package:path/path.dart" as path;
 import "package:pubspec_parse/pubspec_parse.dart";
